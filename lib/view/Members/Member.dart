@@ -21,7 +21,8 @@ import 'dart:async';
 import 'dart:convert';
 
 class Member extends StatefulWidget {
-   Member({Key key, this.namaPemilik,this.namaUsaha,this.idRegister}) : super(key: key);
+  Member({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+      : super(key: key);
 
   final String namaPemilik;
   final String namaUsaha;
@@ -31,8 +32,6 @@ class Member extends StatefulWidget {
 }
 
 class _MemberState extends State<Member> {
- 
-
   _logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool loglogin = false;
@@ -60,23 +59,23 @@ class _MemberState extends State<Member> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
+      endDrawer: Drawer(
         child: ListView(
           children: <Widget>[
             ListTile(
               leading: Icon(Icons.assignment),
-                  title: Text('Laporan Bulanan'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => LaporanBulanan(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                ),
+              title: Text('Laporan Bulanan'),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (c) => LaporanBulanan(
+                        // id: f['id'],
+                        // title: f['title'],
+                        // desc: f['desc'],
+                        // gambar: f['gambar'],
+                        )));
+              },
+            ),
             ExpansionTile(
               leading: Icon(Icons.school),
               title: Text('My Class'),
@@ -167,17 +166,16 @@ class _MemberState extends State<Member> {
               title: Text('My Legal'),
               children: <Widget>[
                 ListTile(
-                  title: Text(
-                      'Sertifikat'),
+                  title: Text('Sertifikat'),
                   trailing: Icon(Icons.keyboard_arrow_right),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => DaftarSertifikat(
-                            namaPemilik:widget.namaPemilik,
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
+                              namaPemilik: widget.namaPemilik,
+                              // id: f['id'],
+                              // title: f['title'],
+                              // desc: f['desc'],
+                              // gambar: f['gambar'],
                             )));
                   },
                 ),
@@ -226,7 +224,6 @@ class _MemberState extends State<Member> {
               leading: Icon(Icons.pie_chart),
               title: Text('Informasi'),
               children: <Widget>[
-                
                 ListTile(
                   title: Text('Pinjaman Dana'),
                   trailing: Icon(Icons.keyboard_arrow_right),
@@ -256,6 +253,17 @@ class _MemberState extends State<Member> {
               ],
             ),
             ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Edit Profil'),
+              // trailing: Icon(Icons.lock_open),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (c) => EditProfil(
+                          idRegister: widget.idRegister,
+                        )));
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.lock_open),
               title: Text('Log Out'),
               // trailing: Icon(Icons.lock_open),
@@ -270,398 +278,367 @@ class _MemberState extends State<Member> {
           ],
         ),
       ),
-      appBar: AppBar(),
+      appBar: AppBar(
+        leading: Text('user'),
+      ),
       body: ListView(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: FutureBuilder<List<APIProfil>>(
-              future: fetchEditProfil(),
-              builder: (context,snapshot){
-                if(snapshot.hasData){
-                  return Card(
-              semanticContainer: true,
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              elevation: 9,
-              margin: EdgeInsets.all(10),
-              child: Stack(
-                children: <Widget>[
-                  Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRseNNjsbmeUto_yfs6tzbsexF__8H1n6w6w3ICd-0LStJ81c6v',
-                    fit: BoxFit.fill,
-                  ),
-                  Container(
-                    height: 170,
-                    color: Colors.black38,
-                  ),
-                  Center(
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Container(
-                              margin: EdgeInsets.all(5),
-                              width: 100.0,
-                              height: 90.0,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      fit: BoxFit.fill,
-                                      image: NetworkImage(
-                                          "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTIihs7JByHn1IfB6lMXE6-aQOUkkD4UzIIEGzReTuLPguIcHx1")))),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(snapshot.data[0].nama_pemilik,
-                                  style: TextStyle(color: Colors.white)),
-                              Opacity(opacity: 0, child: Text('Iv')),
-                              Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 1.0,
-                                        color: const Color(0xFFFFFFFF)),
-                                  ),
-                                  child: GestureDetector(
-                                    child: Icon(
-                                      Icons.mode_edit,
-                                      color: Colors.white,
-                                      size: 17,
-                                    ),
-                                    onTap: () {
-                                      Navigator.of(context)
-                                          .push(MaterialPageRoute(
-                                              builder: (c) => EditProfil(
-                                                  idRegister:widget.idRegister,
-                                                  )));
-                                    },
-                                  ))
-                            ],
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            child: GridView.count(
+              // Create a grid with 2 columns. If you change the scrollDirection to
+              // horizontal, this produces 2 rows.
+              crossAxisCount: 3,
+              // Generate 100 widgets that display their index in the List.
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('laporan');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      borderOnForeground: true,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.assignment,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(snapshot.data[0].nama_usaha,
-                                  style: TextStyle(color: Colors.white)),
-                              Opacity(opacity: 0, child: Text('Iv')),
-                            ],
+                          SizedBox(
+                            height: 10,
                           ),
-                        ),
-                      ],
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Laporan Bulanan',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ],
-              ),
-            );
-                }
-                return CircularProgressIndicator();
-              },
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('vid edukasi');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.videocam,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Video Edukasi',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('quiz');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.question_answer,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Quiz',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('rekues kelas');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.school,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Rekues Kelas',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('sertifikat');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.book,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Sertifikat',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('pinjaman dana');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.attach_money,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Pinjaman Dana',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      print('mitra');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.blue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(
+                              Icons.group,
+                              size: 45,
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 25,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Status Mitra',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          FutureBuilder<List<SliderAPI>>(
-              future: fetchSliderAPI(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return CarouselSlider(
-                    autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3),
-                    autoPlayAnimationDuration: Duration(milliseconds: 800),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    height: 200.0,
-                    items: snapshot.data
-                        .map((f) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Stack(
-                                  children: <Widget>[
-                                    Image.network(
-                                      'http://simadu.id/images/slider/' + f.img,
-                                      fit: BoxFit.cover,
-                                      width: 300,
-                                      height: 200,
-                                    ),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: <Widget>[
-                                        // Container(
-                                        //   width: 300,
-                                        //   color: Colors.black38,
-                                        //   child: Column(
-                                        //     mainAxisAlignment:
-                                        //         MainAxisAlignment.end,
-                                        //     children: <Widget>[
-                                        //       Padding(
-                                        //         padding:
-                                        //             const EdgeInsets.all(8.0),
-                                        //         child: Text(
-                                        //           f.kalimat3,
-                                        //           style: TextStyle(
-                                        //               color: Colors.white),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ),
-                                        // )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        })
-                        .cast<Widget>()
-                        .toList(),
-                  );
-                }
-                return CircularProgressIndicator();
-              }),
-          FutureBuilder<List<Agenda>>(
-              future: fetchAgenda(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Card(
-                    elevation: 9,
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Agenda',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500, fontSize: 17),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 200,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: snapshot.data
-                                .map((f) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Stack(
-                                      children: <Widget>[
-                                        Image.network(
-                                          'http://simadu.id/images/agenda/' +
-                                              f.img,
-                                          width: 200,
-                                          height: 200,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: <Widget>[
-                                            Container(
-                                                width: 200,
-                                                color: Colors.black38,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        f.judul,
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                })
-                                .cast<Widget>()
-                                .toList(),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }
-                return CircularProgressIndicator();
-              }),
-          FutureBuilder<List<KegiatanRKB>>(
-              future: fetchKegiatanRKB(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Card(
-                    elevation: 9,
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Kegiatan RKB',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500, fontSize: 17),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 200,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: snapshot.data
-                                .map((f) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Stack(
-                                      children: <Widget>[
-                                        Image.network(
-                                          'http://simadu.id/images/kegiatan/' +
-                                              f.img,
-                                          width: 200,
-                                          height: 200,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: <Widget>[
-                                            Container(
-                                                width: 200,
-                                                color: Colors.black38,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        f.keterangan,
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                })
-                                .cast<Widget>()
-                                .toList(),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }
-                return CircularProgressIndicator();
-              }),
-          FutureBuilder<List<ShopAPI>>(
-              future: fetchShopAPI(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Card(
-                    elevation: 9,
-                    child: Column(
-                      children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                'Belanja',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500, fontSize: 17),
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 200,
-                          child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: snapshot.data
-                                .map((f) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Stack(
-                                      children: <Widget>[
-                                        Image.network(
-                                          'http://simadu.id/images/shop/' +
-                                              f.img,
-                                          width: 200,
-                                          height: 200,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: <Widget>[
-                                            Container(
-                                                width: 200,
-                                                color: Colors.black38,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      child: Text(
-                                                        f.keterangan.substring(0,70)+'. . .',
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                )),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                })
-                                .cast<Widget>()
-                                .toList(),
-                          ),
-                        )
-                      ],
-                    ),
-                  );
-                }
-                return CircularProgressIndicator();
-              }),
         ],
       ),
     );
