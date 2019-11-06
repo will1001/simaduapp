@@ -280,8 +280,8 @@ class _MemberState extends State<Member> {
       ),
       appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Image.asset('assets/images/logo.jpg',fit: BoxFit.fill,width: 100,),
+          padding: const EdgeInsets.only(left:12.0,top:4.0,bottom: 4.0),
+          child: Image.asset('assets/images/logo.jpg',fit: BoxFit.fill,width: 200,),
         ),
       ),
       body: ListView(
@@ -311,7 +311,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       borderOnForeground: true,
                       child: Column(
@@ -325,12 +325,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
@@ -367,7 +367,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
@@ -380,12 +380,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
@@ -422,7 +422,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
@@ -435,12 +435,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
@@ -477,7 +477,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
@@ -490,12 +490,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
@@ -533,7 +533,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
@@ -546,12 +546,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
@@ -588,7 +588,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
@@ -601,12 +601,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
@@ -643,7 +643,7 @@ class _MemberState extends State<Member> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 15, right: 15),
+                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
@@ -656,12 +656,12 @@ class _MemberState extends State<Member> {
                             ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 0,
                           ),
                           Container(
                             // color: Colors.blue,
                             width: MediaQuery.of(context).size.width,
-                            height: 25,
+                            height: 18,
                             decoration: BoxDecoration(
                               color: Colors.blue,
                               shape: BoxShape.rectangle,
