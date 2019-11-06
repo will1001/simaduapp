@@ -277,6 +277,7 @@ class _HomeState extends State<Home> {
                   }),
               FutureBuilder<List<BeritaAPI>>(
                   future: fetchBeritaAPI(),
+
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return Card(
@@ -302,7 +303,87 @@ class _HomeState extends State<Home> {
                               height: 200,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
-                                children: snapshot.data
+                                children: snapshot.data.where((a)=>a.kategori=='Berita')
+                                    .map((f) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Stack(
+                                          children: <Widget>[
+                                            Image.network(
+                                              'http://simadu.id/images/berita/'+f.img,
+                                              width: 200,
+                                              height: 200,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: <Widget>[
+                                                Container(
+                                                    width: 200,
+                                                    color: Colors.black38,
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment.end,
+                                                      children: <Widget>[
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: Text(
+                                                            f.judul,
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    )),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    })
+                                    .cast<Widget>()
+                                    .toList(),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  }),
+              FutureBuilder<List<BeritaAPI>>(
+                  future: fetchBeritaAPI(),
+
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Card(
+                        elevation: 9,
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'Artikel Terbaru',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: 200,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: snapshot.data.where((a)=>a.kategori=='Artikel')
                                     .map((f) {
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
