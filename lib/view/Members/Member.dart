@@ -62,196 +62,196 @@ class _MemberState extends State<Member> {
       endDrawer: Drawer(
         child: ListView(
           children: <Widget>[
-            ListTile(
-              leading: Icon(Icons.assignment),
-              title: Text('Laporan Bulanan'),
-              trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (c) => LaporanBulanan(
-                        // id: f['id'],
-                        // title: f['title'],
-                        // desc: f['desc'],
-                        // gambar: f['gambar'],
-                        )));
-              },
-            ),
-            ExpansionTile(
-              leading: Icon(Icons.school),
-              title: Text('My Class'),
-              children: <Widget>[
-                // ListTile(
-                //   title: Text('Jadwal Pelatihan'),
-                //   trailing: Icon(Icons.keyboard_arrow_right),
-                //   onTap: () {
-                //     Navigator.of(context).push(MaterialPageRoute(
-                //         builder: (c) => JadwalPelatihan(
-                //             // id: f['id'],
-                //             // title: f['title'],
-                //             // desc: f['desc'],
-                //             // gambar: f['gambar'],
-                //             )));
-                //   },
-                // ),
-                ListTile(
-                  title: Text('Video Edukasi'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => VideoEdukasi(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                ),
-                ListTile(
-                  title: Text('Quiz'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => Quiz(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                ),
-                ListTile(
-                  title: Text('Rekues Kelas'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => RequestKelas(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                )
-              ],
-            ),
-            ExpansionTile(
-              leading: Icon(Icons.trending_up),
-              title: Text('My Performance'),
-              children: <Widget>[
-                ListTile(
-                  title: Text('Partisipasi'),
-                  trailing: Text('91%'),
-                ),
-                ListTile(
-                  title: Text('Perkembangan'),
-                  trailing: Text('59%'),
-                ),
-                ListTile(
-                  title: Text('Summary'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => KegiatanYangDiikuti(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                ),
-              ],
-            ),
-            ExpansionTile(
-              leading: Icon(Icons.book),
-              title: Text('My Legal'),
-              children: <Widget>[
-                ListTile(
-                  title: Text('Sertifikat'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => DaftarSertifikat(
-                              namaPemilik: widget.namaPemilik,
-                              // id: f['id'],
-                              // title: f['title'],
-                              // desc: f['desc'],
-                              // gambar: f['gambar'],
-                            )));
-                  },
-                ),
-                // ListTile(
-                //   title: Text('info strategi masuk retail'),
-                //   trailing: Icon(Icons.keyboard_arrow_right),
-                //   onTap: () {
-                //     Navigator.of(context).push(MaterialPageRoute(
-                //         builder: (c) => InfoStrategi(
-                //             // id: f['id'],
-                //             // title: f['title'],
-                //             // desc: f['desc'],
-                //             // gambar: f['gambar'],
-                //             )));
-                //   },
-                // ),
-                // ListTile(
-                //   title: Text('info pinjaman dana bank'),
-                //   trailing: Icon(Icons.keyboard_arrow_right),
-                //   onTap: () {
-                //     Navigator.of(context).push(MaterialPageRoute(
-                //         builder: (c) => InfoPinjaman(
-                //             // id: f['id'],
-                //             // title: f['title'],
-                //             // desc: f['desc'],
-                //             // gambar: f['gambar'],
-                //             )));
-                //   },
-                // ),
-                // ListTile(
-                //   title: Text('info Status mitra binaan'),
-                //   trailing: Icon(Icons.keyboard_arrow_right),
-                //   onTap: () {
-                //     Navigator.of(context).push(MaterialPageRoute(
-                //         builder: (c) => InfoStatus(
-                //             // id: f['id'],
-                //             // title: f['title'],
-                //             // desc: f['desc'],
-                //             // gambar: f['gambar'],
-                //             )));
-                //   },
-                // )
-              ],
-            ),
-            ExpansionTile(
-              leading: Icon(Icons.pie_chart),
-              title: Text('Informasi'),
-              children: <Widget>[
-                ListTile(
-                  title: Text('Pinjaman Dana'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => PinjamanDana(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                ),
-                ListTile(
-                  title: Text('Status mitra'),
-                  trailing: Icon(Icons.keyboard_arrow_right),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => StatusMitra(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                  },
-                )
-              ],
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.assignment),
+            //   title: Text('Laporan Bulanan'),
+            //   trailing: Icon(Icons.keyboard_arrow_right),
+            //   onTap: () {
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //         builder: (c) => LaporanBulanan(
+            //             // id: f['id'],
+            //             // title: f['title'],
+            //             // desc: f['desc'],
+            //             // gambar: f['gambar'],
+            //             )));
+            //   },
+            // ),
+            // ExpansionTile(
+            //   leading: Icon(Icons.school),
+            //   title: Text('My Class'),
+            //   children: <Widget>[
+            //     // ListTile(
+            //     //   title: Text('Jadwal Pelatihan'),
+            //     //   trailing: Icon(Icons.keyboard_arrow_right),
+            //     //   onTap: () {
+            //     //     Navigator.of(context).push(MaterialPageRoute(
+            //     //         builder: (c) => JadwalPelatihan(
+            //     //             // id: f['id'],
+            //     //             // title: f['title'],
+            //     //             // desc: f['desc'],
+            //     //             // gambar: f['gambar'],
+            //     //             )));
+            //     //   },
+            //     // ),
+            //     ListTile(
+            //       title: Text('Video Edukasi'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => VideoEdukasi(
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     ),
+            //     ListTile(
+            //       title: Text('Quiz'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => Quiz(
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     ),
+            //     ListTile(
+            //       title: Text('Rekues Kelas'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => RequestKelas(
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     )
+            //   ],
+            // ),
+            // ExpansionTile(
+            //   leading: Icon(Icons.trending_up),
+            //   title: Text('My Performance'),
+            //   children: <Widget>[
+            //     ListTile(
+            //       title: Text('Partisipasi'),
+            //       trailing: Text('91%'),
+            //     ),
+            //     ListTile(
+            //       title: Text('Perkembangan'),
+            //       trailing: Text('59%'),
+            //     ),
+            //     ListTile(
+            //       title: Text('Summary'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => KegiatanYangDiikuti(
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     ),
+            //   ],
+            // ),
+            // ExpansionTile(
+            //   leading: Icon(Icons.book),
+            //   title: Text('My Legal'),
+            //   children: <Widget>[
+            //     ListTile(
+            //       title: Text('Sertifikat'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => DaftarSertifikat(
+            //                   namaPemilik: widget.namaPemilik,
+            //                   // id: f['id'],
+            //                   // title: f['title'],
+            //                   // desc: f['desc'],
+            //                   // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     ),
+            //     // ListTile(
+            //     //   title: Text('info strategi masuk retail'),
+            //     //   trailing: Icon(Icons.keyboard_arrow_right),
+            //     //   onTap: () {
+            //     //     Navigator.of(context).push(MaterialPageRoute(
+            //     //         builder: (c) => InfoStrategi(
+            //     //             // id: f['id'],
+            //     //             // title: f['title'],
+            //     //             // desc: f['desc'],
+            //     //             // gambar: f['gambar'],
+            //     //             )));
+            //     //   },
+            //     // ),
+            //     // ListTile(
+            //     //   title: Text('info pinjaman dana bank'),
+            //     //   trailing: Icon(Icons.keyboard_arrow_right),
+            //     //   onTap: () {
+            //     //     Navigator.of(context).push(MaterialPageRoute(
+            //     //         builder: (c) => InfoPinjaman(
+            //     //             // id: f['id'],
+            //     //             // title: f['title'],
+            //     //             // desc: f['desc'],
+            //     //             // gambar: f['gambar'],
+            //     //             )));
+            //     //   },
+            //     // ),
+            //     // ListTile(
+            //     //   title: Text('info Status mitra binaan'),
+            //     //   trailing: Icon(Icons.keyboard_arrow_right),
+            //     //   onTap: () {
+            //     //     Navigator.of(context).push(MaterialPageRoute(
+            //     //         builder: (c) => InfoStatus(
+            //     //             // id: f['id'],
+            //     //             // title: f['title'],
+            //     //             // desc: f['desc'],
+            //     //             // gambar: f['gambar'],
+            //     //             )));
+            //     //   },
+            //     // )
+            //   ],
+            // ),
+            // ExpansionTile(
+            //   leading: Icon(Icons.pie_chart),
+            //   title: Text('Informasi'),
+            //   children: <Widget>[
+            //     ListTile(
+            //       title: Text('Pinjaman Dana'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => PinjamanDana(
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     ),
+            //     ListTile(
+            //       title: Text('Status mitra'),
+            //       trailing: Icon(Icons.keyboard_arrow_right),
+            //       onTap: () {
+            //         Navigator.of(context).push(MaterialPageRoute(
+            //             builder: (c) => StatusMitra(
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+            //                 )));
+            //       },
+            //     )
+            //   ],
+            // ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Edit Profil'),
@@ -279,7 +279,10 @@ class _MemberState extends State<Member> {
         ),
       ),
       appBar: AppBar(
-        leading: Text('user'),
+        leading: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Image.asset('assets/images/logo.jpg',fit: BoxFit.fill,width: 100,),
+        ),
       ),
       body: ListView(
         children: <Widget>[
@@ -296,7 +299,13 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('laporan');
+                      Navigator.of(context).push(MaterialPageRoute(
+                    builder: (c) => LaporanBulanan(
+                        // id: f['id'],
+                        // title: f['title'],
+                        // desc: f['desc'],
+                        // gambar: f['gambar'],
+                        )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -346,7 +355,13 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('vid edukasi');
+                       Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => VideoEdukasi(
+                            // id: f['id'],
+                            // title: f['title'],
+                            // desc: f['desc'],
+                            // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -395,7 +410,13 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('quiz');
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => Quiz(
+                            // id: f['id'],
+                            // title: f['title'],
+                            // desc: f['desc'],
+                            // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -444,7 +465,13 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('rekues kelas');
+                       Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => RequestKelas(
+                            // id: f['id'],
+                            // title: f['title'],
+                            // desc: f['desc'],
+                            // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -493,7 +520,14 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('sertifikat');
+                       Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => DaftarSertifikat(
+                              namaPemilik: widget.namaPemilik,
+                              // id: f['id'],
+                              // title: f['title'],
+                              // desc: f['desc'],
+                              // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -542,7 +576,13 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('pinjaman dana');
+                       Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => PinjamanDana(
+                            // id: f['id'],
+                            // title: f['title'],
+                            // desc: f['desc'],
+                            // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -591,7 +631,13 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      print('mitra');
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => StatusMitra(
+                            // id: f['id'],
+                            // title: f['title'],
+                            // desc: f['desc'],
+                            // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
