@@ -261,6 +261,7 @@ class _FormDaftarState extends State<FormDaftar> {
             child: Center(
               child: TextField(
                 controller: passwordController,
+                obscureText: true,
                 decoration: InputDecoration(
                   icon: Icon(Icons.lock),
                   hintText: 'Password',

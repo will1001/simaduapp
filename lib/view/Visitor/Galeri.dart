@@ -64,6 +64,7 @@ class _GaleriState extends State<Galeri> {
                                                       id: f.id_agenda,
                                                       title: f.judul,
                                                       desc: f.agenda,
+                                                      tanggal: f.tanggal,
                                                       gambar:
                                                           'http://simadu.id/images/agenda/' +
                                                               f.img,

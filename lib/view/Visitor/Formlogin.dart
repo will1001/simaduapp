@@ -98,6 +98,7 @@ class _FormloginState extends State<Formlogin> {
                     //     f['atributData'] = str;
                     //   });
                     // },
+                    obscureText: true,
                     decoration: InputDecoration(
                       icon: Icon(Icons.lock),
                       hintText: 'Password',

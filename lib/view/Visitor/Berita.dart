@@ -160,6 +160,7 @@ class WidgetGridview extends StatelessWidget {
                                             desc: f.isi,
                                             gambar: 'http://simadu.id/images/berita/'+f.img,
                                             tanggal: f.tanggal,
+                                            penulis: f.penulis,
                                           )));
                                 }
                                 if (kategori == 'Artikel') {
@@ -170,6 +171,7 @@ class WidgetGridview extends StatelessWidget {
                                             desc: f.isi,
                                             gambar: 'http://simadu.id/images/berita/'+f.img,
                                             tanggal: f.tanggal,
+                                            penulis: f.penulis,
                                           )));
                                 }
                                 if (kategori == 'Agenda') {
@@ -180,6 +182,7 @@ class WidgetGridview extends StatelessWidget {
                                             desc: f.isi,
                                             gambar: 'http://simadu.id/images/berita/'+f.img,
                                             tanggal: f.tanggal,
+                                            penulis: f.penulis,
                                           )));
                                 }
                               },

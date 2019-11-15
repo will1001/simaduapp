@@ -4,13 +4,14 @@ import 'package:flutter/scheduler.dart';
 import '../LandingPage.dart';
 
 class DetailGaleri extends StatefulWidget {
-  DetailGaleri({Key key, this.id, this.title, this.desc, this.gambar})
+  DetailGaleri({Key key, this.id, this.title, this.desc, this.gambar,this.tanggal})
       : super(key: key);
 
   final String id;
   final String title;
   final String desc;
   final String gambar;
+  final String tanggal;
   @override
   _DetailGaleriState createState() => _DetailGaleriState();
 }
@@ -24,11 +25,29 @@ class _DetailGaleriState extends State<DetailGaleri> {
         children: <Widget>[
           Card(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                 Padding(
+                  padding: const EdgeInsets.only(left:19.0,right: 19),
+                  child: Text(
+                    widget.title,
+                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 21),
+                  ),
+                ),
+                // Row(
+                //     children: <Widget>[
+                       
+                //       Padding(
+                //         padding: const EdgeInsets.only(right :5.0,left: 5.0),
+                //         child: Icon(Icons.calendar_today,color: Colors.lightBlue,size: 15,),
+                //       ),
+                //       Text(widget.tanggal.toString())
+                //     ],
+                //   ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.only(left:19.0,right: 19),
                   child: Container(
-                    height: 240,
+                    height: 200,
                     color: Colors.white,
                     child: Hero(
                         tag: widget.id,
@@ -39,17 +58,9 @@ class _DetailGaleriState extends State<DetailGaleri> {
                         )),
                   ),
                 ),
+                
                 Padding(
-                  padding: const EdgeInsets.only(left: 19.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(widget.title),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 19.0, top: 8, bottom: 8),
+                  padding: const EdgeInsets.only(left: 19.0,right: 19),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -62,16 +73,19 @@ class _DetailGaleriState extends State<DetailGaleri> {
                 ),
                 Column(
                   children: <Widget>[
-                    RaisedButton(
-                      child: Text('Daftar'),
-                      textColor: Colors.black,
-                      color: Colors.lightBlue,
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (c) => LandingPage(
-                                  selectedIndex: 5,
-                                )));
-                      },
+                    Padding(
+                      padding: const EdgeInsets.only(left:19.0),
+                      child: RaisedButton(
+                        child: Text('Daftar'),
+                        textColor: Colors.black,
+                        color: Colors.lightBlue,
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (c) => LandingPage(
+                                    selectedIndex: 5,
+                                  )));
+                        },
+                      ),
                     )
                   ],
                 ),

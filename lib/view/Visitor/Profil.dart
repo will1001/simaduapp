@@ -4,6 +4,7 @@ import 'package:simadu/model/ProviderProfilVideo.dart';
 import 'package:simadu/model/TimAPI.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Profil extends StatefulWidget {
   @override
@@ -44,15 +45,15 @@ class _ProfilState extends State<Profil> {
       child: Scaffold(
         appBar: AppBar(
           leading: Opacity(opacity: 0, child: Icon(Icons.title)),
-          centerTitle: true,
-          title: Text(
-            'Profil',
-            style: TextStyle(fontSize: 16.0),
-          ),
+          // centerTitle: true,
+          // title: Text(
+          //   'Profil',
+          //   style: TextStyle(fontSize: 16.0),
+          // ),
           bottom: TabBar(
             tabs: <Widget>[
               Tab(
-                text: 'Profile',
+                text: 'Profil',
               ),
               Tab(
                 text: 'Video',
@@ -146,50 +147,64 @@ class _ProfilState extends State<Profil> {
                         width: MediaQuery.of(context).size.width,
                         height: 200,
                         child: ListView(
-                          scrollDirection: Axis.horizontal,
+                          // scrollDirection: Axis.horizontal,
                           children: snapshot.data.map((f){
                             return Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Stack(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  Image.network(
-                                    'http://simadu.id/images/tim/'+f.img,
-                                    width: 200,
-                                    height: 200,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                  Row(
                                     children: <Widget>[
                                       Container(
-                                          width: 200,
-                                          color: Colors.black38,
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            children: <Widget>[
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(4.0),
-                                                child: Text(
-                                                  f.nama,
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(4.0),
-                                                child: Text(
-                                                  f.jabatan,
-                                                  style: TextStyle(
-                                                      color: Colors.white),
-                                                ),
-                                              ),
-                                            ],
-                                          )),
+                                          margin: EdgeInsets.all(5),
+                                          width: 150.0,
+                                          height: 150.0,
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              image: DecorationImage(
+                                                  fit: BoxFit.fill,
+                                                  image: NetworkImage(
+                                                      'http://simadu.id/images/tim/'+f.img)))),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: const EdgeInsets.only(left:21.0,bottom: 7),
+                                            child: Text(f.nama,style: TextStyle(
+                                              fontSize: 21,
+                                              color: Colors.lightBlue
+                                            ),),
+                                          ),
+                                          Padding(
+                                        padding: const EdgeInsets.only(left:21.0,bottom:7 ),
+                                        child: Text(f.jabatan,style: TextStyle(
+                                          // fontSize: 21,
+                                          // color: Colors.lightBlue
+                                        ),),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left:21.0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(FontAwesomeIcons.facebook,color: Colors.blue,),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(FontAwesomeIcons.twitter,color: Colors.lightBlue,),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Icon(FontAwesomeIcons.linkedin,color: Colors.blue,),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                        ],
+                                      ),
+                                      
                                     ],
                                   ),
                                 ],

@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+4
+version: 1.0.0+6
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -32,6 +32,8 @@ dependencies:
   flutter_datetime_picker: ^1.2.6
   file_picker: ^1.4.2
   dio: ^2.1.3
+  charts_flutter: ^0.8.1
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +58,7 @@ flutter:
   assets:
    - assets/images/Your-Logo-here.png
    - assets/images/logo.jpg
+   - assets/images/logo.png
    - assets/images/PLN.jpg
    - assets/images/YBP.jpg
    - assets/images/BUMN.jpeg
@@ -64,6 +67,18 @@ flutter:
    - assets/images/iconshoppe.png
    - assets/images/icontokopedia.png
    - assets/images/iconblanja.png
+   - assets/images/iconfinder_Video-Camera-2_379365.png
+   - assets/images/iconfinder_Tablet-Chart_379374.png
+   - assets/images/quiz.png
+   - assets/images/047-handshake.png
+   - assets/images/iconfinder_14_Certificate_2064489.png
+   - assets/images/iconfinder_Education_3069198.png
+   - assets/images/iconfinder_Finance_loan_money_1889199.png
+   - assets/images/049-presentation.png
+   - assets/images/031-certificate.png
+   - assets/images/026-analysis.png
+   - assets/images/037-document.png
+   - assets/images/gallery.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

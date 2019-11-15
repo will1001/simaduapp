@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 class DetailAgenda extends StatefulWidget {
-  DetailAgenda({Key key, this.id, this.title, this.desc, this.gambar, this.tanggal})
+  DetailAgenda({Key key, this.id, this.title, this.desc, this.gambar, this.tanggal, String penulis})
       : super(key: key);
 
   final String id;

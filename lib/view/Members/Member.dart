@@ -9,12 +9,18 @@ import 'package:simadu/model/SliderAPI.dart';
 import 'package:simadu/view/LandingPage.dart';
 import 'package:simadu/view/Members/DaftarSertifikat.dart';
 import 'package:simadu/view/Members/EditProfil.dart';
+import 'package:simadu/view/Members/Gallery.dart';
+import 'package:simadu/view/Members/InformasiMenu.dart';
 import 'package:simadu/view/Members/KegiatanYangDiikuti.dart';
 import 'package:simadu/view/Members/LaporanBulanan.dart';
+import 'package:simadu/view/Members/MyLegal.dart';
+import 'package:simadu/view/Members/MyPerformance.dart';
+import 'package:simadu/view/Members/Myclass.dart';
 import 'package:simadu/view/Members/PinjamanDana.dart';
 import 'package:simadu/view/Members/Quiz.dart';
 import 'package:simadu/view/Members/RequestKelas.dart';
 import 'package:simadu/view/Members/StatusMitra.dart';
+import 'package:simadu/view/Members/Summary.dart';
 import 'package:simadu/view/Members/VideoEdukasi.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
@@ -280,8 +286,19 @@ class _MemberState extends State<Member> {
       ),
       appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.only(left:12.0,top:4.0,bottom: 4.0),
-          child: Image.asset('assets/images/logo.jpg',fit: BoxFit.fill,width: 200,),
+          padding: const EdgeInsets.only(left:20.0,top:19.0,bottom: 4.0),
+          child: Text('RKB',style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 17,
+            color: Colors.white
+          ),),
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(right: 12),
+          child: Text('-    LOMBOK BARAT',style: TextStyle(
+            fontSize: 17,
+            color: Colors.white
+          ),),
         ),
       ),
       body: ListView(
@@ -290,49 +307,42 @@ class _MemberState extends State<Member> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: GridView.count(
-              // Create a grid with 2 columns. If you change the scrollDirection to
-              // horizontal, this produces 2 rows.
               crossAxisCount: 3,
-              // Generate 100 widgets that display their index in the List.
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                    builder: (c) => LaporanBulanan(
-                        // id: f['id'],
-                        // title: f['title'],
-                        // desc: f['desc'],
-                        // gambar: f['gambar'],
-                        )));
+                       Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => LaporanBulanan(
+                              // namaPemilik: widget.namaPemilik,
+                              // id: f['id'],
+                              // title: f['title'],
+                              // desc: f['desc'],
+                              // gambar: f['gambar'],
+                            )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
+                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
-                      borderOnForeground: true,
                       child: Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.assignment,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
+                            child: Image.asset('assets/images/037-document.png',width: 55,)
                           ),
                           SizedBox(
                             height: 0,
                           ),
                           Container(
-                            // color: Colors.blue,
+                            // color: Colors.lightBlue,
                             width: MediaQuery.of(context).size.width,
                             height: 18,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.lightBlue,
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(8.0),
@@ -343,62 +353,7 @@ class _MemberState extends State<Member> {
                                 child: Text(
                               'Laporan Bulanan',
                               style:
-                                  TextStyle(fontSize: 11, color: Colors.white),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => VideoEdukasi(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
-                      elevation: 9,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.videocam,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 0,
-                          ),
-                          Container(
-                            // color: Colors.blue,
-                            width: MediaQuery.of(context).size.width,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(8.0),
-                                bottomRight: Radius.circular(8.0),
-                              ),
-                            ),
-                            child: Center(
-                                child: Text(
-                              'Video Edukasi',
-                              style:
-                                  TextStyle(fontSize: 11, color: Colors.white),
+                                  TextStyle(fontSize: 10, color: Colors.white),
                             )),
                           )
                         ],
@@ -411,38 +366,36 @@ class _MemberState extends State<Member> {
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => Quiz(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
+                    builder: (c) => Myclass(
+                        idRegister:widget.idRegister
+                        // id: f['id'],
+                        // title: f['title'],
+                        // desc: f['desc'],
+                        // gambar: f['gambar'],
+                        )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
+                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
+                      borderOnForeground: true,
                       child: Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.question_answer,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
+                            child: Image.asset('assets/images/iconfinder_Education_3069198.png',width: 55,)
                           ),
                           SizedBox(
                             height: 0,
                           ),
                           Container(
-                            // color: Colors.blue,
+                            // color: Colors.lightBlue,
                             width: MediaQuery.of(context).size.width,
                             height: 18,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.lightBlue,
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(8.0),
@@ -451,9 +404,9 @@ class _MemberState extends State<Member> {
                             ),
                             child: Center(
                                 child: Text(
-                              'Quiz',
+                              'My Class',
                               style:
-                                  TextStyle(fontSize: 11, color: Colors.white),
+                                  TextStyle(fontSize: 10, color: Colors.white),
                             )),
                           )
                         ],
@@ -466,7 +419,7 @@ class _MemberState extends State<Member> {
                   child: GestureDetector(
                     onTap: () {
                        Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => RequestKelas(
+                        builder: (c) => MyPerformance(
                             // id: f['id'],
                             // title: f['title'],
                             // desc: f['desc'],
@@ -476,28 +429,24 @@ class _MemberState extends State<Member> {
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
+                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.school,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
+                            child: Image.asset('assets/images/049-presentation.png',width: 55,)
                           ),
                           SizedBox(
                             height: 0,
                           ),
                           Container(
-                            // color: Colors.blue,
+                            // color: Colors.lightBlue,
                             width: MediaQuery.of(context).size.width,
                             height: 18,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.lightBlue,
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(8.0),
@@ -506,120 +455,9 @@ class _MemberState extends State<Member> {
                             ),
                             child: Center(
                                 child: Text(
-                              'Rekues Kelas',
+                              'My Performance',
                               style:
-                                  TextStyle(fontSize: 11, color: Colors.white),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => DaftarSertifikat(
-                              namaPemilik: widget.namaPemilik,
-                              // id: f['id'],
-                              // title: f['title'],
-                              // desc: f['desc'],
-                              // gambar: f['gambar'],
-                            )));
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
-                      elevation: 9,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.book,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 0,
-                          ),
-                          Container(
-                            // color: Colors.blue,
-                            width: MediaQuery.of(context).size.width,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(8.0),
-                                bottomRight: Radius.circular(8.0),
-                              ),
-                            ),
-                            child: Center(
-                                child: Text(
-                              'Sertifikat',
-                              style:
-                                  TextStyle(fontSize: 11, color: Colors.white),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => PinjamanDana(
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
-                      elevation: 9,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.attach_money,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 0,
-                          ),
-                          Container(
-                            // color: Colors.blue,
-                            width: MediaQuery.of(context).size.width,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: Colors.blue,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(8.0),
-                                bottomRight: Radius.circular(8.0),
-                              ),
-                            ),
-                            child: Center(
-                                child: Text(
-                              'Pinjaman Dana',
-                              style:
-                                  TextStyle(fontSize: 11, color: Colors.white),
+                                  TextStyle(fontSize: 10, color: Colors.white),
                             )),
                           )
                         ],
@@ -632,7 +470,7 @@ class _MemberState extends State<Member> {
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => StatusMitra(
+                        builder: (c) => MyLegal(
                             // id: f['id'],
                             // title: f['title'],
                             // desc: f['desc'],
@@ -642,28 +480,24 @@ class _MemberState extends State<Member> {
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.blue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 25, left: 10, right: 10),
+                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.group,
-                              size: 45,
-                              color: Colors.blue,
-                            ),
+                            child: Image.asset('assets/images/031-certificate.png',width: 55,)
                           ),
                           SizedBox(
                             height: 0,
                           ),
                           Container(
-                            // color: Colors.blue,
+                            // color: Colors.lightBlue,
                             width: MediaQuery.of(context).size.width,
                             height: 18,
                             decoration: BoxDecoration(
-                              color: Colors.blue,
+                              color: Colors.lightBlue,
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(8.0),
@@ -672,7 +506,7 @@ class _MemberState extends State<Member> {
                             ),
                             child: Center(
                                 child: Text(
-                              'Status Mitra',
+                              'My Legal',
                               style:
                                   TextStyle(fontSize: 11, color: Colors.white),
                             )),
@@ -682,6 +516,110 @@ class _MemberState extends State<Member> {
                     ),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                       Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => InformasiMenu(
+                            // id: f['id'],
+                            // title: f['title'],
+                            // desc: f['desc'],
+                            // gambar: f['gambar'],
+                            )));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset('assets/images/026-analysis.png',width: 55,)
+                          ),
+                          SizedBox(
+                            height: 0,
+                          ),
+                          Container(
+                            // color: Colors.lightBlue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 18,
+                            decoration: BoxDecoration(
+                              color: Colors.lightBlue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Informasi',
+                              style:
+                                  TextStyle(fontSize: 11, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: GestureDetector(
+                //     onTap: () {
+                //        Navigator.of(context).push(MaterialPageRoute(
+                //         builder: (c) => Gallery(
+                //               // namaPemilik: widget.namaPemilik,
+                //               // id: f['id'],
+                //               // title: f['title'],
+                //               // desc: f['desc'],
+                //               // gambar: f['gambar'],
+                //             )));
+                //     },
+                //     child: Card(
+                //       shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(10.0),
+                //           side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                //       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
+                //       elevation: 9,
+                //       child: Column(
+                //         children: <Widget>[
+                //           Padding(
+                //             padding: const EdgeInsets.all(8.0),
+                //             child: Image.asset('assets/images/gallery.png',width: 55,)
+                //           ),
+                //           SizedBox(
+                //             height: 0,
+                //           ),
+                //           Container(
+                //             // color: Colors.lightBlue,
+                //             width: MediaQuery.of(context).size.width,
+                //             height: 18,
+                //             decoration: BoxDecoration(
+                //               color: Colors.lightBlue,
+                //               shape: BoxShape.rectangle,
+                //               borderRadius: BorderRadius.only(
+                //                 bottomLeft: Radius.circular(8.0),
+                //                 bottomRight: Radius.circular(8.0),
+                //               ),
+                //             ),
+                //             child: Center(
+                //                 child: Text(
+                //               'Galeri',
+                //               style:
+                //                   TextStyle(fontSize: 11, color: Colors.white),
+                //             )),
+                //           )
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                
               ],
             ),
           ),

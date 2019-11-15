@@ -98,7 +98,7 @@ class _DetailShopState extends State<DetailShop> {
                                   throw 'Could not launch $url';
                                 }
                               },
-                              child: Text(widget.linkbukalapak),
+                              child: Text('Belanja'),
                             ),
                           ),
                         ),

@@ -19,26 +19,44 @@ Future<List<QuizAPI>> fetchQuizAPI() async {
 }
 
 class QuizAPI {
-  final String id_QuizAPI;
-  final String tanggal;
-  final String keterangan;
-  final String nama_file;
-
+  final String id_soal;
+  final String no;
+  final String soal;
+  final String a;
+  final String b;
+  final String c;
+  final String d;
+  final String e;
+  final String knc_jawaban;
+  final String aktif;
   
 
   QuizAPI({
-    this.id_QuizAPI,
-    this.tanggal,
-    this.keterangan,
-    this.nama_file,
+    this.id_soal,
+    this.no,
+    this.soal,
+    this.a,
+    this.b,
+    this.c,
+    this.d,
+    this.e,
+    this.knc_jawaban,
+    this.aktif,
+
   });
 
   factory QuizAPI.fromJson(Map<String, dynamic> json) {
     return QuizAPI(
-      id_QuizAPI: json['id_QuizAPI'],
-      tanggal: json['tanggal'],
-      keterangan: json['keterangan'],
-      nama_file: json['nama_file'],
+      id_soal: json['id_soal'],
+      no: json['no'],
+      soal: json['soal'],
+      a: json['a'],
+      b: json['b'],
+      c: json['c'],
+      d: json['d'],
+      e: json['e'],
+      knc_jawaban: json['knc_jawaban'],
+      aktif: json['aktif'],
     );
   }
 }

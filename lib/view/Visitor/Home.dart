@@ -7,6 +7,9 @@ import 'package:simadu/model/Pencapaian.dart';
 import 'package:simadu/model/ProviderHome.dart';
 import 'package:simadu/model/SliderAPI.dart';
 
+import 'ArtikelLainnya.dart';
+import 'BeritaLainnya.dart';
+
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
@@ -163,6 +166,8 @@ class _HomeState extends State<Home> {
                                       );
                                     })
                                     .cast<Widget>()
+                                    .toList()
+                                    .getRange(0, (snapshot.data.length<4?snapshot.data.length:4))
                                     .toList(),
                               ),
                             )
@@ -277,7 +282,6 @@ class _HomeState extends State<Home> {
                   }),
               FutureBuilder<List<BeritaAPI>>(
                   future: fetchBeritaAPI(),
-
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return Card(
@@ -295,7 +299,21 @@ class _HomeState extends State<Home> {
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
                                   ),
-                                )
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 121),
+                                  child: GestureDetector(
+                                    child: Text(
+                                      'Lihat Lainnya',
+                                      style: TextStyle(fontSize: 17),
+                                    ),
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (c) => BeritaLainnya()));
+                                    },
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(
@@ -303,14 +321,16 @@ class _HomeState extends State<Home> {
                               height: 200,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
-                                children: snapshot.data.where((a)=>a.kategori=='Berita')
+                                children: snapshot.data
+                                    .where((a) => a.kategori == 'Berita')
                                     .map((f) {
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Stack(
                                           children: <Widget>[
                                             Image.network(
-                                              'http://simadu.id/images/berita/'+f.img,
+                                              'http://simadu.id/images/berita/' +
+                                                  f.img,
                                               width: 200,
                                               height: 200,
                                               fit: BoxFit.cover,
@@ -346,6 +366,9 @@ class _HomeState extends State<Home> {
                                       );
                                     })
                                     .cast<Widget>()
+                                    .toList()
+                                   .getRange(0, (snapshot.data.where((a) => a.kategori == 'Berita').length<4?snapshot.data
+                                    .where((a) => a.kategori == 'Berita').length:4))
                                     .toList(),
                               ),
                             )
@@ -357,7 +380,6 @@ class _HomeState extends State<Home> {
                   }),
               FutureBuilder<List<BeritaAPI>>(
                   future: fetchBeritaAPI(),
-
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return Card(
@@ -375,7 +397,21 @@ class _HomeState extends State<Home> {
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
                                   ),
-                                )
+                                ),
+                                 Padding(
+                      padding: const EdgeInsets.only(left: 111),
+                      child: GestureDetector(
+                        child: Text(
+                          'Lihat Lainnya',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                        onTap: (){
+                           Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (c) => ArtikelLainnya(
+                                          )));
+                        },
+                      ),
+                    ),
                               ],
                             ),
                             SizedBox(
@@ -383,14 +419,18 @@ class _HomeState extends State<Home> {
                               height: 200,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
-                                children: snapshot.data.where((a)=>a.kategori=='Artikel')
+                                children: snapshot.data
+                                    .where((a) => a.kategori == 'Artikel')
                                     .map((f) {
+                                      print(snapshot.data
+                                    .where((a) => a.kategori == 'Artikel').length);
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Stack(
                                           children: <Widget>[
                                             Image.network(
-                                              'http://simadu.id/images/berita/'+f.img,
+                                              'http://simadu.id/images/berita/' +
+                                                  f.img,
                                               width: 200,
                                               height: 200,
                                               fit: BoxFit.cover,
@@ -426,6 +466,9 @@ class _HomeState extends State<Home> {
                                       );
                                     })
                                     .cast<Widget>()
+                                    .toList()
+                                    .getRange(0, (snapshot.data.where((a) => a.kategori == 'Artikel').length<4?snapshot.data
+                                    .where((a) => a.kategori == 'Artikel').length:4))
                                     .toList(),
                               ),
                             )
