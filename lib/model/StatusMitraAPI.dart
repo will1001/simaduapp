@@ -20,28 +20,28 @@ Future<List<StatusMitraAPI>> fetchStatusMitraAPI() async {
 
 class StatusMitraAPI {
   final String id_statusmitra;
-  final String nama;
-  final String tanggal;
+  final String id_register;
   final String mitra;
   final String lainya;
+  final String status;
   
 
   StatusMitraAPI({
     this.id_statusmitra,
-    this.nama,
-    this.tanggal,
+    this.id_register,
     this.mitra,
     this.lainya,
+    this.status,
 
   });
 
   factory StatusMitraAPI.fromJson(Map<String, dynamic> json) {
     return StatusMitraAPI(
       id_statusmitra: json['id_statusmitra'],
-      nama: json['nama'],
-      tanggal: json['tanggal'],
+      id_register: json['id_register'],
       mitra: json['mitra'],
       lainya: json['lainya'],
+      status: json['status'],
   
     );
   }

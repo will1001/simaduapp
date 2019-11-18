@@ -4,6 +4,12 @@ import 'package:simadu/view/Members/PinjamanDana.dart';
 import 'package:simadu/view/Members/StatusMitra.dart';
 
 class InformasiMenu extends StatefulWidget {
+  InformasiMenu({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+      : super(key: key);
+
+  final String namaPemilik;
+  final String namaUsaha;
+  final String idRegister;
   @override
   _InformasiMenuState createState() => _InformasiMenuState();
 }
@@ -27,6 +33,7 @@ class _InformasiMenuState extends State<InformasiMenu> {
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => PinjamanDana(
+                          idRegister: widget.idRegister,
             //                 // id: f['id'],
             //                 // title: f['title'],
             //                 // desc: f['desc'],
@@ -40,6 +47,7 @@ class _InformasiMenuState extends State<InformasiMenu> {
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => StatusMitra(
+                          idRegister: widget.idRegister,
             //                 // id: f['id'],
             //                 // title: f['title'],
             //                 // desc: f['desc'],

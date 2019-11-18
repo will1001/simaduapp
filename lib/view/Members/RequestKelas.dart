@@ -3,6 +3,12 @@ import 'package:simadu/model/RekuesKelasAPI.dart';
 import 'package:simadu/view/Members/AddRequestKelas.dart';
 
 class RequestKelas extends StatefulWidget {
+   RequestKelas({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+      : super(key: key);
+
+  final String namaPemilik;
+  final String namaUsaha;
+  final String idRegister;
   @override
   _RequestKelasState createState() => _RequestKelasState();
 }
@@ -23,7 +29,8 @@ class _RequestKelasState extends State<RequestKelas> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                  children: snapshot.data.map((f) {
+                  children: snapshot.data.where((a)=>a.id_register==widget.idRegister)
+                  .map((f) {
                 return ExpansionTile(
                   title: Text(f.kelas),
                   children: <Widget>[
@@ -45,7 +52,7 @@ class _RequestKelasState extends State<RequestKelas> {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => AddRequestKelas(
-                            
+                            idRegister: widget.idRegister,
                             )));
         },
         child: Icon(Icons.add),

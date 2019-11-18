@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simadu/model/ProviderShop.dart';
 import 'package:simadu/model/ShopAPI.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'DetailShop.dart';
 
@@ -49,85 +50,122 @@ class _ShopState extends State<Shop> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return GridView.count(
-              crossAxisCount: 2,
-              children: snapshot.data
-                  .map((f) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Hero(
-                        tag: f.id_shop,
-                        child: Material(
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (c) => DetailShop(
-                                        id: f.id_shop,
-                                        title: f.keterangan,
-                                        desc: f.keterangan,
-                                        linkbukalapak: f.link,
-                                        linklazada: f.link,
-                                        linkshoppe: f.link,
-                                        linktokopedia: f.link,
-                                        linkblanjadotcom:
-                                            f.link,
-                                        gambar: 'http://simadu.id/images/shop/' +f.img,
-                                      )));
-                            },
-                            child: Stack(
-                              children: <Widget>[
-                                Container(
-                                  child: SizedBox(
-                                    height: 200,
-                                    width: 200,
-                                    child: Image.network(
-                                      'http://simadu.id/images/shop/' +f.img,
-                                      // fit: BoxFit.cover,
+                      crossAxisCount: 2,
+                      children: snapshot.data
+                          .map((f) {
+                            return Padding(
+                              padding: const EdgeInsets.only(left:8.0),
+                              child: Hero(
+                                tag: f.id_shop,
+                                child: Material(
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (c) => DetailShop(
+                                                    id: f.id_shop,
+                                                    title: f.keterangan,
+                                                    desc: f.keterangan,
+                                                    linkbukalapak: f.link,
+                                                    linklazada: f.link,
+                                                    linkshoppe: f.link,
+                                                    linktokopedia: f.link,
+                                                    linkblanjadotcom: f.link,
+                                                    gambar:
+                                                        'http://simadu.id/images/shop/' +
+                                                            f.img,
+                                                  )));
+                                    },
+                                    child: Column(
+                                      children: <Widget>[
+                                        Container(
+                                          child: SizedBox(
+                                            height: 120,
+                                            width: 200,
+                                            child: Image.network(
+                                              'http://simadu.id/images/shop/' +
+                                                  f.img,
+                                                  height: 200,
+                                              // fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            Container(
+                                              width: 200,
+                                              // color: Colors.black38,
+                                              child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(left:8.0),
+                                                  child: Column(
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: <Widget>[
+                                                      // Text(
+                                                      //   f['title'],
+                                                      //   style: TextStyle(color: Colors.white),
+                                                      // ),
+                                                      Text(
+                                                        f.keterangan.toString().substring(
+                                                            0,
+                                                            f.keterangan.length < 23
+                                                                ? f.keterangan.length
+                                                                : 23),
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          // fontSize: 10,
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding: const EdgeInsets.only(top:8.0),
+                                                        child: SizedBox(
+                                                          height: 30,
+                                                          child: RaisedButton(
+                                                            textColor: Colors.black,
+                                                            color: Colors.lightBlue,
+                                                            onPressed: () async {
+                                                              String url = f.link;
+                                                              if (await canLaunch(
+                                                                  url)) {
+                                                                await launch(url);
+                                                              } else {
+                                                                throw 'Could not launch $url';
+                                                              }
+                                                            },
+                                                            child: Text(
+                                                              'Beli Produk ini',
+                                                              style: TextStyle(
+                                                                  color:
+                                                                      Colors.white),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    Container(
-                                      width: 200,
-                                      color: Colors.black38,
-                                      child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Column(
-                                            children: <Widget>[
-                                              // Text(
-                                              //   f['title'],
-                                              //   style: TextStyle(color: Colors.white),
-                                              // ),
-                                              Text(
-                                                f.keterangan.toString().substring(
-                                                    0,
-                                                    f.keterangan.length < 43
-                                                        ? f.keterangan.length
-                                                        : 43),
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                  // fontSize: 10,
-                                                ),
-                                              )
-                                            ],
-                                          )),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                              ),
+                            );
+                          })
+                          .cast<Widget>()
+                          .toList()
+                          .getRange(
+                              start,
+                              snapshot.data.length != 0
+                                  ? (snapshot.data.length < finish
+                                      ? snapshot.data.length
+                                      : start + finish)
+                                  : 0)
+                          .toList(),
                     );
-                  })
-                  .cast<Widget>()
-                  .toList()
-                  .getRange(start,
-                              snapshot.data.length != 0 ? (snapshot.data.length<finish?snapshot.data.length: start + finish) : 0)
-                  .toList(),
-            );
                   }
                   return CircularProgressIndicator();
                 }),

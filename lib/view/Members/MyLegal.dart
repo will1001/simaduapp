@@ -3,6 +3,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:simadu/view/Members/DaftarSertifikat.dart';
 
 class MyLegal extends StatefulWidget {
+   MyLegal({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+      : super(key: key);
+
+  final String namaPemilik;
+  final String namaUsaha;
+  final String idRegister;
   @override
   _MyLegalState createState() => _MyLegalState();
 }
@@ -26,6 +32,7 @@ class _MyLegalState extends State<MyLegal> {
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => DaftarSertifikat(
+                          idRegister: widget.idRegister,
             //                 // id: f['id'],
             //                 // title: f['title'],
             //                 // desc: f['desc'],

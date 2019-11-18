@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:simadu/model/StatusMitraAPI.dart';
+import 'package:simadu/view/Members/AddStatusMitra.dart';
 
 class StatusMitra extends StatefulWidget {
+  StatusMitra({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+      : super(key: key);
+
+  final String namaPemilik;
+  final String namaUsaha;
+  final String idRegister;
   @override
   _StatusMitraState createState() => _StatusMitraState();
 }
@@ -17,35 +24,21 @@ class _StatusMitraState extends State<StatusMitra> {
             style: TextStyle(fontSize: 16.0),
           ),
       ),
-      body: FutureBuilder<List<StatusMitraAPI>>(
-          future: fetchStatusMitraAPI(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView(
-                children: snapshot.data.map((f){
-                  return ExpansionTile(
-                    title: Text(f.nama),
-                    children: <Widget>[
-                      ListTile(
-                        leading: Text('Tanggal'),
-                        title: Text(f.tanggal),
-                      ),
-                      ListTile(
-                        leading: Text('Mitra'),
-                        title: Text(f.mitra),
-                      ),
-                      ListTile(
-                        leading: Text('Lainnya'),
-                        title: Text(f.lainya),
-                      ),
-                    ],
-                  );
-                }).toList(),
-                
-              );
-            }
-            return CircularProgressIndicator();
-          }),
+      body: ListTile(
+        title: Text('Apakah Anda Merupakan Mitra Binaan BUMN?'),
+        trailing: RaisedButton.icon(
+                    icon: Icon(Icons.label_important),
+                    label: Text('Jawab'),
+                    textColor: Colors.white,
+                    color: Colors.lightBlue,
+                    onPressed: () {
+                     Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => AddStatusMitra(
+                            idRegister: widget.idRegister,
+                            )));
+                    },
+                  ),
+      ),
     );
   }
 }

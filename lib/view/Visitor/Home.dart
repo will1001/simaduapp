@@ -1,14 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:simadu/model/BeritaAPI.dart';
 import 'package:simadu/model/KegiatanRKB.dart';
 import 'package:simadu/model/Pencapaian.dart';
 import 'package:simadu/model/ProviderHome.dart';
 import 'package:simadu/model/SliderAPI.dart';
+import 'package:simadu/model/TimAPI.dart';
 
 import 'ArtikelLainnya.dart';
 import 'BeritaLainnya.dart';
+import 'DetailArtikel.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -46,44 +49,49 @@ class _HomeState extends State<Home> {
                             .map((f) {
                               return Builder(
                                 builder: (BuildContext context) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(12.0),
-                                    child: Stack(
-                                      children: <Widget>[
-                                        Image.network(
-                                          'http://simadu.id/images/slider/' +
-                                              f.img,
-                                          fit: BoxFit.cover,
-                                          width: 300,
-                                          height: 200,
-                                        ),
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: <Widget>[
-                                            // Container(
-                                            //   width: 300,
-                                            //   color: Colors.black38,
-                                            //   child: Column(
-                                            //     mainAxisAlignment:
-                                            //         MainAxisAlignment.end,
-                                            //     children: <Widget>[
-                                            //       Padding(
-                                            //         padding:
-                                            //             const EdgeInsets.all(
-                                            //                 8.0),
-                                            //         child: Text(
-                                            //           f.kalimat3,
-                                            //           style: TextStyle(
-                                            //               color: Colors.white),
-                                            //         ),
-                                            //       ),
-                                            //     ],
-                                            //   ),
-                                            // )
-                                          ],
-                                        )
-                                      ],
+                                  return Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(0.0),
+                                      child: Stack(
+                                        children: <Widget>[
+                                          Image.network(
+                                            'http://simadu.id/images/slider/' +
+                                                f.img,
+                                            fit: BoxFit.cover,
+                                            width: MediaQuery.of(context)
+                                                .size
+                                                .width,
+                                            height: 250,
+                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: <Widget>[
+                                              // Container(
+                                              //   width: 300,
+                                              //   color: Colors.black38,
+                                              //   child: Column(
+                                              //     mainAxisAlignment:
+                                              //         MainAxisAlignment.end,
+                                              //     children: <Widget>[
+                                              //       Padding(
+                                              //         padding:
+                                              //             const EdgeInsets.all(
+                                              //                 8.0),
+                                              //         child: Text(
+                                              //           f.kalimat3,
+                                              //           style: TextStyle(
+                                              //               color: Colors.white),
+                                              //         ),
+                                              //       ),
+                                              //     ],
+                                              //   ),
+                                              // )
+                                            ],
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   );
                                 },
@@ -91,6 +99,305 @@ class _HomeState extends State<Home> {
                             })
                             .cast<Widget>()
                             .toList(),
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  }),
+              Card(
+                elevation: 9,
+                child: Column(
+                  children: <Widget>[
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.start,
+                    //   children: <Widget>[
+                    //     Padding(
+                    //       padding: const EdgeInsets.all(8.0),
+                    //       child: Text(
+                    //         'Pencapaian',
+                    //         style: TextStyle(
+                    //             fontWeight: FontWeight.w500,
+                    //             fontSize: 17),
+                    //       ),
+                    //     )
+                    //   ],
+                    // ),
+                    SizedBox(
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  FontAwesomeIcons.home,
+                                  color: Colors.blue,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                      child: Text(
+                                    'Basecamp',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                      alignment: FractionalOffset(0.5, 0.5),
+                                      width: 200,
+                                      child: Center(
+                                          child: Text(
+                                        'Kami menyediakan wadah bagi UMKM untuk menampilkan produk mereka di basecamp RKB-Lombok Barat',
+                                        textAlign: TextAlign.center,
+                                      ))),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  FontAwesomeIcons.building,
+                                  color: Colors.blue,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                      child: Text(
+                                    'Fasilitas Pelatihan',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                      alignment: FractionalOffset(0.5, 0.5),
+                                      width: 200,
+                                      child: Center(
+                                          child: Text(
+                                        'Kami memfasilitasi ruang dan sarana pelatihan lainnya yang mampu menunjang optimalisasi penyampaian materi edukasi',
+                                        textAlign: TextAlign.center,
+                                      ))),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  FontAwesomeIcons.calendar,
+                                  color: Colors.blue,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                      child: Text(
+                                    'Jadwal Pelatihan',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                      alignment: FractionalOffset(0.5, 0.5),
+                                      width: 200,
+                                      child: Center(
+                                          child: Text(
+                                        'Pelatihan yang terjadwal dengan baik setiap bulannya dapat memudahkan UMKM untuk mengembangkan pengetahuan mereka secara intensif',
+                                        textAlign: TextAlign.center,
+                                      ))),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(
+                                  FontAwesomeIcons.handshake,
+                                  color: Colors.blue,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Center(
+                                      child: Text(
+                                    'Komitmen',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  )),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                      alignment: FractionalOffset(0.5, 0.5),
+                                      width: 200,
+                                      child: Center(
+                                          child: Text(
+                                        'Kami secara menyeluruh memastikan bahwa UMKM dapat berkembang baik dari sisi pengetahuan maupun aktivitas usaha.',
+                                        textAlign: TextAlign.center,
+                                      ))),
+                                )
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              FutureBuilder<List<TimAPI>>(
+                  future: fetchTimAPI(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Card(
+                        elevation: 9,
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    'TIM KAMI',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 17),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              height: 200,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: snapshot.data
+                                    .map((f) {
+                                      return Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Row(
+                                              children: <Widget>[
+                                                Container(
+                                                    margin: EdgeInsets.all(5),
+                                                    width: 150.0,
+                                                    height: 150.0,
+                                                    decoration: BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        image: DecorationImage(
+                                                            fit: BoxFit.fill,
+                                                            image: NetworkImage(
+                                                                'http://simadu.id/images/tim/' +
+                                                                    f.img)))),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 21.0,
+                                                              bottom: 7),
+                                                      child: Text(
+                                                        f.nama,
+                                                        style: TextStyle(
+                                                            fontSize: 21,
+                                                            color: Colors
+                                                                .lightBlue),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 21.0,
+                                                              bottom: 7),
+                                                      child: Text(
+                                                        f.jabatan,
+                                                        style: TextStyle(
+                                                            // fontSize: 21,
+                                                            // color: Colors.lightBlue
+                                                            ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 21.0),
+                                                      child: Row(
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Icon(
+                                                              FontAwesomeIcons
+                                                                  .facebook,
+                                                              color:
+                                                                  Colors.blue,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Icon(
+                                                              FontAwesomeIcons
+                                                                  .twitter,
+                                                              color: Colors
+                                                                  .lightBlue,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Icon(
+                                                              FontAwesomeIcons
+                                                                  .linkedin,
+                                                              color:
+                                                                  Colors.blue,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    })
+                                    .cast<Widget>()
+                                    .toList(),
+                              ),
+                            )
+                          ],
+                        ),
                       );
                     }
                     return CircularProgressIndicator();
@@ -109,7 +416,7 @@ class _HomeState extends State<Home> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'Kegiatan RKB',
+                                    'KEGIATAN RKB',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
@@ -128,37 +435,48 @@ class _HomeState extends State<Home> {
                                         padding: const EdgeInsets.all(8.0),
                                         child: Stack(
                                           children: <Widget>[
-                                            Image.network(
-                                              'http://simadu.id/images/kegiatan/' +
-                                                  f.img,
-                                              width: 200,
-                                              height: 200,
-                                              fit: BoxFit.cover,
+                                            ClipRRect(
+                                              borderRadius:
+                                                  new BorderRadius.circular(
+                                                      11.0),
+                                              child: Image.network(
+                                                'http://simadu.id/images/kegiatan/' +
+                                                    f.img,
+                                                // width: 200,
+                                                height: 200,
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                             Column(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.end,
                                               children: <Widget>[
-                                                Container(
-                                                    width: 200,
-                                                    color: Colors.black38,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                      children: <Widget>[
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Text(
-                                                            f.keterangan,
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .white),
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      new BorderRadius.circular(
+                                                          11.0),
+                                                  child: Container(
+                                                      width: 340,
+                                                      color: Colors.black38,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text(
+                                                              f.keterangan,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white),
+                                                            ),
                                                           ),
-                                                        ),
-                                                      ],
-                                                    )),
+                                                        ],
+                                                      )),
+                                                ),
                                               ],
                                             ),
                                           ],
@@ -167,7 +485,11 @@ class _HomeState extends State<Home> {
                                     })
                                     .cast<Widget>()
                                     .toList()
-                                    .getRange(0, (snapshot.data.length<4?snapshot.data.length:4))
+                                    .getRange(
+                                        0,
+                                        (snapshot.data.length < 4
+                                            ? snapshot.data.length
+                                            : 4))
                                     .toList(),
                               ),
                             )
@@ -191,7 +513,7 @@ class _HomeState extends State<Home> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'Pencapaian',
+                                    'PENCAPAIAN',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
@@ -294,7 +616,7 @@ class _HomeState extends State<Home> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'Berita Terbaru',
+                                    'BERITA TERBARU',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
@@ -318,7 +640,7 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 200,
+                              height: 250,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
@@ -326,13 +648,13 @@ class _HomeState extends State<Home> {
                                     .map((f) {
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Stack(
+                                        child: Column(
                                           children: <Widget>[
                                             Image.network(
                                               'http://simadu.id/images/berita/' +
                                                   f.img,
                                               width: 200,
-                                              height: 200,
+                                              height: 150,
                                               fit: BoxFit.cover,
                                             ),
                                             Column(
@@ -341,20 +663,58 @@ class _HomeState extends State<Home> {
                                               children: <Widget>[
                                                 Container(
                                                     width: 200,
-                                                    color: Colors.black38,
+                                                    // color: Colors.black38,
                                                     child: Column(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment.end,
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: <Widget>[
                                                         Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                   .all(8.0),
                                                           child: Text(
-                                                            f.judul,
+                                                            f.judul.substring(
+                                                                0,
+                                                                (f.judul.length <
+                                                                        40
+                                                                    ? f.judul
+                                                                        .length
+                                                                    : 40)),
                                                             style: TextStyle(
                                                                 color: Colors
-                                                                    .white),
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 35,
+                                                          child: RaisedButton(
+                                                            child: Text(
+                                                                'Baca Selengkapnya'),
+                                                            textColor:
+                                                                Colors.white,
+                                                            color: Colors
+                                                                .lightBlue,
+                                                            onPressed: () {
+                                                              Navigator.of(context).push(
+                                                                  MaterialPageRoute(
+                                                                      builder: (c) =>
+                                                                          DetailArtikel(
+                                                                            id: f.id_berita,
+                                                                            title:
+                                                                                f.judul,
+                                                                            desc:
+                                                                                f.isi,
+                                                                            gambar:
+                                                                                'http://simadu.id/images/berita/' + f.img,
+                                                                            tanggal:
+                                                                                f.tanggal,
+                                                                            penulis:
+                                                                                f.penulis,
+                                                                          )));
+                                                            },
                                                           ),
                                                         ),
                                                       ],
@@ -367,8 +727,18 @@ class _HomeState extends State<Home> {
                                     })
                                     .cast<Widget>()
                                     .toList()
-                                   .getRange(0, (snapshot.data.where((a) => a.kategori == 'Berita').length<4?snapshot.data
-                                    .where((a) => a.kategori == 'Berita').length:4))
+                                    .getRange(
+                                        0,
+                                        (snapshot.data
+                                                    .where((a) =>
+                                                        a.kategori == 'Berita')
+                                                    .length <
+                                                4
+                                            ? snapshot.data
+                                                .where((a) =>
+                                                    a.kategori == 'Berita')
+                                                .length
+                                            : 4))
                                     .toList(),
                               ),
                             )
@@ -392,47 +762,51 @@ class _HomeState extends State<Home> {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
-                                    'Artikel Terbaru',
+                                    'ARTIKEL TERBARU',
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 17),
                                   ),
                                 ),
-                                 Padding(
-                      padding: const EdgeInsets.only(left: 111),
-                      child: GestureDetector(
-                        child: Text(
-                          'Lihat Lainnya',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        onTap: (){
-                           Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => ArtikelLainnya(
-                                          )));
-                        },
-                      ),
-                    ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 111),
+                                  child: GestureDetector(
+                                    child: Text(
+                                      'Lihat Lainnya',
+                                      style: TextStyle(fontSize: 17),
+                                    ),
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (c) =>
+                                                  ArtikelLainnya()));
+                                    },
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 200,
+                              height: 250,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
                                     .where((a) => a.kategori == 'Artikel')
                                     .map((f) {
                                       print(snapshot.data
-                                    .where((a) => a.kategori == 'Artikel').length);
+                                          .where((a) => a.kategori == 'Artikel')
+                                          .length);
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Stack(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: <Widget>[
                                             Image.network(
                                               'http://simadu.id/images/berita/' +
                                                   f.img,
                                               width: 200,
-                                              height: 200,
+                                              height: 150,
                                               fit: BoxFit.cover,
                                             ),
                                             Column(
@@ -441,8 +815,11 @@ class _HomeState extends State<Home> {
                                               children: <Widget>[
                                                 Container(
                                                     width: 200,
-                                                    color: Colors.black38,
+                                                    // color: Colors.black38,
                                                     child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       mainAxisAlignment:
                                                           MainAxisAlignment.end,
                                                       children: <Widget>[
@@ -451,10 +828,45 @@ class _HomeState extends State<Home> {
                                                               const EdgeInsets
                                                                   .all(8.0),
                                                           child: Text(
-                                                            f.judul,
+                                                            f.judul.substring(
+                                                                0,
+                                                                (f.judul.length <
+                                                                        40
+                                                                    ? f.judul
+                                                                        .length
+                                                                    : 40)),
                                                             style: TextStyle(
                                                                 color: Colors
-                                                                    .white),
+                                                                    .black),
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          height: 35,
+                                                          child: RaisedButton(
+                                                            child: Text(
+                                                                'Baca Selengkapnya'),
+                                                            textColor:
+                                                                Colors.white,
+                                                            color: Colors
+                                                                .lightBlue,
+                                                            onPressed: () {
+                                                              Navigator.of(context).push(
+                                                                  MaterialPageRoute(
+                                                                      builder: (c) =>
+                                                                          DetailArtikel(
+                                                                            id: f.id_berita,
+                                                                            title:
+                                                                                f.judul,
+                                                                            desc:
+                                                                                f.isi,
+                                                                            gambar:
+                                                                                'http://simadu.id/images/berita/' + f.img,
+                                                                            tanggal:
+                                                                                f.tanggal,
+                                                                            penulis:
+                                                                                f.penulis,
+                                                                          )));
+                                                            },
                                                           ),
                                                         ),
                                                       ],
@@ -467,8 +879,18 @@ class _HomeState extends State<Home> {
                                     })
                                     .cast<Widget>()
                                     .toList()
-                                    .getRange(0, (snapshot.data.where((a) => a.kategori == 'Artikel').length<4?snapshot.data
-                                    .where((a) => a.kategori == 'Artikel').length:4))
+                                    .getRange(
+                                        0,
+                                        (snapshot.data
+                                                    .where((a) =>
+                                                        a.kategori == 'Artikel')
+                                                    .length <
+                                                4
+                                            ? snapshot.data
+                                                .where((a) =>
+                                                    a.kategori == 'Artikel')
+                                                .length
+                                            : 4))
                                     .toList(),
                               ),
                             )
@@ -488,7 +910,7 @@ class _HomeState extends State<Home> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Mitra',
+                            'MITRA',
                             style: TextStyle(
                                 fontWeight: FontWeight.w500, fontSize: 17),
                           ),

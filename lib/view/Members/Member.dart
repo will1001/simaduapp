@@ -315,6 +315,7 @@ class _MemberState extends State<Member> {
                     onTap: () {
                        Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => LaporanBulanan(
+                          idRegister: widget.idRegister,
                               // namaPemilik: widget.namaPemilik,
                               // id: f['id'],
                               // title: f['title'],
@@ -420,6 +421,7 @@ class _MemberState extends State<Member> {
                     onTap: () {
                        Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => MyPerformance(
+                          idRegister: widget.idRegister,
                             // id: f['id'],
                             // title: f['title'],
                             // desc: f['desc'],
@@ -471,6 +473,7 @@ class _MemberState extends State<Member> {
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => MyLegal(
+                          idRegister: widget.idRegister,
                             // id: f['id'],
                             // title: f['title'],
                             // desc: f['desc'],
@@ -522,6 +525,7 @@ class _MemberState extends State<Member> {
                     onTap: () {
                        Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => InformasiMenu(
+                          idRegister: widget.idRegister,
                             // id: f['id'],
                             // title: f['title'],
                             // desc: f['desc'],

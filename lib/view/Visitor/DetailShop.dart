@@ -65,18 +65,18 @@ class _DetailShopState extends State<DetailShop> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 19),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        widget.desc,
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 19),
+                //   child: Column(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     children: <Widget>[
+                //       Text(
+                //         widget.desc,
+                //         style: TextStyle(color: Colors.grey),
+                //       ),
+                //     ],
+                //   ),
+                // ),
 
                 Column(
                   children: <Widget>[
@@ -98,7 +98,7 @@ class _DetailShopState extends State<DetailShop> {
                                   throw 'Could not launch $url';
                                 }
                               },
-                              child: Text('Belanja'),
+                              child: Text('Beli Produk ini',style: TextStyle(color: Colors.white),),
                             ),
                           ),
                         ),

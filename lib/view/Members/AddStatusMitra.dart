@@ -8,29 +8,27 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-class AddRequestKelas extends StatefulWidget {
-   AddRequestKelas({Key key, this.idRegister})
-      : super(key: key);
+class AddStatusMitra extends StatefulWidget {
+  AddStatusMitra({Key key, this.idRegister}) : super(key: key);
 
   final String idRegister;
   @override
-  _AddRequestKelasState createState() => _AddRequestKelasState();
+  _AddStatusMitraState createState() => _AddStatusMitraState();
 }
 
-class _AddRequestKelasState extends State<AddRequestKelas> {
+class _AddStatusMitraState extends State<AddStatusMitra> {
   String id_register;
   var _tanggal;
-  String _kelas;
+  String _mitra;
   TextEditingController lainnyaController = new TextEditingController();
   Future rekueskelas() async {
     var responseJson;
-    String url = "http://simadu.id/api/api_rekueskelas.php";
+    String url = "http://simadu.id/api/status_mitra_api.php";
     final response = await http.post(url, body: {
       "id_register": widget.idRegister,
-      "tanggal": DateTime.now().toString().substring(0,10),
-      "kelas": _kelas,
-      "lainya":lainnyaController.text==''?'':lainnyaController.text,
-      "status": 'Menunggu',
+      "mitra": _mitra,
+      "lainya": lainnyaController.text == '' ? '' : lainnyaController.text,
+      "status": 'Data Anda Sudah Di Update',
     });
     responseJson = json.decode(response.body);
     if (responseJson.length == 0) {
@@ -44,13 +42,13 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
       //     builder: (c) => LandingPage(
       //           selectedIndex: 5,
       //         )));
-       setState(() {
+      setState(() {
         msg = responseJson['msg'];
         warnapesan = Colors.green;
       });
-      
     }
   }
+
   Color warnapesan;
   String msg = '';
   var kategorillist;
@@ -66,7 +64,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
           appBar: AppBar(
             centerTitle: true,
             title: Text(
-              'Rekues Kelas',
+              'Status Mitra',
               style: TextStyle(fontSize: 16.0),
             ),
           ),
@@ -105,7 +103,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
               //               providerrekueskelas.namaakun = newValue.toString();
               //               var idRegister = snapshot.data.where((a)=>a.nama_pemilik==newValue.toString()).map((d)=>d.id_register).toList();
               //                 setState(() {
-              //                  id_register=idRegister[0]; 
+              //                  id_register=idRegister[0];
               //                 });
               //             },
               //             items: (registerlist == null ? [''] : registerlist)
@@ -176,7 +174,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
               //       padding: const EdgeInsets.only(left: 16.0, right: 50.0),
               //       child: Text('Tanggal :'),
               //     ),
-                  
+
               //     Text(_tanggal == null
               //         ? ''
               //         : _tanggal.toString().substring(8, 10) +
@@ -204,52 +202,64 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
               //     ),
               //   ],
               // ),
-              Row(
+              Column(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 27.0),
-                    child: Text('Kelas :'),
+                    padding:
+                        const EdgeInsets.only(left: 0.0, right: 29.0, top: 25),
+                    child: Text('Apakah Anda Merupakan Mitra Binaan BUMN? :'),
                   ),
-                  DropdownButton<String>(
-                    hint: Text('Kelas'),
-                    value: _kelas,
-                    icon: Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.black),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.black,
+                  Padding(
+                    padding: const EdgeInsets.only(right: 11.0),
+                    child: DropdownButton<String>(
+                      hint: Text('Pilih'),
+                      value: _mitra,
+                      icon: Icon(Icons.arrow_downward),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: TextStyle(color: Colors.black),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.black,
+                      ),
+                      onChanged: (String newValue) {
+                        setState(() {
+                          _mitra = newValue.toString();
+                        });
+                      },
+                      items: [
+                        'PT BANK RAKYAT INDONESIA (PERSERO) Tbk.',
+                        'KEPALA',
+                        'DINAS',
+                        'BUMN'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        _kelas = newValue.toString();
-                      });
-                    },
-                    items: ['Manajemen Pemasaran', 'Manajemen Keuangan','Manajemen Operasional','Manajemen SDM','Desain dan Pengembangan Produk','Manajemen Konsumen']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
                   ),
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 45.0),
+                child: Text('Jika Ada Mitra BUMN Lain, Sebutkan? :'),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: TextField(
                   controller: lainnyaController,
                   decoration: InputDecoration(
-                    icon: Text('Lainnya :'),
-                    hintText: 'Lainnya',
-                    labelText: 'Lainnya',
+                    // icon: Text('Lainnya :'),
+                    hintText: 'Jika Ada Mitra BUMN Lain, Sebutkan?',
+                    labelText: 'Kosongkan Bila Mitra Sudah Ada',
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16,bottom: 8,top: 16),
-                child: Text('Status :        Menunggu'),
+                padding: const EdgeInsets.only(left: 16, bottom: 8, top: 16),
+                child: Text('Status :        Data Anda Sudah Di Update'),
               ),
               Column(
                 children: <Widget>[
@@ -258,7 +268,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
                     textColor: Colors.black,
                     color: Colors.lightBlue,
                     onPressed: () {
-                     rekueskelas();
+                      rekueskelas();
                     },
                   ),
                   Center(

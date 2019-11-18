@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:simadu/model/Agenda.dart';
+import 'package:simadu/view/Members/AgendaUser.dart';
 import 'package:simadu/view/Members/Quiz.dart';
 import 'package:simadu/view/Members/RequestKelas.dart';
 
@@ -32,7 +34,8 @@ class _MyclassState extends State<Myclass> {
               title: Text('Agenda'),
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => VideoEdukasi(
+                        builder: (c) => AgendaUser(
+                          idRegister: widget.idRegister,
             //                 // id: f['id'],
             //                 // title: f['title'],
             //                 // desc: f['desc'],
@@ -73,6 +76,7 @@ class _MyclassState extends State<Myclass> {
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => RequestKelas(
+                          idRegister: widget.idRegister,
             //                 // id: f['id'],
             //                 // title: f['title'],
             //                 // desc: f['desc'],

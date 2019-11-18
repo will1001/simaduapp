@@ -1,14 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:simadu/model/PinjamanDanaAPI.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'dart:convert';
 
 class PinjamanDana extends StatefulWidget {
+  PinjamanDana({Key key, this.idRegister}) : super(key: key);
+
+  final String idRegister;
   @override
   _PinjamanDanaState createState() => _PinjamanDanaState();
 }
 
 class _PinjamanDanaState extends State<PinjamanDana> {
   int no = 1;
+  String msg = '';
+  Color warnapesan;
+  String _judul;
+
+  Future daftarpinjamandana() async {
+    var responseJson;
+    String url = "http://simadu.id/api/pinjaman_dana_api.php";
+    final response = await http.post(url, body: {
+      "id_register": widget.idRegister,
+      "judul": _judul,
+    });
+    responseJson = json.decode(response.body);
+    if (responseJson.length == 0) {
+      setState(() {
+        msg = "Maaf Laporan Gagal di Simpan";
+        warnapesan = Colors.red;
+      });
+    } else {
+      //  if(responseJson[0]['username'])
+      // Navigator.of(context).push(MaterialPageRoute(
+      //     builder: (c) => LandingPage(
+      //           selectedIndex: 5,
+      //         )));
+      setState(() {
+        msg = responseJson['msg'];
+        warnapesan = Colors.green;
+      });
+
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Berhasil'),
+              content: Text(
+                msg,
+                style: TextStyle(color: Colors.green),
+              ),
+            );
+          });
+
+      Future.delayed(
+        Duration(seconds: 3),
+        () {
+          Navigator.pop(context);
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,24 +87,33 @@ class _PinjamanDanaState extends State<PinjamanDana> {
                       title: Text(f.judul),
                       trailing: RaisedButton(
                         onPressed: () async {
-                          String url = f.link;
-                          if (await canLaunch(url)) {
-                            await launch(url);
-                          } else {
-                            throw 'Could not launch $url';
-                          }
+                          setState(() {
+                            _judul = f.judul;
+                          });
+                          daftarpinjamandana();
                         },
-                        child: Text('Read More'),
-                        textColor: Colors.black,
+                        child: Text('Daftar'),
+                        textColor: Colors.white,
                         color: Colors.lightBlue,
                       ),
                       onTap: () async {
-                        // String url = f.link;
-                        // if (await canLaunch(url)) {
-                        //   await launch(url);
-                        // } else {
-                        //   throw 'Could not launch $url';
-                        // }
+                        // setState(() {
+                        //   _judul = f.judul;
+                        // });
+                        // daftarpinjamandana();
+                        // showDialog(
+                        //     context: context,
+                        //     builder: (BuildContext context) {
+                        //       return AlertDialog(
+                        //         title: Text('Berhasil'),
+                        //         content: Text(
+                        //           msg,
+                        //           style: TextStyle(color: Colors.green),
+                        //         ),
+                        //       );
+                        //     });
+
+                        // Navigator.pop(context);
                       },
                     ),
                     Padding(

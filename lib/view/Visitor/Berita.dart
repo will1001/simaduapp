@@ -49,10 +49,9 @@ class _BeritaState extends State<Berita> {
                           'Lihat Lainnya',
                           style: TextStyle(fontSize: 17),
                         ),
-                        onTap: (){
-                           Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => BeritaLainnya(
-                                          )));
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (c) => BeritaLainnya()));
                         },
                       ),
                     ),
@@ -91,19 +90,18 @@ class _BeritaState extends State<Berita> {
                         ),
                       ),
                       Padding(
-                      padding: const EdgeInsets.only(left: 151),
-                      child: GestureDetector(
-                        child: Text(
-                          'Lihat Lainnya',
-                          style: TextStyle(fontSize: 17),
+                        padding: const EdgeInsets.only(left: 151),
+                        child: GestureDetector(
+                          child: Text(
+                            'Lihat Lainnya',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (c) => ArtikelLainnya()));
+                          },
                         ),
-                        onTap: (){
-                           Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => ArtikelLainnya(
-                                          )));
-                        },
                       ),
-                    ),
                       Icon(Icons.keyboard_arrow_right)
                     ],
                   ),
@@ -142,106 +140,187 @@ class WidgetGridview extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                scrollDirection: Axis.horizontal,
-                children: snapshot.data.where((a)=>a.kategori==kategori)
-                    .map((f) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Hero(
-                          tag: f.id_berita,
-                          child: Material(
-                            child: InkWell(
-                              onTap: () {
-                                if (kategori == 'Berita') {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => DetailBerita(
-                                            id: f.id_berita,
-                                            title: f.judul,
-                                            desc: f.isi,
-                                            gambar: 'http://simadu.id/images/berita/'+f.img,
-                                            tanggal: f.tanggal,
-                                            penulis: f.penulis,
-                                          )));
-                                }
-                                if (kategori == 'Artikel') {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => DetailArtikel(
-                                           id: f.id_berita,
-                                            title: f.judul,
-                                            desc: f.isi,
-                                            gambar: 'http://simadu.id/images/berita/'+f.img,
-                                            tanggal: f.tanggal,
-                                            penulis: f.penulis,
-                                          )));
-                                }
-                                if (kategori == 'Agenda') {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => DetailAgenda(
-                                            id: f.id_berita,
-                                            title: f.judul,
-                                            desc: f.isi,
-                                            gambar: 'http://simadu.id/images/berita/'+f.img,
-                                            tanggal: f.tanggal,
-                                            penulis: f.penulis,
-                                          )));
-                                }
-                              },
-                              child: Stack(
-                                children: <Widget>[
-                                  Container(
-                                    child: SizedBox(
-                                      height: 200,
-                                      width: 200,
-                                      child: Image.network(
-                                        'http://simadu.id/images/berita/'+f.img,
-                                        fit: BoxFit.cover,
+                  scrollDirection: Axis.horizontal,
+                  children: snapshot.data
+                      .where((a) => a.kategori == kategori)
+                      .map((f) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Hero(
+                            tag: f.id_berita,
+                            child: Material(
+                              child: InkWell(
+                                onTap: () {
+                                  if (kategori == 'Berita') {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (c) => DetailBerita(
+                                                  id: f.id_berita,
+                                                  title: f.judul,
+                                                  desc: f.isi,
+                                                  gambar:
+                                                      'http://simadu.id/images/berita/' +
+                                                          f.img,
+                                                  tanggal: f.tanggal,
+                                                  penulis: f.penulis,
+                                                )));
+                                  }
+                                  if (kategori == 'Artikel') {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (c) => DetailArtikel(
+                                                  id: f.id_berita,
+                                                  title: f.judul,
+                                                  desc: f.isi,
+                                                  gambar:
+                                                      'http://simadu.id/images/berita/' +
+                                                          f.img,
+                                                  tanggal: f.tanggal,
+                                                  penulis: f.penulis,
+                                                )));
+                                  }
+                                  if (kategori == 'Agenda') {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                            builder: (c) => DetailAgenda(
+                                                  id: f.id_berita,
+                                                  title: f.judul,
+                                                  desc: f.isi,
+                                                  gambar:
+                                                      'http://simadu.id/images/berita/' +
+                                                          f.img,
+                                                  tanggal: f.tanggal,
+                                                  penulis: f.penulis,
+                                                )));
+                                  }
+                                },
+                                child: Column(
+                                  children: <Widget>[
+                                    Container(
+                                      child: SizedBox(
+                                        height: 112,
+                                        width: 200,
+                                        child: Image.network(
+                                          'http://simadu.id/images/berita/' +
+                                              f.img,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: <Widget>[
-                                      Container(
-                                        width: 200,
-                                        color: Colors.black38,
-                                        child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                // Text(
-                                                //   f['title'],
-                                                //   style: TextStyle(color: Colors.white),
-                                                // ),
-                                                Text(
-                                                  f.isi
-                                                      .toString()
-                                                      .substring(
-                                                          0,
-                                                          f.isi.length < 43
-                                                              ? f.isi.length
-                                                              : 43),
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    // fontSize: 10,
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        Container(
+                                          width: 200,
+                                          // color: Colors.black38,
+                                          child: Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  // Text(
+                                                  //   f['title'],
+                                                  //   style: TextStyle(color: Colors.white),
+                                                  // ),
+                                                  Text(
+                                                    f.judul
+                                                        .toString()
+                                                        .substring(
+                                                            0,
+                                                            f.judul.length < 43
+                                                                ? f.judul.length
+                                                                : 43),
+                                                    style: TextStyle(
+                                                      color: Colors.black,
+                                                      // fontSize: 10,
+                                                    ),
                                                   ),
-                                                )
-                                              ],
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                                  RaisedButton(
+                                                    child: Text(
+                                                        'Baca Selengkapnya'),
+                                                    textColor: Colors.white,
+                                                    color: Colors.lightBlue,
+                                                    onPressed: () {
+                                                      if (kategori ==
+                                                          'Berita') {
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (c) =>
+                                                                    DetailBerita(
+                                                                      id: f
+                                                                          .id_berita,
+                                                                      title: f
+                                                                          .judul,
+                                                                      desc:
+                                                                          f.isi,
+                                                                      gambar: 'http://simadu.id/images/berita/' +
+                                                                          f.img,
+                                                                      tanggal: f
+                                                                          .tanggal,
+                                                                      penulis: f
+                                                                          .penulis,
+                                                                    )));
+                                                      }
+                                                      if (kategori ==
+                                                          'Artikel') {
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (c) =>
+                                                                    DetailArtikel(
+                                                                      id: f
+                                                                          .id_berita,
+                                                                      title: f
+                                                                          .judul,
+                                                                      desc:
+                                                                          f.isi,
+                                                                      gambar: 'http://simadu.id/images/berita/' +
+                                                                          f.img,
+                                                                      tanggal: f
+                                                                          .tanggal,
+                                                                      penulis: f
+                                                                          .penulis,
+                                                                    )));
+                                                      }
+                                                      if (kategori ==
+                                                          'Agenda') {
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (c) =>
+                                                                    DetailAgenda(
+                                                                      id: f
+                                                                          .id_berita,
+                                                                      title: f
+                                                                          .judul,
+                                                                      desc:
+                                                                          f.isi,
+                                                                      gambar: 'http://simadu.id/images/berita/' +
+                                                                          f.img,
+                                                                      tanggal: f
+                                                                          .tanggal,
+                                                                      penulis: f
+                                                                          .penulis,
+                                                                    )));
+                                                      }
+                                                    },
+                                                  ),
+                                                ],
+                                              )),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    })
-                    .cast<Widget>()
-                    .toList()
-                    // .getRange(0, 4)
-                    // .toList(),
-              );
+                        );
+                      })
+                      .cast<Widget>()
+                      .toList()
+                  // .getRange(0, 4)
+                  // .toList(),
+                  );
             }
             return CircularProgressIndicator();
           }),

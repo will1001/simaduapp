@@ -11,9 +11,10 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 class DaftarSertifikat extends StatefulWidget {
-   DaftarSertifikat({Key key, this.namaPemilik}) : super(key: key);
+   DaftarSertifikat({Key key, this.namaPemilik,this.idRegister}) : super(key: key);
 
   final String namaPemilik;
+  final String idRegister;
   @override
   _DaftarSertifikatState createState() => _DaftarSertifikatState();
 }
@@ -48,7 +49,9 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
     var uri = Uri.parse(url);
     var req = http.MultipartRequest("POST",uri);
     var multifile = http.MultipartFile('file',stream,len,filename: basename(filesertifikat.path));
-    req.fields['nama'] = widget.namaPemilik;
+    req.fields['id_register'] = widget.idRegister;
+    req.fields['keterangan'] = 'cvvvvv';
+    req.fields['status'] = 'Sertifikat Anda Sudah Di Upload';
     req.files.add(multifile);
 
     responseJson = await req.send();

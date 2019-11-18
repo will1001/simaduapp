@@ -272,64 +272,63 @@
 //               }
 //               for (var i = 0; i < dataMaret.length; i++) {
 //                 if(i<dataMaret.length){
-                   
+
 //                   totalbln3+= (dataMaret.toString()=='[]')?0:int.parse(dataMaret[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataApril.length; i++) {
 //                 if(i<dataApril.length){
-                 
+
 //                   totalbln4+= (dataApril.toString()=='[]')?0:int.parse(dataApril[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataMei.length; i++) {
 //                 if(i<dataMei.length){
-                  
+
 //                   totalbln5+= (dataMei.toString()=='[]')?0:int.parse(dataMei[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataJuni.length; i++) {
 //                 if(i<dataJuni.length){
-                  
+
 //                   totalbln6+= (dataJuni.toString()=='[]')?0:int.parse(dataJuni[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataJuli.length; i++) {
 //                 if(i<dataJuli.length){
-           
-                   
+
 //                   totalbln7+= (dataJuli.toString()=='[]')?0:int.parse(dataJuli[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataAgustus.length; i++) {
 //                 if(i<dataAgustus.length){
-                  
+
 //                   totalbln8+= (dataAgustus.toString()=='[]')?0:int.parse(dataAgustus[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataSeptember.length; i++) {
 //                 if(i<dataSeptember.length){
-                  
+
 //                   totalbln9+= (dataSeptember.toString()=='[]')?0:int.parse(dataSeptember[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataOktober.length; i++) {
 //                 if(i<dataOktober.length){
-                  
+
 //                   totalbln10+= (dataOktober.toString()=='[]')?0:int.parse(dataOktober[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataNovember.length; i++) {
 //                 if(i<dataNovember.length){
-                  
+
 //                   totalbln11+= (dataNovember.toString()=='[]')?0:int.parse(dataNovember[i]);
 //                 }
 //               }
 //               for (var i = 0; i < dataDesember.length; i++) {
 //                 if(i<dataDesember.length){
-                 
+
 //                   totalbln12+= (dataDesember.toString()=='[]')?0:int.parse(dataDesember[i]);
-                 
+
 //                 }
 //               }
 //             // print(dataJanuari.length);
@@ -416,35 +415,54 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:simadu/model/APIProvider.dart';
 import 'package:simadu/model/ChartAPI.dart';
 
 class Summary extends StatefulWidget {
-  final Widget child;
+  Summary({Key key, this.namaPemilik, this.namaUsaha, this.idRegister, this.tahunchart})
+      : super(key: key);
 
-  Summary({Key key, this.child}) : super(key: key);
+  final String namaPemilik;
+  final String namaUsaha;
+  final String idRegister;
+  final String tahunchart;
 
   _SummaryState createState() => _SummaryState();
 }
 
 class _SummaryState extends State<Summary> {
+  String _filtertahun = DateTime.now().toString().substring(0, 4);
   List<charts.Series<Pollution, String>> _seriesData;
   List<charts.Series<Pollution, String>> _seriesData2;
   List<charts.Series<Task, String>> _seriesPieData;
   List<charts.Series<Sales, int>> _seriesLineData;
-  int totalbln1=0;
-  int totalbln2=0;
-  int totalbln3=0;
-  int totalbln4=0;
-  int totalbln5=0;
-  int totalbln6=0;
-  int totalbln7=0;
-  int totalbln8=0;
-  int totalbln9=0;
-  int totalbln10=0;
-  int totalbln11=0;
-  int totalbln12=0;
+  int totalbln1 = 0;
+  int totalbln2 = 0;
+  int totalbln3 = 0;
+  int totalbln4 = 0;
+  int totalbln5 = 0;
+  int totalbln6 = 0;
+  int totalbln7 = 0;
+  int totalbln8 = 0;
+  int totalbln9 = 0;
+  int totalbln10 = 0;
+  int totalbln11 = 0;
+  int totalbln12 = 0;
 
- _generateData(int totalblnjan,int totalblnfeb,int totalblnmar,int totalblnapr,int totalblnmei,int totalblnjun,int totalblnjul,int totalblnagu,int totalblnsep,int totalblnokt,int totalblnnov,int totalblndes) {
+  _generateData(
+      int totalblnjan,
+      int totalblnfeb,
+      int totalblnmar,
+      int totalblnapr,
+      int totalblnmei,
+      int totalblnjun,
+      int totalblnjul,
+      int totalblnagu,
+      int totalblnsep,
+      int totalblnokt,
+      int totalblnnov,
+      int totalblndes) {
     var data1 = [
       new Pollution(Color(0xff3366cc), 'Jan', totalblnjan),
       new Pollution(Color(0xff990099), 'Febr', totalblnfeb),
@@ -454,7 +472,7 @@ class _SummaryState extends State<Summary> {
       new Pollution(Color(0xabbcd455), 'Juni', totalblnjun),
     ];
     var data2 = [
-     new Pollution(Color(0xaaddc555), 'July', totalblnjul),
+      new Pollution(Color(0xaaddc555), 'July', totalblnjul),
       new Pollution(Color(0xbbbca222), 'Agust', totalblnagu),
       new Pollution(Color(0x3334abcd), 'Sept', totalblnsep),
       new Pollution(Color(0x1d2cbb55), 'Okt', totalblnokt),
@@ -519,7 +537,7 @@ class _SummaryState extends State<Summary> {
         fillPatternFn: (_, __) => charts.FillPatternType.solid,
         fillColorFn: (Pollution pollution, _) =>
             charts.ColorUtil.fromDartColor(pollution.year),
-      ), 
+      ),
     );
 
     _seriesData2.add(
@@ -530,10 +548,9 @@ class _SummaryState extends State<Summary> {
         data: data2,
         fillPatternFn: (_, __) => charts.FillPatternType.solid,
         fillColorFn: (Pollution pollution, _) =>
-           charts.ColorUtil.fromDartColor(pollution.year),
+            charts.ColorUtil.fromDartColor(pollution.year),
       ),
     );
-
 
     _seriesPieData.add(
       charts.Series(
@@ -543,7 +560,7 @@ class _SummaryState extends State<Summary> {
             charts.ColorUtil.fromDartColor(task.colorval),
         id: 'Air Pollution',
         data: piedata,
-         labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
       ),
     );
 
@@ -583,175 +600,277 @@ class _SummaryState extends State<Summary> {
     _seriesData2 = List<charts.Series<Pollution, String>>();
     _seriesPieData = List<charts.Series<Task, String>>();
     _seriesLineData = List<charts.Series<Sales, int>>();
-    _generateData(totalbln1,totalbln2,totalbln3,totalbln4,totalbln5,totalbln6,totalbln7,totalbln8,totalbln9,totalbln10,totalbln11,totalbln12);
+    _generateData(
+        totalbln1,
+        totalbln2,
+        totalbln3,
+        totalbln4,
+        totalbln5,
+        totalbln6,
+        totalbln7,
+        totalbln8,
+        totalbln9,
+        totalbln10,
+        totalbln11,
+        totalbln12);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Opacity(opacity: 0,),
-        backgroundColor: Color(0xff1976d2),
-        title: Text('Laporan Bulanan'),
+    return ChangeNotifierProvider<APIProvider>(
+        builder: (context) => APIProvider(),
+        child: Consumer<APIProvider>(
+          builder: (context, apiprovider, _) => Scaffold(
+        appBar: AppBar(
+          leading: Opacity(
+            opacity: 0,
+          ),
+          backgroundColor: Color(0xff1976d2),
+          title: Text('Laporan Bulanan'),
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Container(
+            child: Center(
+              child: FutureBuilder<List<ChartAPI>>(
+                  future: fetchChartAPI(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      var dataJanuari = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Januari')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataFebruari = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Februari')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataMaret = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Maret')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataApril = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'April')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataMei = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Mei')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataJuni = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Juni')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataJuli = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Juli')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataAgustus = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Agustus')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataSeptember = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'September')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataOktober = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Oktober')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataNovember = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'November')
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      var dataDesember = snapshot.data
+                          .where((a) => a.bulan_penjualan == 'Desember')
+                          .toList()
+                          .where((a) => a.id_register == widget.idRegister)
+                          .where((a) => a.tahun == widget.tahunchart)
+                          .map((f) {
+                        return f.total;
+                      }).toList();
+                      for (var i = 0; i < dataJanuari.length; i++) {
+                        if (i < dataJanuari.length) {
+                          totalbln1 += (dataJanuari.toString() == '[]')
+                              ? 0
+                              : int.parse(dataJanuari[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataFebruari.length; i++) {
+                        if (i < dataFebruari.length) {
+                          totalbln2 += (dataFebruari.toString() == '[]')
+                              ? 0
+                              : int.parse(dataFebruari[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataMaret.length; i++) {
+                        if (i < dataMaret.length) {
+                          totalbln3 += (dataMaret.toString() == '[]')
+                              ? 0
+                              : int.parse(dataMaret[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataApril.length; i++) {
+                        if (i < dataApril.length) {
+                          totalbln4 += (dataApril.toString() == '[]')
+                              ? 0
+                              : int.parse(dataApril[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataMei.length; i++) {
+                        if (i < dataMei.length) {
+                          totalbln5 += (dataMei.toString() == '[]')
+                              ? 0
+                              : int.parse(dataMei[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataJuni.length; i++) {
+                        if (i < dataJuni.length) {
+                          totalbln6 += (dataJuni.toString() == '[]')
+                              ? 0
+                              : int.parse(dataJuni[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataJuli.length; i++) {
+                        if (i < dataJuli.length) {
+                          totalbln7 += (dataJuli.toString() == '[]')
+                              ? 0
+                              : int.parse(dataJuli[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataAgustus.length; i++) {
+                        if (i < dataAgustus.length) {
+                          totalbln8 += (dataAgustus.toString() == '[]')
+                              ? 0
+                              : int.parse(dataAgustus[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataSeptember.length; i++) {
+                        if (i < dataSeptember.length) {
+                          totalbln9 += (dataSeptember.toString() == '[]')
+                              ? 0
+                              : int.parse(dataSeptember[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataOktober.length; i++) {
+                        if (i < dataOktober.length) {
+                          totalbln10 += (dataOktober.toString() == '[]')
+                              ? 0
+                              : int.parse(dataOktober[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataNovember.length; i++) {
+                        if (i < dataNovember.length) {
+                          totalbln11 += (dataNovember.toString() == '[]')
+                              ? 0
+                              : int.parse(dataNovember[i]);
+                        }
+                      }
+                      for (var i = 0; i < dataDesember.length; i++) {
+                        if (i < dataDesember.length) {
+                          totalbln12 += (dataDesember.toString() == '[]')
+                              ? 0
+                              : int.parse(dataDesember[i]);
+                        }
+                      }
+                      _generateData(
+                          totalbln1,
+                          totalbln2,
+                          totalbln3,
+                          totalbln4,
+                          totalbln5,
+                          totalbln6,
+                          totalbln7,
+                          totalbln8,
+                          totalbln9,
+                          totalbln10,
+                          totalbln11,
+                          totalbln12);
+
+                      return Column(
+                        children: <Widget>[
+                          // DropdownButton<String>(
+                          //   value: apiprovider.tahun,
+                          //   icon: Icon(Icons.arrow_downward),
+                          //   iconSize: 24,
+                          //   elevation: 16,
+                          //   style: TextStyle(color: Colors.black),
+                          //   underline: Container(
+                          //     height: 2,
+                          //     color: Colors.black,
+                          //   ),
+                          //   onChanged: (String newValue) {
+                          //     apiprovider.tahun = newValue.toString();
+                          //   },
+                          //   items: ['2019', '2020', '2021']
+                          //       .map<DropdownMenuItem<String>>((String value) {
+                          //     return DropdownMenuItem<String>(
+                          //       value: value,
+                          //       child: Text(value),
+                          //     );
+                          //   }).toList(),
+                          // ),
+                          // Text('${apiprovider.tahun}'),
+                          Expanded(
+                            child: charts.BarChart(
+                              _seriesData,
+                              animate: true,
+                              barGroupingType: charts.BarGroupingType.grouped,
+                              //behaviors: [new charts.SeriesLegend()],
+                              animationDuration: Duration(seconds: 1),
+                            ),
+                          ),
+                          Expanded(
+                            child: charts.BarChart(
+                              _seriesData2,
+                              animate: true,
+                              barGroupingType: charts.BarGroupingType.grouped,
+                              //behaviors: [new charts.SeriesLegend()],
+                              animationDuration: Duration(seconds: 1),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
+                    return CircularProgressIndicator();
+                  }),
+            ),
+          ),
+        ),
       ),
-      body: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Container(
-                  child: Center(
-                    child: FutureBuilder<List<ChartAPI>>(
-                future: fetchChartAPI(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    var dataJanuari=snapshot.data.where((a)=>a.bulan_penjualan=='Januari').map((f){
-                return f.total;
-              }).toList();
-              var dataFebruari=snapshot.data.where((a)=>a.bulan_penjualan=='Februari').map((f){
-                return f.total;
-              }).toList();
-              var dataMaret=snapshot.data.where((a)=>a.bulan_penjualan=='Maret').map((f){
-                return f.total;
-              }).toList();
-              var dataApril=snapshot.data.where((a)=>a.bulan_penjualan=='April').map((f){
-                return f.total;
-              }).toList();
-              var dataMei=snapshot.data.where((a)=>a.bulan_penjualan=='Mei').map((f){
-                return f.total;
-              }).toList();
-              var dataJuni=snapshot.data.where((a)=>a.bulan_penjualan=='Juni').map((f){
-                return f.total;
-              }).toList();
-              var dataJuli=snapshot.data.where((a)=>a.bulan_penjualan=='Juli').map((f){
-                return f.total;
-              }).toList();
-              var dataAgustus=snapshot.data.where((a)=>a.bulan_penjualan=='Agustus').map((f){
-                return f.total;
-              }).toList();
-              var dataSeptember=snapshot.data.where((a)=>a.bulan_penjualan=='September').map((f){
-                return f.total;
-              }).toList();
-              var dataOktober=snapshot.data.where((a)=>a.bulan_penjualan=='Oktober').map((f){
-                return f.total;
-              }).toList();
-              var dataNovember=snapshot.data.where((a)=>a.bulan_penjualan=='November').map((f){
-                return f.total;
-              }).toList();
-              var dataDesember=snapshot.data.where((a)=>a.bulan_penjualan=='Desember').map((f){
-                return f.total;
-              }).toList();
-              for (var i = 0; i < dataJanuari.length; i++) {
-                if(i<dataJanuari.length){
-                  totalbln1+= (dataJanuari.toString()=='[]')?0:int.parse(dataJanuari[i]);
-                }
-              }
-              for (var i = 0; i < dataFebruari.length; i++) {
-                if(i<dataFebruari.length){
-                  totalbln2+= (dataFebruari.toString()=='[]')?0:int.parse(dataFebruari[i]);
-                }
-              }
-              for (var i = 0; i < dataMaret.length; i++) {
-                if(i<dataMaret.length){
-                   
-                  totalbln3+= (dataMaret.toString()=='[]')?0:int.parse(dataMaret[i]);
-                }
-              }
-              for (var i = 0; i < dataApril.length; i++) {
-                if(i<dataApril.length){
-                 
-                  totalbln4+= (dataApril.toString()=='[]')?0:int.parse(dataApril[i]);
-                }
-              }
-              for (var i = 0; i < dataMei.length; i++) {
-                if(i<dataMei.length){
-                  
-                  totalbln5+= (dataMei.toString()=='[]')?0:int.parse(dataMei[i]);
-                }
-              }
-              for (var i = 0; i < dataJuni.length; i++) {
-                if(i<dataJuni.length){
-                  
-                  totalbln6+= (dataJuni.toString()=='[]')?0:int.parse(dataJuni[i]);
-                }
-              }
-              for (var i = 0; i < dataJuli.length; i++) {
-                if(i<dataJuli.length){
-           
-                   
-                  totalbln7+= (dataJuli.toString()=='[]')?0:int.parse(dataJuli[i]);
-                }
-              }
-              for (var i = 0; i < dataAgustus.length; i++) {
-                if(i<dataAgustus.length){
-                  
-                  totalbln8+= (dataAgustus.toString()=='[]')?0:int.parse(dataAgustus[i]);
-                }
-              }
-              for (var i = 0; i < dataSeptember.length; i++) {
-                if(i<dataSeptember.length){
-                  
-                  totalbln9+= (dataSeptember.toString()=='[]')?0:int.parse(dataSeptember[i]);
-                }
-              }
-              for (var i = 0; i < dataOktober.length; i++) {
-                if(i<dataOktober.length){
-                  
-                  totalbln10+= (dataOktober.toString()=='[]')?0:int.parse(dataOktober[i]);
-                }
-              }
-              for (var i = 0; i < dataNovember.length; i++) {
-                if(i<dataNovember.length){
-                  
-                  totalbln11+= (dataNovember.toString()=='[]')?0:int.parse(dataNovember[i]);
-                }
-              }
-              for (var i = 0; i < dataDesember.length; i++) {
-                if(i<dataDesember.length){
-                 
-                  totalbln12+= (dataDesember.toString()=='[]')?0:int.parse(dataDesember[i]);
-                 
-                }
-              }
-            // print(dataJanuari.length);
-            // print(dataFebruari.length);
-            // print(dataMaret.length);
-            // print(dataApril.length);
-            // print(dataMei.length);
-            // print(dataJuni.length);
-            // print(dataJuli.length);
-            // print(dataAgustus.length);
-            // print(dataSeptember.length);
-            // print(dataOktober.length);
-            // print(dataNovember.length);
-            print(totalbln10);
-            _generateData(totalbln1,totalbln2,totalbln3,totalbln4,totalbln5,totalbln6,totalbln7,totalbln8,totalbln9,totalbln10,totalbln11,totalbln12);
-              
-                    return Column(
-                      children: <Widget>[
-                       Expanded(
-                          child: charts.BarChart(
-                            _seriesData,
-                            animate: true,
-                            barGroupingType: charts.BarGroupingType.grouped,
-                            //behaviors: [new charts.SeriesLegend()],
-                            animationDuration: Duration(seconds: 1),
-                          ),
-                        ),
-                        Expanded(
-                          child: charts.BarChart(
-                            _seriesData2,
-                            animate: true,
-                            barGroupingType: charts.BarGroupingType.grouped,
-                            //behaviors: [new charts.SeriesLegend()],
-                            animationDuration: Duration(seconds: 1),
-                          ),
-                        ),
-                      ],
-                    );
-                  }
-                  return CircularProgressIndicator();
-                }),
-                  ),
-                ),
-              ),
+    )
     );
   }
 }

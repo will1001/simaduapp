@@ -65,7 +65,7 @@ class _DetailGaleriState extends State<DetailGaleri> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        widget.desc,
+                        '(${widget.tanggal}) '+''+widget.desc,
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],
@@ -76,8 +76,8 @@ class _DetailGaleriState extends State<DetailGaleri> {
                     Padding(
                       padding: const EdgeInsets.only(left:19.0),
                       child: RaisedButton(
-                        child: Text('Daftar'),
-                        textColor: Colors.black,
+                        child: Text('Daftar Sekarang'),
+                        textColor: Colors.white,
                         color: Colors.lightBlue,
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(

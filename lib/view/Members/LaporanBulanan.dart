@@ -3,6 +3,12 @@ import 'package:simadu/model/LaporanBulananAPI.dart';
 import 'package:simadu/view/Members/AddLaporanBulanan.dart';
 
 class LaporanBulanan extends StatefulWidget {
+  LaporanBulanan({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+      : super(key: key);
+
+  final String namaPemilik;
+  final String namaUsaha;
+  final String idRegister;
   @override
   _LaporanBulananState createState() => _LaporanBulananState();
 }
@@ -23,7 +29,8 @@ class _LaporanBulananState extends State<LaporanBulanan> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                  children: snapshot.data.map((f) {
+                  children: snapshot.data.where((a)=>a.id_register==widget.idRegister).toList().
+                  map((f) {
                 return ExpansionTile(
                   title: Text(f.nama_produk==null?'':f.nama_produk),
                   children: <Widget>[
@@ -61,6 +68,7 @@ class _LaporanBulananState extends State<LaporanBulanan> {
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => AddLaporanBulanan(
+                          idRegister: widget.idRegister,
                             
                             )));
         },
