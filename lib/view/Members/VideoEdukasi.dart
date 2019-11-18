@@ -33,7 +33,7 @@ class _VideoEdukasiState extends State<VideoEdukasi> {
                         title: Text(f.judul),
                         trailing: Icon(Icons.videocam),
                         onTap: () async {
-                           String url = f.link;
+                           String url = 'https://www.youtube.com/embed/${f.link}';
                                 if (await canLaunch(url)) {
                                   await launch(url);
                                 } else {

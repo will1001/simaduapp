@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
                                           Image.network(
                                             'http://simadu.id/images/slider/' +
                                                 f.img,
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fill,
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width,
