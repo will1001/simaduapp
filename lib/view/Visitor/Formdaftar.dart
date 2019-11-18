@@ -411,7 +411,7 @@ class _FormDaftarState extends State<FormDaftar> {
                     return null;
                   }
                 },
-                child: Text('Submit'),
+                child: Text('DAFTAR'),
                 textColor: Colors.black,
                 color: Colors.lightBlue,
               ),

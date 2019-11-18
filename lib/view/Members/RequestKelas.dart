@@ -42,6 +42,10 @@ class _RequestKelasState extends State<RequestKelas> {
                       leading: Text('Lainnya'),
                       title: Text(f.lainya),
                     ),
+                    ListTile(
+                      leading: Text('Status'),
+                      title: Text(f.status),
+                    ),
                   ],
                 );
               }).toList());

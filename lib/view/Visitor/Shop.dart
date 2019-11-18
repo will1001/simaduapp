@@ -126,16 +126,31 @@ class _ShopState extends State<Shop> {
                                                             textColor: Colors.black,
                                                             color: Colors.lightBlue,
                                                             onPressed: () async {
-                                                              String url = f.link;
-                                                              if (await canLaunch(
-                                                                  url)) {
-                                                                await launch(url);
-                                                              } else {
-                                                                throw 'Could not launch $url';
-                                                              }
+                                                              // String url = f.link;
+                                                              // if (await canLaunch(
+                                                              //     url)) {
+                                                              //   await launch(url);
+                                                              // } else {
+                                                              //   throw 'Could not launch $url';
+                                                              // }
+                                                              Navigator.of(context)
+                                          .push(MaterialPageRoute(
+                                              builder: (c) => DetailShop(
+                                                    id: f.id_shop,
+                                                    title: f.keterangan,
+                                                    desc: f.keterangan,
+                                                    linkbukalapak: f.link,
+                                                    linklazada: f.link,
+                                                    linkshoppe: f.link,
+                                                    linktokopedia: f.link,
+                                                    linkblanjadotcom: f.link,
+                                                    gambar:
+                                                        'http://simadu.id/images/shop/' +
+                                                            f.img,
+                                                  )));
                                                             },
                                                             child: Text(
-                                                              'Beli Produk ini',
+                                                              'Detail',
                                                               style: TextStyle(
                                                                   color:
                                                                       Colors.white),

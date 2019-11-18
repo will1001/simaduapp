@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simadu/model/ProviderProfilVideo.dart';
 import 'package:simadu/model/TimAPI.dart';
+import 'package:simadu/model/VideoEdukasiAPI.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:video_player/video_player.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -40,6 +41,7 @@ class _ProfilState extends State<Profil> {
 
   @override
   Widget build(BuildContext context) {
+    int no=1;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -65,187 +67,266 @@ class _ProfilState extends State<Profil> {
           children: <Widget>[
             ListView(
               children: <Widget>[
-                Card(
-                  elevation: 9,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Tentang Kami',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 17),
-                            ),
-                          )
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.jpg',
-                              width: 170,
-
-                              // fit: BoxFit.fill,
-                            ),
-                          )
-                        ],
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: RichText(
-                            text: TextSpan(
-                              style: TextStyle(
-                                fontSize: 14.0,
-                                color: Colors.black,
-                              ),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: 'Rumah Kreatif BUMN Lombok Barat ',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold)),
-                                TextSpan(
-                                    text:
-                                        'merupakan rumah kreatif binaan dari PT PLN Unit Induk Wilayah NTB. Tugas utama kami adalah membantu UMKM dalam mengembangkan produk, Menciptakan deversifikasi produk, mewujudkan UMKM yang Go Modern, Go Digital, dan Go Online.'),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
                 FutureBuilder<List<TimAPI>>(
-                  future: fetchTimAPI(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return Card(
-                  elevation: 9,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Tim Kami',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500, fontSize: 17),
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 200,
-                        child: ListView(
-                          // scrollDirection: Axis.horizontal,
-                          children: snapshot.data.map((f){
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Row(
-                                    children: <Widget>[
-                                      Container(
-                                          margin: EdgeInsets.all(5),
-                                          width: 150.0,
-                                          height: 150.0,
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              image: DecorationImage(
-                                                  fit: BoxFit.fill,
-                                                  image: NetworkImage(
-                                                      'http://simadu.id/images/tim/'+f.img)))),
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                    future: fetchTimAPI(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return Card(
+                          elevation: 9,
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width,
+                                height: MediaQuery.of(context).size.height,
+                                child: ListView(
+                                  // scrollDirection: Axis.horizontal,
+                                  children: <Widget>[
+                                    Card(
+                                      elevation: 9,
+                                      child: Column(
                                         children: <Widget>[
-                                          Padding(
-                                            padding: const EdgeInsets.only(left:21.0,bottom: 7),
-                                            child: Text(f.nama,style: TextStyle(
-                                              fontSize: 21,
-                                              color: Colors.lightBlue
-                                            ),),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  'Tentang Kami',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 17),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Image.asset(
+                                                  'assets/images/logo.jpg',
+                                                  width: 170,
+
+                                                  // fit: BoxFit.fill,
+                                                ),
+                                              )
+                                            ],
                                           ),
                                           Padding(
-                                        padding: const EdgeInsets.only(left:21.0,bottom:7 ),
-                                        child: Text(f.jabatan,style: TextStyle(
-                                          // fontSize: 21,
-                                          // color: Colors.lightBlue
-                                        ),),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left:21.0),
-                                        child: Row(
-                                          children: <Widget>[
-                                            Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Icon(FontAwesomeIcons.facebook,color: Colors.blue,),
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: SizedBox(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: RichText(
+                                                text: TextSpan(
+                                                  style: TextStyle(
+                                                    fontSize: 14.0,
+                                                    color: Colors.black,
+                                                  ),
+                                                  children: <TextSpan>[
+                                                    TextSpan(
+                                                        text:
+                                                            'Rumah Kreatif BUMN Lombok Barat ',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold)),
+                                                    TextSpan(
+                                                        text:
+                                                            'merupakan rumah kreatif binaan dari PT PLN Unit Induk Wilayah NTB. Tugas utama kami adalah membantu UMKM dalam mengembangkan produk, Menciptakan deversifikasi produk, mewujudkan UMKM yang Go Modern, Go Digital, dan Go Online.'),
+                                                  ],
+                                                ),
+                                              ),
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Icon(FontAwesomeIcons.twitter,color: Colors.lightBlue,),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Icon(FontAwesomeIcons.linkedin,color: Colors.blue,),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
+                                          )
                                         ],
                                       ),
-                                      
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).cast<Widget>()
-                          .toList(),
-                        ),
-                      )
-                    ],
-                  ),
-                );
-                    }
-                    return CircularProgressIndicator();
-                  }),
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Text(
+                                            'Tim Kami',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 17),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      children: snapshot.data
+                                          .map((f) {
+                                            return Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  Row(
+                                                    children: <Widget>[
+                                                      Container(
+                                                          margin:
+                                                              EdgeInsets.all(5),
+                                                          width: 150.0,
+                                                          height: 150.0,
+                                                          decoration: BoxDecoration(
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              image: DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .fill,
+                                                                  image: NetworkImage(
+                                                                      'http://simadu.id/images/tim/' +
+                                                                          f.img)))),
+                                                      Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 21.0,
+                                                                    bottom: 7),
+                                                            child: Text(
+                                                              f.nama,
+                                                              style: TextStyle(
+                                                                  fontSize: 21,
+                                                                  color: Colors
+                                                                      .lightBlue),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 21.0,
+                                                                    bottom: 7),
+                                                            child: Text(
+                                                              f.jabatan,
+                                                              style: TextStyle(
+                                                                  // fontSize: 21,
+                                                                  // color: Colors.lightBlue
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 21.0),
+                                                            child: Row(
+                                                              children: <
+                                                                  Widget>[
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Icon(
+                                                                    FontAwesomeIcons
+                                                                        .facebook,
+                                                                    color: Colors
+                                                                        .blue,
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Icon(
+                                                                    FontAwesomeIcons
+                                                                        .twitter,
+                                                                    color: Colors
+                                                                        .lightBlue,
+                                                                  ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          8.0),
+                                                                  child: Icon(
+                                                                    FontAwesomeIcons
+                                                                        .linkedin,
+                                                                    color: Colors
+                                                                        .blue,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            );
+                                          })
+                                          .cast<Widget>()
+                                          .toList(),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                      }
+                      return CircularProgressIndicator();
+                    }),
               ],
             ),
-            ChangeNotifierProvider<ProviderProfilVideo>(
-              builder: (context) => ProviderProfilVideo(),
-              child: Consumer<ProviderProfilVideo>(
-                builder: (context, providerProvilVideo, _) => ListView(
-                    children: providerProvilVideo.videoProfil
-                        .map((f) {
-                          return Center(
-                            child: ListTile(
-                              title: Text(f['title']),
-                              onTap: () async {
-                                String url = f['link'];
+            FutureBuilder<List<VideoEdukasiAPI>>(
+          future: fetchVideoEdukasiAPI(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return ListView(
+                children: snapshot.data.map((f){
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                    leading: Text((no++).toString()+'.'),
+                        title: Text(f.judul),
+                        trailing: Icon(Icons.videocam),
+                        onTap: () async {
+                           String url = f.link;
                                 if (await canLaunch(url)) {
                                   await launch(url);
                                 } else {
                                   throw 'Could not launch $url';
                                 }
-                              },
-                            ),
-                          );
-                        })
-                        .cast<Widget>()
-                        .toList()),
-              ),
-            ),
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          color: Colors.black,
+                          height: 1,
+                        ),
+                      )
+                    ],
+                  );
+                }).toList()
+              );
+            }
+            return CircularProgressIndicator();
+          }),
           ],
         ),
       ),

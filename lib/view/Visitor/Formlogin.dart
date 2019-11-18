@@ -143,7 +143,7 @@ class _FormloginState extends State<Formlogin> {
                     return null;
                   }
                 },
-                child: Text('Submit'),
+                child: Text('MASUK'),
                 textColor: Colors.black,
                 color: Colors.lightBlue,
               ),

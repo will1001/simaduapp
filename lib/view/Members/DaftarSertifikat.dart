@@ -9,9 +9,11 @@ import 'package:async/async.dart';
 import 'package:path/path.dart';
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:simadu/view/Members/UploadSertifikat.dart';
 
 class DaftarSertifikat extends StatefulWidget {
-   DaftarSertifikat({Key key, this.namaPemilik,this.idRegister}) : super(key: key);
+  DaftarSertifikat({Key key, this.namaPemilik, this.idRegister})
+      : super(key: key);
 
   final String namaPemilik;
   final String idRegister;
@@ -30,7 +32,7 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
   bool _loadingPath = false;
   bool _multiPick = false;
   bool _hasValidMime = false;
-  FileType _pickingType=FileType.ANY;
+  FileType _pickingType = FileType.ANY;
   TextEditingController _controller = TextEditingController();
 
   @override
@@ -39,16 +41,17 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
     _controller.addListener(() => _extension = _controller.text);
   }
 
-
   Future uploadsertifikat() async {
     var responseJson;
     String url = "http://simadu.id/api/api_upload_sertifikat.php";
     print(filesertifikat);
-    var stream = http.ByteStream(DelegatingStream.typed(filesertifikat.openRead()));
+    var stream =
+        http.ByteStream(DelegatingStream.typed(filesertifikat.openRead()));
     var len = await filesertifikat.length();
     var uri = Uri.parse(url);
-    var req = http.MultipartRequest("POST",uri);
-    var multifile = http.MultipartFile('file',stream,len,filename: basename(filesertifikat.path));
+    var req = http.MultipartRequest("POST", uri);
+    var multifile = http.MultipartFile('file', stream, len,
+        filename: basename(filesertifikat.path));
     req.fields['id_register'] = widget.idRegister;
     req.fields['keterangan'] = 'cvvvvv';
     req.fields['status'] = 'Sertifikat Anda Sudah Di Upload';
@@ -56,13 +59,12 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
 
     responseJson = await req.send();
 
-
-    if(responseJson.statusCode == '200'){
-     setState(() {
+    if (responseJson.statusCode == '200') {
+      setState(() {
         msg = "Maaf sertifikat gagal di upload";
         warnapesan = Colors.red;
       });
-    }else{
+    } else {
       setState(() {
         msg = "Sertifikat Berhasil di Upload";
         warnapesan = Colors.green;
@@ -79,13 +81,13 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
           _path = null;
           _paths = await FilePicker.getMultiFilePath(
               type: _pickingType, fileExtension: _extension);
-          //  temp = await FilePicker.getFile(type: FileType.ANY);         
+          //  temp = await FilePicker.getFile(type: FileType.ANY);
         } else {
           _paths = null;
           // _path = await FilePicker.getFilePath(
           //     type: _pickingType, fileExtension: _extension);
-       
-           temp = await FilePicker.getFile(type: FileType.ANY);
+
+          temp = await FilePicker.getFile(type: FileType.ANY);
         }
       } on PlatformException catch (e) {
         print("Unsupported operation" + e.toString());
@@ -96,150 +98,111 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
         // _fileName = _path != null
         //     ? _path.split('/').last
         //     : _paths != null ? _paths.keys.toString() : '...';
-        filesertifikat=temp;
+        filesertifikat = temp;
       });
 
-    uploadsertifikat();
+      uploadsertifikat();
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
+        appBar: AppBar(
+          centerTitle: true,
           title: Text(
-            'Upload Sertifikat',
+            'Sertifikat',
             style: TextStyle(fontSize: 16.0),
           ),
-      ),
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 20.0),
-              //   child: DropdownButton(
-              //       hint: Text('LOAD PATH FROM'),
-              //       value: _pickingType,
-              //       items: <DropdownMenuItem>[
-              //         DropdownMenuItem(
-              //           child: Text('FROM AUDIO'),
-              //           value: FileType.AUDIO,
-              //         ),
-              //         DropdownMenuItem(
-              //           child: Text('FROM IMAGE'),
-              //           value: FileType.IMAGE,
-              //         ),
-              //         DropdownMenuItem(
-              //           child: Text('FROM VIDEO'),
-              //           value: FileType.VIDEO,
-              //         ),
-              //         DropdownMenuItem(
-              //           child: Text('FROM ANY'),
-              //           value: FileType.ANY,
-              //         ),
-              //         DropdownMenuItem(
-              //           child: Text('CUSTOM FORMAT'),
-              //           value: FileType.CUSTOM,
-              //         ),
-              //       ],
-              //       onChanged: (value) => setState(() {
-              //             _pickingType = value;
-              //             // if (_pickingType != FileType.CUSTOM) {
-              //             //   _controller.text = _extension = '';
-              //             // }
-              //           })),
-              // ),
-              // ConstrainedBox(
-              //   constraints: BoxConstraints.tightFor(width: 100.0),
-              //   child: _pickingType == FileType.CUSTOM
-              //       ? TextFormField(
-              //           maxLength: 15,
-              //           autovalidate: true,
-              //           controller: _controller,
-              //           decoration:
-              //               InputDecoration(labelText: 'File extension'),
-              //           keyboardType: TextInputType.text,
-              //           textCapitalization: TextCapitalization.none,
-              //           validator: (value) {
-              //             RegExp reg = RegExp(r'[^a-zA-Z0-9]');
-              //             if (reg.hasMatch(value)) {
-              //               _hasValidMime = false;
-              //               return 'Invalid format';
-              //             }
-              //             _hasValidMime = true;
-              //             return null;
-              //           },
-              //         )
-              //       : Container(),
-              // ),
-              // ConstrainedBox(
-              //   constraints: BoxConstraints.tightFor(width: 200.0),
-              //   child: SwitchListTile.adaptive(
-              //     title:
-              //         Text('Pick multiple files', textAlign: TextAlign.right),
-              //     onChanged: (bool value) => setState(() => _multiPick = value),
-              //     value: _multiPick,
-              //   ),
-              // ),
-              Padding(
-                padding: const EdgeInsets.only(top: 0.0, bottom: 20.0),
-                child: RaisedButton(
-                  onPressed: () => _openFileExplorer(),
-                  child: Text("Upload Sertifikat"),
-                  textColor: Colors.black,
-                  color: Colors.lightBlue,
+        ),
+        body: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                color: Colors.green,
+                height: 40,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(
+                        Icons.settings,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        '  Sertifikat',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              Text(msg,style: TextStyle(color: warnapesan)),
-              Builder(
-                builder: (BuildContext context) => _loadingPath
-                    ? Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        child: const CircularProgressIndicator())
-                    : _path != null || _paths != null
-                        ? Container(
-                            padding: const EdgeInsets.only(bottom: 30.0),
-                            height: MediaQuery.of(context).size.height * 0.50,
-                            child: Scrollbar(
-                                child: ListView.separated(
-                              itemCount: _paths != null && _paths.isNotEmpty
-                                  ? _paths.length
-                                  : 1,
-                              itemBuilder: (BuildContext context, int index) {
-                                final bool isMultiPath =
-                                    _paths != null && _paths.isNotEmpty;
-                                final String name = 'Sertifikat : ' +
-                                    (isMultiPath
-                                        ? _paths.keys.toList()[index]
-                                        : _fileName ?? '...');
-                                final path = isMultiPath
-                                    ? _paths.values.toList()[index].toString()
-                                    : _path;
-
-                                return ListTile(
-                                  title: Text(
-                                    name,
-                                  ),
-                                  subtitle: Text(path),
-                                );
-                              },
-                              separatorBuilder:
-                                  (BuildContext context, int index) =>
-                                      Divider(),
-                            )),
-                          )
-                        : Container(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                // color: Colors.transparent,
+                // height: 40,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.green, width: 1)),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Silahkan upload sertifikat anda, sebagai eviden dan dasar penilaian untuk bermitra, jika nanti Anda butuh pinjaman/ atau kami ingin memberikan pinjaman kami bisa menggunakan Sertifikat Anda sebagai dasar memberikan pinjaman tersebut.',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                    ListTile(
+                      title: Text('Apakah Anda Memilik Sertifikat?'),
+                      trailing:  RaisedButton(
+                        onPressed: () async {
+                        Navigator.of(context).push(MaterialPageRoute(
+                        builder: (c) => UploadSertifikat(
+                          idRegister: widget.idRegister,
+            //                 // id: f['id'],
+            //                 // title: f['title'],
+            //                 // desc: f['desc'],
+            //                 // gambar: f['gambar'],
+                            )));
+                        },
+                        child: Text('Upload'),
+                        textColor: Colors.white,
+                        color: Colors.green,
+                      ),
+                    ),
+                    ListTile(
+                      title: Text('Apakah Anda Belum Memilik Sertifikat?'),
+                      trailing:  RaisedButton(
+                        onPressed: () async {
+                          // setState(() {
+                          //   _judul = f.judul;
+                          // });
+                          // daftarpinjamandana();
+                        },
+                        child: Text('Daftar'),
+                        textColor: Colors.white,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Container(
+                        color: Colors.green[100],
+                        height: 30,
+                        width: MediaQuery.of(context).size.width,
+                        child: Center(child: Text('Sertifikat Anda Sudah Di Upload',style: TextStyle(color: Colors.green),)),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
-      )),
-    );
+            ),
+          ],
+        ));
   }
 }

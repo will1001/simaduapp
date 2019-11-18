@@ -254,7 +254,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
               Column(
                 children: <Widget>[
                   RaisedButton(
-                    child: Text('Submit'),
+                    child: Text('Kirim'),
                     textColor: Colors.black,
                     color: Colors.lightBlue,
                     onPressed: () {

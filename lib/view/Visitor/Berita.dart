@@ -37,7 +37,7 @@ class _BeritaState extends State<Berita> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Berita',
+                        'BERITA',
                         style: TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 17),
                       ),
@@ -84,13 +84,13 @@ class _BeritaState extends State<Berita> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          'Artikel',
+                          'ARTIKEL',
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 17),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 151),
+                        padding: const EdgeInsets.only(left: 131),
                         child: GestureDetector(
                           child: Text(
                             'Lihat Lainnya',
@@ -140,7 +140,7 @@ class WidgetGridview extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                  scrollDirection: Axis.horizontal,
+                  // scrollDirection: Axis.horizontal,
                   children: snapshot.data
                       .where((a) => a.kategori == kategori)
                       .map((f) {
@@ -198,8 +198,8 @@ class WidgetGridview extends StatelessWidget {
                                   children: <Widget>[
                                     Container(
                                       child: SizedBox(
-                                        height: 112,
-                                        width: 200,
+                                        height: 140,
+                                        width: MediaQuery.of(context).size.width,
                                         child: Image.network(
                                           'http://simadu.id/images/berita/' +
                                               f.img,
@@ -208,10 +208,11 @@ class WidgetGridview extends StatelessWidget {
                                       ),
                                     ),
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
-                                          width: 200,
+                                          width: MediaQuery.of(context).size.width,
                                           // color: Colors.black38,
                                           child: Padding(
                                               padding:
@@ -236,74 +237,90 @@ class WidgetGridview extends StatelessWidget {
                                                       // fontSize: 10,
                                                     ),
                                                   ),
-                                                  RaisedButton(
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(top:8.0),
                                                     child: Text(
-                                                        'Baca Selengkapnya'),
-                                                    textColor: Colors.white,
-                                                    color: Colors.lightBlue,
-                                                    onPressed: () {
-                                                      if (kategori ==
-                                                          'Berita') {
-                                                        Navigator.of(context).push(
-                                                            MaterialPageRoute(
-                                                                builder: (c) =>
-                                                                    DetailBerita(
-                                                                      id: f
-                                                                          .id_berita,
-                                                                      title: f
-                                                                          .judul,
-                                                                      desc:
-                                                                          f.isi,
-                                                                      gambar: 'http://simadu.id/images/berita/' +
-                                                                          f.img,
-                                                                      tanggal: f
-                                                                          .tanggal,
-                                                                      penulis: f
-                                                                          .penulis,
-                                                                    )));
-                                                      }
-                                                      if (kategori ==
-                                                          'Artikel') {
-                                                        Navigator.of(context).push(
-                                                            MaterialPageRoute(
-                                                                builder: (c) =>
-                                                                    DetailArtikel(
-                                                                      id: f
-                                                                          .id_berita,
-                                                                      title: f
-                                                                          .judul,
-                                                                      desc:
-                                                                          f.isi,
-                                                                      gambar: 'http://simadu.id/images/berita/' +
-                                                                          f.img,
-                                                                      tanggal: f
-                                                                          .tanggal,
-                                                                      penulis: f
-                                                                          .penulis,
-                                                                    )));
-                                                      }
-                                                      if (kategori ==
-                                                          'Agenda') {
-                                                        Navigator.of(context).push(
-                                                            MaterialPageRoute(
-                                                                builder: (c) =>
-                                                                    DetailAgenda(
-                                                                      id: f
-                                                                          .id_berita,
-                                                                      title: f
-                                                                          .judul,
-                                                                      desc:
-                                                                          f.isi,
-                                                                      gambar: 'http://simadu.id/images/berita/' +
-                                                                          f.img,
-                                                                      tanggal: f
-                                                                          .tanggal,
-                                                                      penulis: f
-                                                                          .penulis,
-                                                                    )));
-                                                      }
-                                                    },
+                                                      f.isi
+                                                          .toString()
+                                                          .substring(
+                                                              0,
+                                                              f.isi.length < 83
+                                                                  ? f.isi.length
+                                                                  : 83),
+                                                      style: TextStyle(
+                                                        color: Colors.black26,
+                                                        // fontSize: 10,
+                                                      ),
+                                                    ),
                                                   ),
+                                                  // RaisedButton(
+                                                  //   child: Text(
+                                                  //       'Baca Selengkapnya'),
+                                                  //   textColor: Colors.white,
+                                                  //   color: Colors.lightBlue,
+                                                  //   onPressed: () {
+                                                  //     if (kategori ==
+                                                  //         'Berita') {
+                                                  //       Navigator.of(context).push(
+                                                  //           MaterialPageRoute(
+                                                  //               builder: (c) =>
+                                                  //                   DetailBerita(
+                                                  //                     id: f
+                                                  //                         .id_berita,
+                                                  //                     title: f
+                                                  //                         .judul,
+                                                  //                     desc:
+                                                  //                         f.isi,
+                                                  //                     gambar: 'http://simadu.id/images/berita/' +
+                                                  //                         f.img,
+                                                  //                     tanggal: f
+                                                  //                         .tanggal,
+                                                  //                     penulis: f
+                                                  //                         .penulis,
+                                                  //                   )));
+                                                  //     }
+                                                  //     if (kategori ==
+                                                  //         'Artikel') {
+                                                  //       Navigator.of(context).push(
+                                                  //           MaterialPageRoute(
+                                                  //               builder: (c) =>
+                                                  //                   DetailArtikel(
+                                                  //                     id: f
+                                                  //                         .id_berita,
+                                                  //                     title: f
+                                                  //                         .judul,
+                                                  //                     desc:
+                                                  //                         f.isi,
+                                                  //                     gambar: 'http://simadu.id/images/berita/' +
+                                                  //                         f.img,
+                                                  //                     tanggal: f
+                                                  //                         .tanggal,
+                                                  //                     penulis: f
+                                                  //                         .penulis,
+                                                  //                   )));
+                                                  //     }
+                                                  //     if (kategori ==
+                                                  //         'Agenda') {
+                                                  //       Navigator.of(context).push(
+                                                  //           MaterialPageRoute(
+                                                  //               builder: (c) =>
+                                                  //                   DetailAgenda(
+                                                  //                     id: f
+                                                  //                         .id_berita,
+                                                  //                     title: f
+                                                  //                         .judul,
+                                                  //                     desc:
+                                                  //                         f.isi,
+                                                  //                     gambar: 'http://simadu.id/images/berita/' +
+                                                  //                         f.img,
+                                                  //                     tanggal: f
+                                                  //                         .tanggal,
+                                                  //                     penulis: f
+                                                  //                         .penulis,
+                                                  //                   )));
+                                                  //     }
+                                                  //   },
+                                                  // ),
                                                 ],
                                               )),
                                         ),

@@ -42,7 +42,7 @@ class _DetailShopState extends State<DetailShop> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Container(
-                    height: 240,
+                    // height: 240,
                     color: Colors.white,
                     child: Hero(
                         tag: widget.id,
@@ -50,7 +50,7 @@ class _DetailShopState extends State<DetailShop> {
                           child: InkWell(
                             child: Image.network(
                               widget.gambar,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fill,
                             ),
                           ),
                         )),

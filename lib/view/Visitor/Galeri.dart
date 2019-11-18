@@ -76,12 +76,12 @@ class _GaleriState extends State<Galeri> {
                                           child: Card(
                                             elevation: 9,
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
+                                              padding: const EdgeInsets.only(left:8,
                                                   top: 8.0, bottom: 8),
                                               child: Row(
                                                 children: <Widget>[
                                                   Container(
-                                                    width: 145,
+                                                    width: 175,
                                                     height: 100,
                                                     child: Image.network(
                                                         'http://simadu.id/images/agenda/' +

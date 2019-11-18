@@ -24,6 +24,7 @@ class RekuesKelasAPI {
   final String tanggal;
   final String kelas;
   final String lainya;
+  final String status;
   
   
 
@@ -33,6 +34,7 @@ class RekuesKelasAPI {
     this.tanggal,
     this.kelas,
     this.lainya,
+    this.status,
     
   });
 
@@ -43,6 +45,7 @@ class RekuesKelasAPI {
       tanggal: json['tanggal'],
       kelas: json['kelas'],
       lainya: json['lainya'],
+      status: json['status'],
       
     );
   }

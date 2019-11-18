@@ -485,7 +485,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
               Column(
                 children: <Widget>[
                   RaisedButton(
-                    child: Text('Submit'),
+                    child: Text('Simpan'),
                     textColor: Colors.black,
                     color: Colors.lightBlue,
                     onPressed: () {

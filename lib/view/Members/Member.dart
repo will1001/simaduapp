@@ -259,7 +259,7 @@ class _MemberState extends State<Member> {
             //   ],
             // ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: Icon(Icons.person),
               title: Text('Edit Profil'),
               // trailing: Icon(Icons.lock_open),
               onTap: () {

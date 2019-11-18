@@ -105,163 +105,190 @@ class _HomeState extends State<Home> {
                   }),
               Card(
                 elevation: 9,
-                child: Column(
-                  children: <Widget>[
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.start,
-                    //   children: <Widget>[
-                    //     Padding(
-                    //       padding: const EdgeInsets.all(8.0),
-                    //       child: Text(
-                    //         'Pencapaian',
-                    //         style: TextStyle(
-                    //             fontWeight: FontWeight.w500,
-                    //             fontSize: 17),
-                    //       ),
-                    //     )
-                    //   ],
-                    // ),
-                    SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(0.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  FontAwesomeIcons.home,
-                                  color: Colors.blue,
+                child: Container(
+                  height: 230,
+                  child: Column(
+                    children: <Widget>[
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.start,
+                      //   children: <Widget>[
+                      //     Padding(
+                      //       padding: const EdgeInsets.all(8.0),
+                      //       child: Text(
+                      //         'Pencapaian',
+                      //         style: TextStyle(
+                      //             fontWeight: FontWeight.w500,
+                      //             fontSize: 17),
+                      //       ),
+                      //     )
+                      //   ],
+                      // ),
+                      SizedBox(
+                        height: 220,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                elevation: 9,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top:0.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.home,
+                                        color: Colors.blue,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Center(
+                                            child: Text(
+                                          'Basecamp',
+                                          style:
+                                              TextStyle(fontWeight: FontWeight.bold),
+                                        )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                            alignment: FractionalOffset(0.5, 0.5),
+                                            width: 200,
+                                            child: Center(
+                                                child: Text(
+                                              'Kami menyediakan wadah bagi UMKM untuk menampilkan produk mereka di basecamp RKB-Lombok Barat',
+                                              textAlign: TextAlign.center,
+                                            ))),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                      child: Text(
-                                    'Basecamp',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                      alignment: FractionalOffset(0.5, 0.5),
-                                      width: 200,
-                                      child: Center(
-                                          child: Text(
-                                        'Kami menyediakan wadah bagi UMKM untuk menampilkan produk mereka di basecamp RKB-Lombok Barat',
-                                        textAlign: TextAlign.center,
-                                      ))),
-                                )
-                              ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  FontAwesomeIcons.building,
-                                  color: Colors.blue,
-                                ),
-                                Padding(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                        elevation: 9,
+                                child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                      child: Text(
-                                    'Fasilitas Pelatihan',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.building,
+                                        color: Colors.blue,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Center(
+                                            child: Text(
+                                          'Fasilitas Pelatihan',
+                                          style:
+                                              TextStyle(fontWeight: FontWeight.bold),
+                                        )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                            alignment: FractionalOffset(0.5, 0.5),
+                                            width: 200,
+                                            child: Center(
+                                                child: Text(
+                                              'Kami memfasilitasi ruang dan sarana pelatihan lainnya yang mampu menunjang optimalisasi penyampaian materi edukasi',
+                                              textAlign: TextAlign.center,
+                                            ))),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                      alignment: FractionalOffset(0.5, 0.5),
-                                      width: 200,
-                                      child: Center(
-                                          child: Text(
-                                        'Kami memfasilitasi ruang dan sarana pelatihan lainnya yang mampu menunjang optimalisasi penyampaian materi edukasi',
-                                        textAlign: TextAlign.center,
-                                      ))),
-                                )
-                              ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  FontAwesomeIcons.calendar,
-                                  color: Colors.blue,
-                                ),
-                                Padding(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                        elevation: 9,
+                                child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                      child: Text(
-                                    'Jadwal Pelatihan',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.calendar,
+                                        color: Colors.blue,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Center(
+                                            child: Text(
+                                          'Jadwal Pelatihan',
+                                          style:
+                                              TextStyle(fontWeight: FontWeight.bold),
+                                        )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                            alignment: FractionalOffset(0.5, 0.5),
+                                            width: 200,
+                                            child: Center(
+                                                child: Text(
+                                              'Pelatihan yang terjadwal dengan baik setiap bulannya dapat memudahkan UMKM untuk mengembangkan pengetahuan mereka secara intensif',
+                                              textAlign: TextAlign.center,
+                                            ))),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                      alignment: FractionalOffset(0.5, 0.5),
-                                      width: 200,
-                                      child: Center(
-                                          child: Text(
-                                        'Pelatihan yang terjadwal dengan baik setiap bulannya dapat memudahkan UMKM untuk mengembangkan pengetahuan mereka secara intensif',
-                                        textAlign: TextAlign.center,
-                                      ))),
-                                )
-                              ],
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  FontAwesomeIcons.handshake,
-                                  color: Colors.blue,
-                                ),
-                                Padding(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                        elevation: 9,
+                                child: Padding(
                                   padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                      child: Text(
-                                    'Komitmen',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
-                                  )),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.handshake,
+                                        color: Colors.blue,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Center(
+                                            child: Text(
+                                          'Komitmen',
+                                          style:
+                                              TextStyle(fontWeight: FontWeight.bold),
+                                        )),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                            alignment: FractionalOffset(0.5, 0.5),
+                                            width: 200,
+                                            child: Center(
+                                                child: Text(
+                                              'Kami secara menyeluruh memastikan bahwa UMKM dapat berkembang baik dari sisi pengetahuan maupun aktivitas usaha.',
+                                              textAlign: TextAlign.center,
+                                            ))),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                      alignment: FractionalOffset(0.5, 0.5),
-                                      width: 200,
-                                      child: Center(
-                                          child: Text(
-                                        'Kami secara menyeluruh memastikan bahwa UMKM dapat berkembang baik dari sisi pengetahuan maupun aktivitas usaha.',
-                                        textAlign: TextAlign.center,
-                                      ))),
-                                )
-                              ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               FutureBuilder<List<TimAPI>>(
@@ -505,98 +532,113 @@ class _HomeState extends State<Home> {
                     if (snapshot.hasData) {
                       return Card(
                         elevation: 9,
-                        child: Column(
-                          children: <Widget>[
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    'PENCAPAIAN',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 17),
-                                  ),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 120,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
+                        child: Container(
+                          height: 170,
+                          child: Column(
+                            children: <Widget>[
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(Icons.home),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child:
-                                              Text(snapshot.data[0].pelatihan),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text('PELATIHAN'),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(Icons.shopping_cart),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                              snapshot.data[0].produk_umkm),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text('PRODUK UMKM'),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(Icons.group),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(snapshot.data[0].peserta),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text('PESERTA'),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Icon(Icons.business),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                              snapshot.data[0].umkm_binaan),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text('UMKM BINAAN'),
-                                        )
-                                      ],
+                                    child: Text(
+                                      'PENCAPAIAN',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 17),
                                     ),
                                   )
                                 ],
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                height: 120,
+                                child: ListView(
+                                  scrollDirection: Axis.horizontal,
+                                  children: <Widget>[
+                                    Card(
+                                      elevation: 9,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Icon(Icons.home),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child:
+                                                  Text(snapshot.data[0].pelatihan),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text('PELATIHAN'),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                   Card(
+                                      elevation: 9,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Icon(Icons.shopping_cart),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  snapshot.data[0].produk_umkm),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text('PRODUK UMKM'),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Card(
+                                      elevation: 9,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Icon(Icons.group),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(snapshot.data[0].peserta),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text('PESERTA'),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  Card(
+                                      elevation: 9,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Icon(Icons.business),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  snapshot.data[0].umkm_binaan),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Text('UMKM BINAAN'),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     }
@@ -623,10 +665,10 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 121),
+                                  padding: const EdgeInsets.only(left: 75),
                                   child: GestureDetector(
                                     child: Text(
-                                      'Lihat Lainnya',
+                                      'Lihat Lainnya >>',
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     onTap: () {
@@ -640,7 +682,7 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 250,
+                              height: 280,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
@@ -688,35 +730,57 @@ class _HomeState extends State<Home> {
                                                                     .black),
                                                           ),
                                                         ),
-                                                        SizedBox(
-                                                          height: 35,
-                                                          child: RaisedButton(
-                                                            child: Text(
-                                                                'Baca Selengkapnya'),
-                                                            textColor:
-                                                                Colors.white,
-                                                            color: Colors
-                                                                .lightBlue,
-                                                            onPressed: () {
-                                                              Navigator.of(context).push(
-                                                                  MaterialPageRoute(
-                                                                      builder: (c) =>
-                                                                          DetailArtikel(
-                                                                            id: f.id_berita,
-                                                                            title:
-                                                                                f.judul,
-                                                                            desc:
-                                                                                f.isi,
-                                                                            gambar:
-                                                                                'http://simadu.id/images/berita/' + f.img,
-                                                                            tanggal:
-                                                                                f.tanggal,
-                                                                            penulis:
-                                                                                f.penulis,
-                                                                          )));
-                                                            },
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0),
+                                                          child: Text(
+                                                            f.isi
+                                                                .toString()
+                                                                .substring(
+                                                                    0,
+                                                                    f.isi.length <
+                                                                            83
+                                                                        ? f.isi
+                                                                            .length
+                                                                        : 83),
+                                                            style: TextStyle(
+                                                              color: Colors
+                                                                  .black26,
+                                                              // fontSize: 10,
+                                                            ),
                                                           ),
                                                         ),
+                                                        // SizedBox(
+                                                        //   height: 35,
+                                                        //   child: RaisedButton(
+                                                        //     child: Text(
+                                                        //         'Baca Selengkapnya'),
+                                                        //     textColor:
+                                                        //         Colors.white,
+                                                        //     color: Colors
+                                                        //         .lightBlue,
+                                                        //     onPressed: () {
+                                                        //       Navigator.of(context).push(
+                                                        //           MaterialPageRoute(
+                                                        //               builder: (c) =>
+                                                        //                   DetailArtikel(
+                                                        //                     id: f.id_berita,
+                                                        //                     title:
+                                                        //                         f.judul,
+                                                        //                     desc:
+                                                        //                         f.isi,
+                                                        //                     gambar:
+                                                        //                         'http://simadu.id/images/berita/' + f.img,
+                                                        //                     tanggal:
+                                                        //                         f.tanggal,
+                                                        //                     penulis:
+                                                        //                         f.penulis,
+                                                        //                   )));
+                                                        //     },
+                                                        //   ),
+                                                        // ),
                                                       ],
                                                     )),
                                               ],
@@ -769,10 +833,10 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 111),
+                                  padding: const EdgeInsets.only(left: 59),
                                   child: GestureDetector(
                                     child: Text(
-                                      'Lihat Lainnya',
+                                      'Lihat Lainnya >>',
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     onTap: () {
@@ -787,7 +851,7 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 250,
+                              height: 280,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
@@ -840,35 +904,57 @@ class _HomeState extends State<Home> {
                                                                     .black),
                                                           ),
                                                         ),
-                                                        SizedBox(
-                                                          height: 35,
-                                                          child: RaisedButton(
-                                                            child: Text(
-                                                                'Baca Selengkapnya'),
-                                                            textColor:
-                                                                Colors.white,
-                                                            color: Colors
-                                                                .lightBlue,
-                                                            onPressed: () {
-                                                              Navigator.of(context).push(
-                                                                  MaterialPageRoute(
-                                                                      builder: (c) =>
-                                                                          DetailArtikel(
-                                                                            id: f.id_berita,
-                                                                            title:
-                                                                                f.judul,
-                                                                            desc:
-                                                                                f.isi,
-                                                                            gambar:
-                                                                                'http://simadu.id/images/berita/' + f.img,
-                                                                            tanggal:
-                                                                                f.tanggal,
-                                                                            penulis:
-                                                                                f.penulis,
-                                                                          )));
-                                                            },
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                      .only(
+                                                                  left: 8.0),
+                                                          child: Text(
+                                                            f.isi
+                                                                .toString()
+                                                                .substring(
+                                                                    0,
+                                                                    f.isi.length <
+                                                                            83
+                                                                        ? f.isi
+                                                                            .length
+                                                                        : 83),
+                                                            style: TextStyle(
+                                                              color: Colors
+                                                                  .black26,
+                                                              // fontSize: 10,
+                                                            ),
                                                           ),
                                                         ),
+                                                        // SizedBox(
+                                                        //   height: 35,
+                                                        //   child: RaisedButton(
+                                                        //     child: Text(
+                                                        //         'Baca Selengkapnya'),
+                                                        //     textColor:
+                                                        //         Colors.white,
+                                                        //     color: Colors
+                                                        //         .lightBlue,
+                                                        //     onPressed: () {
+                                                        //       Navigator.of(context).push(
+                                                        //           MaterialPageRoute(
+                                                        //               builder: (c) =>
+                                                        //                   DetailArtikel(
+                                                        //                     id: f.id_berita,
+                                                        //                     title:
+                                                        //                         f.judul,
+                                                        //                     desc:
+                                                        //                         f.isi,
+                                                        //                     gambar:
+                                                        //                         'http://simadu.id/images/berita/' + f.img,
+                                                        //                     tanggal:
+                                                        //                         f.tanggal,
+                                                        //                     penulis:
+                                                        //                         f.penulis,
+                                                        //                   )));
+                                                        //     },
+                                                        //   ),
+                                                        // ),
                                                       ],
                                                     )),
                                               ],
@@ -932,7 +1018,7 @@ class _HomeState extends State<Home> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Image.asset(
-                              'assets/images/YBP.jpg',
+                              'assets/images/logo.png',
                               fit: BoxFit.cover,
                             ),
                           ),
