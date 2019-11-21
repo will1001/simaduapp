@@ -31,33 +31,42 @@ class _LaporanBulananState extends State<LaporanBulanan> {
               return ListView(
                   children: snapshot.data.where((a)=>a.id_register==widget.idRegister).toList().
                   map((f) {
-                return ExpansionTile(
-                  title: Text(f.nama_produk==null?'':f.nama_produk),
+                return Column(
                   children: <Widget>[
-                    ListTile(
-                      leading: Text('Jenis Produk'),
-                      title: Text(f.jenis_produk==null?'':f.jenis_produk),
+                    ExpansionTile(
+                      title: Text(f.nama_produk==null?'':f.nama_produk),
+                      children: <Widget>[
+                        ListTile(
+                          leading: Text('Jenis Produk'),
+                          title: Text(f.jenis_produk==null?'':f.jenis_produk),
+                        ),
+                        ListTile(
+                          leading: Text('Tanggal'),
+                          title: Text(f.tanggal==null?'':f.tanggal),
+                        ),
+                        ListTile(
+                          leading: Text('Unit Penjualan'),
+                          title: Text(f.unit_penjualan==null?'':f.unit_penjualan),
+                        ),
+                        ListTile(
+                          leading: Text('Satuan'),
+                          title: Text(f.satuan==null?'':f.satuan),
+                        ),
+                        ListTile(
+                          leading: Text('Harga'),
+                          title: Text(f.harga==null?'':f.harga),
+                        ),
+                        ListTile(
+                          leading: Text('Total'),
+                          title: Text(f.total==null?'':f.total),
+                        ),
+                      ],
                     ),
-                    ListTile(
-                      leading: Text('Tanggal'),
-                      title: Text(f.tanggal==null?'':f.tanggal),
-                    ),
-                    ListTile(
-                      leading: Text('Unit Penjualan'),
-                      title: Text(f.unit_penjualan==null?'':f.unit_penjualan),
-                    ),
-                    ListTile(
-                      leading: Text('Satuan'),
-                      title: Text(f.satuan==null?'':f.satuan),
-                    ),
-                    ListTile(
-                      leading: Text('Harga'),
-                      title: Text(f.harga==null?'':f.harga),
-                    ),
-                    ListTile(
-                      leading: Text('Total'),
-                      title: Text(f.total==null?'':f.total),
-                    ),
+                     Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 1,
+                      color: Colors.black38,
+                    )
                   ],
                 );
               }).toList());

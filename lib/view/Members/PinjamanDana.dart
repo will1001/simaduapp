@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:simadu/model/PinjamanDanaAPI.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:http/http.dart' as http;
-import 'dart:async';
-import 'dart:convert';
+import 'package:simadu/view/Members/DetailPinjamanDana.dart';
+import 'package:simadu/view/Visitor/DetailGaleri.dart';
+
 
 class PinjamanDana extends StatefulWidget {
   PinjamanDana({Key key, this.idRegister}) : super(key: key);
@@ -15,54 +14,9 @@ class PinjamanDana extends StatefulWidget {
 
 class _PinjamanDanaState extends State<PinjamanDana> {
   int no = 1;
-  String msg = '';
-  Color warnapesan;
-  String _judul;
+  
 
-  Future daftarpinjamandana() async {
-    var responseJson;
-    String url = "http://simadu.id/api/pinjaman_dana_api.php";
-    final response = await http.post(url, body: {
-      "id_register": widget.idRegister,
-      "judul": _judul,
-    });
-    responseJson = json.decode(response.body);
-    if (responseJson.length == 0) {
-      setState(() {
-        msg = "Maaf Laporan Gagal di Simpan";
-        warnapesan = Colors.red;
-      });
-    } else {
-      //  if(responseJson[0]['username'])
-      // Navigator.of(context).push(MaterialPageRoute(
-      //     builder: (c) => LandingPage(
-      //           selectedIndex: 5,
-      //         )));
-      setState(() {
-        msg = responseJson['msg'];
-        warnapesan = Colors.green;
-      });
-
-      showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Berhasil'),
-              content: Text(
-                msg,
-                style: TextStyle(color: Colors.green),
-              ),
-            );
-          });
-
-      Future.delayed(
-        Duration(seconds: 3),
-        () {
-          Navigator.pop(context);
-        },
-      );
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -80,51 +34,101 @@ class _PinjamanDanaState extends State<PinjamanDana> {
             if (snapshot.hasData) {
               return ListView(
                   children: snapshot.data.map((f) {
-                return Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: Text((no++).toString() + '.'),
-                      title: Text(f.judul),
-                      trailing: RaisedButton(
-                        onPressed: () async {
-                          setState(() {
-                            _judul = f.judul;
-                          });
-                          daftarpinjamandana();
-                        },
-                        child: Text('Daftar'),
-                        textColor: Colors.white,
-                        color: Colors.lightBlue,
+                return Padding(
+                    padding: const EdgeInsets.all(1.0),
+                    child: Hero(
+                      tag: f.id_pinjaman,
+                      child: Material(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (c) => DetailPinjamanDana(
+                                  idRegister: widget.idRegister,
+                                      id: f.id_pinjaman,
+                                      title: f.judul,
+                                      desc: f.pesan,
+                                      // tanggal: f.tanggal,
+                                      gambar:
+                                          'http://simadu.id/images/pinjaman/' +
+                                              f.img,
+                                    )));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Center(
+                              child: Card(
+                                elevation: 9,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 8.0, bottom: 8),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Container(
+                                        // width: 145,
+                                        height: 110,
+                                        child: Image.network(
+                                            'http://simadu.id/images/pinjaman/' +
+                                                f.img),
+                                      ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Container(
+                                            height: 125,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(f.judul),
+                                                Text(
+                                                  f.pesan.substring(0, 50) +
+                                                      '. . .',
+                                                  style: TextStyle(
+                                                      color: Colors.grey,
+                                                      fontSize: 12),
+                                                ),
+                                                Column(
+                                                  children: <Widget>[
+                                                    RaisedButton(
+                                                      child: Text('Detail'),
+                                                      textColor: Colors.black,
+                                                      color: Colors.lightBlue,
+                                                      onPressed: () {
+                                                        
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (c) =>
+                                                                    DetailPinjamanDana(
+                                                                      idRegister: widget.idRegister,
+                                                                      id: f
+                                                                          .id_pinjaman,
+                                                                      title: f
+                                                                          .judul,
+                                                                      desc: f
+                                                                          .pesan,
+                                                                      // tanggal: f.tanggal,
+                                                                      gambar: 'http://simadu.id/images/pinjaman/' +
+                                                                          f.img,
+                                                                    )));
+                                                        // daftarpinjamandana();
+                                                      },
+                                                    ),
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      onTap: () async {
-                        // setState(() {
-                        //   _judul = f.judul;
-                        // });
-                        // daftarpinjamandana();
-                        // showDialog(
-                        //     context: context,
-                        //     builder: (BuildContext context) {
-                        //       return AlertDialog(
-                        //         title: Text('Berhasil'),
-                        //         content: Text(
-                        //           msg,
-                        //           style: TextStyle(color: Colors.green),
-                        //         ),
-                        //       );
-                        //     });
-
-                        // Navigator.pop(context);
-                      },
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        color: Colors.black,
-                        height: 1,
-                      ),
-                    )
-                  ],
-                );
+                    ));
               }).toList());
             }
             return CircularProgressIndicator();

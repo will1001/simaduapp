@@ -8,6 +8,7 @@ import 'package:simadu/model/Pencapaian.dart';
 import 'package:simadu/model/ProviderHome.dart';
 import 'package:simadu/model/SliderAPI.dart';
 import 'package:simadu/model/TimAPI.dart';
+import 'package:simadu/view/Visitor/DetailBerita.dart';
 
 import 'ArtikelLainnya.dart';
 import 'BeritaLainnya.dart';
@@ -133,10 +134,11 @@ class _HomeState extends State<Home> {
                               child: Card(
                                 elevation: 9,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top:0.0),
+                                  padding: const EdgeInsets.only(top: 0.0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(
                                         FontAwesomeIcons.home,
@@ -147,14 +149,15 @@ class _HomeState extends State<Home> {
                                         child: Center(
                                             child: Text(
                                           'Basecamp',
-                                          style:
-                                              TextStyle(fontWeight: FontWeight.bold),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         )),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
-                                            alignment: FractionalOffset(0.5, 0.5),
+                                            alignment:
+                                                FractionalOffset(0.5, 0.5),
                                             width: 200,
                                             child: Center(
                                                 child: Text(
@@ -170,12 +173,13 @@ class _HomeState extends State<Home> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
-                                        elevation: 9,
+                                elevation: 9,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(
                                         FontAwesomeIcons.building,
@@ -186,14 +190,15 @@ class _HomeState extends State<Home> {
                                         child: Center(
                                             child: Text(
                                           'Fasilitas Pelatihan',
-                                          style:
-                                              TextStyle(fontWeight: FontWeight.bold),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         )),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
-                                            alignment: FractionalOffset(0.5, 0.5),
+                                            alignment:
+                                                FractionalOffset(0.5, 0.5),
                                             width: 200,
                                             child: Center(
                                                 child: Text(
@@ -209,12 +214,13 @@ class _HomeState extends State<Home> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
-                                        elevation: 9,
+                                elevation: 9,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(
                                         FontAwesomeIcons.calendar,
@@ -225,14 +231,15 @@ class _HomeState extends State<Home> {
                                         child: Center(
                                             child: Text(
                                           'Jadwal Pelatihan',
-                                          style:
-                                              TextStyle(fontWeight: FontWeight.bold),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         )),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
-                                            alignment: FractionalOffset(0.5, 0.5),
+                                            alignment:
+                                                FractionalOffset(0.5, 0.5),
                                             width: 200,
                                             child: Center(
                                                 child: Text(
@@ -248,12 +255,13 @@ class _HomeState extends State<Home> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Card(
-                                        elevation: 9,
+                                elevation: 9,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: <Widget>[
                                       Icon(
                                         FontAwesomeIcons.handshake,
@@ -264,14 +272,15 @@ class _HomeState extends State<Home> {
                                         child: Center(
                                             child: Text(
                                           'Komitmen',
-                                          style:
-                                              TextStyle(fontWeight: FontWeight.bold),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold),
                                         )),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: Container(
-                                            alignment: FractionalOffset(0.5, 0.5),
+                                            alignment:
+                                                FractionalOffset(0.5, 0.5),
                                             width: 200,
                                             child: Center(
                                                 child: Text(
@@ -315,107 +324,115 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 200,
+                              height: 250,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
                                     .map((f) {
                                       return Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                Container(
-                                                    margin: EdgeInsets.all(5),
-                                                    width: 150.0,
-                                                    height: 150.0,
-                                                    decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        image: DecorationImage(
-                                                            fit: BoxFit.fill,
-                                                            image: NetworkImage(
-                                                                'http://simadu.id/images/tim/' +
-                                                                    f.img)))),
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 21.0,
-                                                              bottom: 7),
-                                                      child: Text(
-                                                        f.nama,
-                                                        style: TextStyle(
-                                                            fontSize: 21,
-                                                            color: Colors
-                                                                .lightBlue),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 21.0,
-                                                              bottom: 7),
-                                                      child: Text(
-                                                        f.jabatan,
-                                                        style: TextStyle(
-                                                            // fontSize: 21,
-                                                            // color: Colors.lightBlue
-                                                            ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsets.only(
-                                                              left: 21.0),
-                                                      child: Row(
-                                                        children: <Widget>[
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Icon(
-                                                              FontAwesomeIcons
-                                                                  .facebook,
-                                                              color:
-                                                                  Colors.blue,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Icon(
-                                                              FontAwesomeIcons
-                                                                  .twitter,
+                                        child: Card(
+                                          elevation: 9,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Column(
+                                                children: <Widget>[
+                                                  Container(
+                                                      margin:
+                                                          EdgeInsets.all(15),
+                                                      width: 120.0,
+                                                      height: 120.0,
+                                                      decoration: BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          image: DecorationImage(
+                                                              fit: BoxFit.fill,
+                                                              image: NetworkImage(
+                                                                  'http://simadu.id/images/tim/' +
+                                                                      f.img)))),
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                left: 0.0,
+                                                                bottom: 7),
+                                                        child: Text(
+                                                          f.nama,
+                                                          style: TextStyle(
+                                                              fontSize: 21,
                                                               color: Colors
-                                                                  .lightBlue,
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Icon(
-                                                              FontAwesomeIcons
-                                                                  .linkedin,
-                                                              color:
-                                                                  Colors.blue,
-                                                            ),
-                                                          ),
-                                                        ],
+                                                                  .lightBlue),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .only(
+                                                                left: 0.0,
+                                                                bottom: 7),
+                                                        child: Text(
+                                                          f.jabatan,
+                                                          style: TextStyle(
+                                                              // fontSize: 21,
+                                                              // color: Colors.lightBlue
+                                                              ),
+                                                        ),
+                                                      ),
+                                                      // Padding(
+                                                      //   padding:
+                                                      //       const EdgeInsets.only(
+                                                      //           left: 21.0),
+                                                      //   child: Row(
+                                                      //     children: <Widget>[
+                                                      //       Padding(
+                                                      //         padding:
+                                                      //             const EdgeInsets
+                                                      //                 .all(8.0),
+                                                      //         child: Icon(
+                                                      //           FontAwesomeIcons
+                                                      //               .facebook,
+                                                      //           color:
+                                                      //               Colors.blue,
+                                                      //         ),
+                                                      //       ),
+                                                      //       Padding(
+                                                      //         padding:
+                                                      //             const EdgeInsets
+                                                      //                 .all(8.0),
+                                                      //         child: Icon(
+                                                      //           FontAwesomeIcons
+                                                      //               .twitter,
+                                                      //           color: Colors
+                                                      //               .lightBlue,
+                                                      //         ),
+                                                      //       ),
+                                                      //       Padding(
+                                                      //         padding:
+                                                      //             const EdgeInsets
+                                                      //                 .all(8.0),
+                                                      //         child: Icon(
+                                                      //           FontAwesomeIcons
+                                                      //               .linkedin,
+                                                      //           color:
+                                                      //               Colors.blue,
+                                                      //         ),
+                                                      //       ),
+                                                      //     ],
+                                                      //   ),
+                                                      // ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     })
@@ -563,19 +580,21 @@ class _HomeState extends State<Home> {
                                           children: <Widget>[
                                             Icon(Icons.home),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child:
-                                                  Text(snapshot.data[0].pelatihan),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  snapshot.data[0].pelatihan),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text('PELATIHAN'),
                                             )
                                           ],
                                         ),
                                       ),
                                     ),
-                                   Card(
+                                    Card(
                                       elevation: 9,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -583,12 +602,14 @@ class _HomeState extends State<Home> {
                                           children: <Widget>[
                                             Icon(Icons.shopping_cart),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                   snapshot.data[0].produk_umkm),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text('PRODUK UMKM'),
                                             )
                                           ],
@@ -603,18 +624,21 @@ class _HomeState extends State<Home> {
                                           children: <Widget>[
                                             Icon(Icons.group),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Text(snapshot.data[0].peserta),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                  snapshot.data[0].peserta),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text('PESERTA'),
                                             )
                                           ],
                                         ),
                                       ),
                                     ),
-                                  Card(
+                                    Card(
                                       elevation: 9,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -622,12 +646,14 @@ class _HomeState extends State<Home> {
                                           children: <Widget>[
                                             Icon(Icons.business),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text(
                                                   snapshot.data[0].umkm_binaan),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.all(8.0),
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
                                               child: Text('UMKM BINAAN'),
                                             )
                                           ],
@@ -644,6 +670,33 @@ class _HomeState extends State<Home> {
                     }
                     return CircularProgressIndicator();
                   }),
+              // Column(
+              //   children: <Widget>[
+              //     Padding(
+              //       padding: const EdgeInsets.all(11),
+              //       child: GestureDetector(
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.end,
+              //           children: <Widget>[
+              //             Icon(
+              //               FontAwesomeIcons.list,
+              //               color: Colors.black,
+              //               size: 12,
+              //             ),
+              //             Text(
+              //               ' Lihat Lainnya',
+              //               style: TextStyle(fontSize: 17),
+              //             ),
+              //           ],
+              //         ),
+              //         onTap: () {
+              //           Navigator.of(context).push(
+              //               MaterialPageRoute(builder: (c) => BeritaLainnya()));
+              //         },
+              //       ),
+              //     ),
+              //   ],
+              // ),
               FutureBuilder<List<BeritaAPI>>(
                   future: fetchBeritaAPI(),
                   builder: (context, snapshot) {
@@ -665,11 +718,21 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 75),
+                                  padding: const EdgeInsets.only(left: 75.0),
                                   child: GestureDetector(
-                                    child: Text(
-                                      'Lihat Lainnya >>',
-                                      style: TextStyle(fontSize: 17),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        Icon(
+                                          FontAwesomeIcons.list,
+                                          color: Colors.black,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          ' Lihat Lainnya',
+                                          style: TextStyle(fontSize: 17),
+                                        ),
+                                      ],
                                     ),
                                     onTap: () {
                                       Navigator.of(context).push(
@@ -682,110 +745,129 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 280,
+                              height: 290,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
                                     .where((a) => a.kategori == 'Berita')
                                     .map((f) {
-                                      return Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Image.network(
-                                              'http://simadu.id/images/berita/' +
-                                                  f.img,
-                                              width: 200,
-                                              height: 150,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: <Widget>[
-                                                Container(
-                                                    width: 200,
-                                                    // color: Colors.black38,
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: <Widget>[
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Text(
-                                                            f.judul.substring(
-                                                                0,
-                                                                (f.judul.length <
-                                                                        40
-                                                                    ? f.judul
-                                                                        .length
-                                                                    : 40)),
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 8.0),
-                                                          child: Text(
-                                                            f.isi
-                                                                .toString()
-                                                                .substring(
-                                                                    0,
-                                                                    f.isi.length <
-                                                                            83
-                                                                        ? f.isi
-                                                                            .length
-                                                                        : 83),
-                                                            style: TextStyle(
-                                                              color: Colors
-                                                                  .black26,
-                                                              // fontSize: 10,
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                                  builder: (c) => DetailBerita(
+                                                        id: f.id_berita,
+                                                        title: f.judul,
+                                                        desc: f.isi,
+                                                        gambar:
+                                                            'http://simadu.id/images/berita/' +
+                                                                f.img,
+                                                        tanggal: f.tanggal,
+                                                        penulis: f.penulis,
+                                                      )));
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(7.0),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 0.0),
+                                                child: Image.network(
+                                                  'http://simadu.id/images/berita/' +
+                                                      f.img,
+                                                  // width: 200,
+                                                  height: 180,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: <Widget>[
+                                                  Container(
+                                                      width: 340,
+                                                      // color: Colors.black38,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text(
+                                                              f.judul.substring(
+                                                                  0,
+                                                                  (f.judul.length <
+                                                                          40
+                                                                      ? f.judul
+                                                                          .length
+                                                                      : 40)),
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
                                                             ),
                                                           ),
-                                                        ),
-                                                        // SizedBox(
-                                                        //   height: 35,
-                                                        //   child: RaisedButton(
-                                                        //     child: Text(
-                                                        //         'Baca Selengkapnya'),
-                                                        //     textColor:
-                                                        //         Colors.white,
-                                                        //     color: Colors
-                                                        //         .lightBlue,
-                                                        //     onPressed: () {
-                                                        //       Navigator.of(context).push(
-                                                        //           MaterialPageRoute(
-                                                        //               builder: (c) =>
-                                                        //                   DetailArtikel(
-                                                        //                     id: f.id_berita,
-                                                        //                     title:
-                                                        //                         f.judul,
-                                                        //                     desc:
-                                                        //                         f.isi,
-                                                        //                     gambar:
-                                                        //                         'http://simadu.id/images/berita/' + f.img,
-                                                        //                     tanggal:
-                                                        //                         f.tanggal,
-                                                        //                     penulis:
-                                                        //                         f.penulis,
-                                                        //                   )));
-                                                        //     },
-                                                        //   ),
-                                                        // ),
-                                                      ],
-                                                    )),
-                                              ],
-                                            ),
-                                          ],
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 8.0),
+                                                            child: Text(
+                                                              f.isi.toString().substring(
+                                                                  0,
+                                                                  f.isi.length <
+                                                                          100
+                                                                      ? f.isi
+                                                                          .length
+                                                                      : 100),
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .black26,
+                                                                // fontSize: 10,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          // SizedBox(
+                                                          //   height: 35,
+                                                          //   child: RaisedButton(
+                                                          //     child: Text(
+                                                          //         'Baca Selengkapnya'),
+                                                          //     textColor:
+                                                          //         Colors.white,
+                                                          //     color: Colors
+                                                          //         .lightBlue,
+                                                          //     onPressed: () {
+                                                          //       Navigator.of(context).push(
+                                                          //           MaterialPageRoute(
+                                                          //               builder: (c) =>
+                                                          //                   DetailArtikel(
+                                                          //                     id: f.id_berita,
+                                                          //                     title:
+                                                          //                         f.judul,
+                                                          //                     desc:
+                                                          //                         f.isi,
+                                                          //                     gambar:
+                                                          //                         'http://simadu.id/images/berita/' + f.img,
+                                                          //                     tanggal:
+                                                          //                         f.tanggal,
+                                                          //                     penulis:
+                                                          //                         f.penulis,
+                                                          //                   )));
+                                                          //     },
+                                                          //   ),
+                                                          // ),
+                                                        ],
+                                                      )),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     })
@@ -812,6 +894,33 @@ class _HomeState extends State<Home> {
                     }
                     return CircularProgressIndicator();
                   }),
+              // Column(
+              //   children: <Widget>[
+              //     Padding(
+              //       padding: const EdgeInsets.all(11),
+              //       child: GestureDetector(
+              //         child: Row(
+              //           mainAxisAlignment: MainAxisAlignment.end,
+              //           children: <Widget>[
+              //             Icon(
+              //               FontAwesomeIcons.list,
+              //               color: Colors.black,
+              //               size: 12,
+              //             ),
+              //             Text(
+              //               ' Lihat Lainnya',
+              //               style: TextStyle(fontSize: 17),
+              //             ),
+              //           ],
+              //         ),
+              //         onTap: () {
+              //           Navigator.of(context).push(MaterialPageRoute(
+              //               builder: (c) => ArtikelLainnya()));
+              //         },
+              //       ),
+              //     ),
+              //   ],
+              // ),
               FutureBuilder<List<BeritaAPI>>(
                   future: fetchBeritaAPI(),
                   builder: (context, snapshot) {
@@ -833,17 +942,26 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 59),
+                                  padding: const EdgeInsets.only(left: 55.0),
                                   child: GestureDetector(
-                                    child: Text(
-                                      'Lihat Lainnya >>',
-                                      style: TextStyle(fontSize: 17),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: <Widget>[
+                                        Icon(
+                                          FontAwesomeIcons.list,
+                                          color: Colors.black,
+                                          size: 12,
+                                        ),
+                                        Text(
+                                          ' Lihat Lainnya',
+                                          style: TextStyle(fontSize: 17),
+                                        ),
+                                      ],
                                     ),
                                     onTap: () {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
-                                              builder: (c) =>
-                                                  ArtikelLainnya()));
+                                              builder: (c) => BeritaLainnya()));
                                     },
                                   ),
                                 ),
@@ -851,115 +969,127 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 280,
+                              height: 290,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
                                     .where((a) => a.kategori == 'Artikel')
                                     .map((f) {
-                                      print(snapshot.data
-                                          .where((a) => a.kategori == 'Artikel')
-                                          .length);
-                                      return Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Image.network(
-                                              'http://simadu.id/images/berita/' +
-                                                  f.img,
-                                              width: 200,
-                                              height: 150,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.end,
-                                              children: <Widget>[
-                                                Container(
-                                                    width: 200,
-                                                    // color: Colors.black38,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                      children: <Widget>[
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .all(8.0),
-                                                          child: Text(
-                                                            f.judul.substring(
-                                                                0,
-                                                                (f.judul.length <
-                                                                        40
-                                                                    ? f.judul
-                                                                        .length
-                                                                    : 40)),
-                                                            style: TextStyle(
-                                                                color: Colors
-                                                                    .black),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                      .only(
-                                                                  left: 8.0),
-                                                          child: Text(
-                                                            f.isi
-                                                                .toString()
-                                                                .substring(
-                                                                    0,
-                                                                    f.isi.length <
-                                                                            83
-                                                                        ? f.isi
-                                                                            .length
-                                                                        : 83),
-                                                            style: TextStyle(
-                                                              color: Colors
-                                                                  .black26,
-                                                              // fontSize: 10,
+                                      return GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context)
+                                              .push(MaterialPageRoute(
+                                                  builder: (c) => DetailArtikel(
+                                                        id: f.id_berita,
+                                                        title: f.judul,
+                                                        desc: f.isi,
+                                                        gambar:
+                                                            'http://simadu.id/images/berita/' +
+                                                                f.img,
+                                                        tanggal: f.tanggal,
+                                                        penulis: f.penulis,
+                                                      )));
+                                        },
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Image.network(
+                                                'http://simadu.id/images/berita/' +
+                                                    f.img,
+                                                // width: 200,
+                                                height: 180,
+                                                fit: BoxFit.cover,
+                                              ),
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: <Widget>[
+                                                  Container(
+                                                      width: 340,
+                                                      // color: Colors.black38,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .end,
+                                                        children: <Widget>[
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Text(
+                                                              f.judul.substring(
+                                                                  0,
+                                                                  (f.judul.length <
+                                                                          40
+                                                                      ? f.judul
+                                                                          .length
+                                                                      : 40)),
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .black),
                                                             ),
                                                           ),
-                                                        ),
-                                                        // SizedBox(
-                                                        //   height: 35,
-                                                        //   child: RaisedButton(
-                                                        //     child: Text(
-                                                        //         'Baca Selengkapnya'),
-                                                        //     textColor:
-                                                        //         Colors.white,
-                                                        //     color: Colors
-                                                        //         .lightBlue,
-                                                        //     onPressed: () {
-                                                        //       Navigator.of(context).push(
-                                                        //           MaterialPageRoute(
-                                                        //               builder: (c) =>
-                                                        //                   DetailArtikel(
-                                                        //                     id: f.id_berita,
-                                                        //                     title:
-                                                        //                         f.judul,
-                                                        //                     desc:
-                                                        //                         f.isi,
-                                                        //                     gambar:
-                                                        //                         'http://simadu.id/images/berita/' + f.img,
-                                                        //                     tanggal:
-                                                        //                         f.tanggal,
-                                                        //                     penulis:
-                                                        //                         f.penulis,
-                                                        //                   )));
-                                                        //     },
-                                                        //   ),
-                                                        // ),
-                                                      ],
-                                                    )),
-                                              ],
-                                            ),
-                                          ],
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 8.0),
+                                                            child: Text(
+                                                              f.isi.toString().substring(
+                                                                  0,
+                                                                  f.isi.length <
+                                                                          83
+                                                                      ? f.isi
+                                                                          .length
+                                                                      : 83),
+                                                              style: TextStyle(
+                                                                color: Colors
+                                                                    .black26,
+                                                                // fontSize: 10,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          // SizedBox(
+                                                          //   height: 35,
+                                                          //   child: RaisedButton(
+                                                          //     child: Text(
+                                                          //         'Baca Selengkapnya'),
+                                                          //     textColor:
+                                                          //         Colors.white,
+                                                          //     color: Colors
+                                                          //         .lightBlue,
+                                                          //     onPressed: () {
+                                                          //       Navigator.of(context).push(
+                                                          //           MaterialPageRoute(
+                                                          //               builder: (c) =>
+                                                          //                   DetailArtikel(
+                                                          //                     id: f.id_berita,
+                                                          //                     title:
+                                                          //                         f.judul,
+                                                          //                     desc:
+                                                          //                         f.isi,
+                                                          //                     gambar:
+                                                          //                         'http://simadu.id/images/berita/' + f.img,
+                                                          //                     tanggal:
+                                                          //                         f.tanggal,
+                                                          //                     penulis:
+                                                          //                         f.penulis,
+                                                          //                   )));
+                                                          //     },
+                                                          //   ),
+                                                          // ),
+                                                        ],
+                                                      )),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       );
                                     })
@@ -988,51 +1118,72 @@ class _HomeState extends State<Home> {
                   }),
               Card(
                 elevation: 9,
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'MITRA',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w500, fontSize: 17),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 120,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
+                child: Container(
+                  height: 190,
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'assets/images/BUMN.jpeg',
-                              fit: BoxFit.cover,
+                            child: Text(
+                              'PENYELENGGARA',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500, fontSize: 17),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'assets/images/logo.png',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset(
-                              'assets/images/PLN.jpg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                          )
                         ],
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        height: 140,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                elevation: 9,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                    'assets/images/BUMN.jpeg',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                elevation: 9,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                    'assets/images/logo.png',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                elevation: 9,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Image.asset(
+                                    'assets/images/PLN.jpg',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

@@ -20,25 +20,25 @@ Future<List<PinjamanDanaAPI>> fetchPinjamanDanaAPI() async {
 
 class PinjamanDanaAPI {
   final String id_pinjaman;
+  final String img;
   final String judul;
   final String pesan;
-  final String link;
   
 
   PinjamanDanaAPI({
     this.id_pinjaman,
+    this.img,
     this.judul,
     this.pesan,
-    this.link,
 
   });
 
   factory PinjamanDanaAPI.fromJson(Map<String, dynamic> json) {
     return PinjamanDanaAPI(
       id_pinjaman: json['id_pinjaman'],
+      img: json['img'],
       judul: json['judul'],
       pesan: json['pesan'],
-      link: json['link'],
   
     );
   }

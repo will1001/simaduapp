@@ -67,7 +67,7 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
     } else {
       setState(() {
         msg = "Sertifikat Berhasil di Upload";
-        warnapesan = Colors.green;
+        warnapesan = Colors.lightBlue;
       });
     }
   }
@@ -121,7 +121,7 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
               padding: const EdgeInsets.only(left: 8.0, top: 8),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                color: Colors.green,
+                color: Colors.lightBlue,
                 height: 40,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -147,7 +147,7 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
                 // color: Colors.transparent,
                 // height: 40,
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.green, width: 1)),
+                    border: Border.all(color: Colors.lightBlue, width: 1)),
                 child: Column(
                   children: <Widget>[
                     Padding(
@@ -172,7 +172,7 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
                         },
                         child: Text('Upload'),
                         textColor: Colors.white,
-                        color: Colors.green,
+                        color: Colors.lightBlue,
                       ),
                     ),
                     ListTile(
@@ -186,16 +186,16 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
                         },
                         child: Text('Daftar'),
                         textColor: Colors.white,
-                        color: Colors.green,
+                        color: Colors.lightBlue,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Container(
-                        color: Colors.green[100],
+                        color: Colors.lightBlue[100],
                         height: 30,
                         width: MediaQuery.of(context).size.width,
-                        child: Center(child: Text('Sertifikat Anda Sudah Di Upload',style: TextStyle(color: Colors.green),)),
+                        child: Center(child: Text('Sertifikat Anda Sudah Di Upload',style: TextStyle(color: Colors.lightBlue),)),
                       ),
                     )
                   ],

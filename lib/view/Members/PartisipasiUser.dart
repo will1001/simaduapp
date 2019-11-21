@@ -30,33 +30,42 @@ class _PartisipasiUserState extends State<PartisipasiUser> {
               return ListView(
                   children: snapshot.data.where((a)=>a.id_register==widget.idRegister).toList().
                   map((f) {
-                return ExpansionTile(
-                  title: Text(f.judul==null?'':f.judul),
+                return Column(
                   children: <Widget>[
-                    ListTile(
-                      leading: Text('Tanggal Kegiatan'),
-                      title: Text(f.tanggal==null?'':f.tanggal),
+                    ExpansionTile(
+                      title: Text(f.judul==null?'':f.judul),
+                      children: <Widget>[
+                        ListTile(
+                          leading: Text('Tanggal Kegiatan'),
+                          title: Text(f.tanggal==null?'':f.tanggal),
+                        ),
+                        ListTile(
+                          leading: Text('Kehadiran'),
+                          title: Text(f.kehadiran==null?'':f.kehadiran),
+                        ),
+                        // ListTile(
+                        //   leading: Text('Unit Penjualan'),
+                        //   title: Text(f.unit_penjualan==null?'':f.unit_penjualan),
+                        // ),
+                        // ListTile(
+                        //   leading: Text('Satuan'),
+                        //   title: Text(f.satuan==null?'':f.satuan),
+                        // ),
+                        // ListTile(
+                        //   leading: Text('Harga'),
+                        //   title: Text(f.harga==null?'':f.harga),
+                        // ),
+                        // ListTile(
+                        //   leading: Text('Total'),
+                        //   title: Text(f.total==null?'':f.total),
+                        // ),
+                      ],
                     ),
-                    ListTile(
-                      leading: Text('Kehadiran'),
-                      title: Text(f.kehadiran==null?'':f.kehadiran),
-                    ),
-                    // ListTile(
-                    //   leading: Text('Unit Penjualan'),
-                    //   title: Text(f.unit_penjualan==null?'':f.unit_penjualan),
-                    // ),
-                    // ListTile(
-                    //   leading: Text('Satuan'),
-                    //   title: Text(f.satuan==null?'':f.satuan),
-                    // ),
-                    // ListTile(
-                    //   leading: Text('Harga'),
-                    //   title: Text(f.harga==null?'':f.harga),
-                    // ),
-                    // ListTile(
-                    //   leading: Text('Total'),
-                    //   title: Text(f.total==null?'':f.total),
-                    // ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 1,
+                      color: Colors.black38,
+                    )
                   ],
                 );
               }).toList());

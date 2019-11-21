@@ -264,7 +264,7 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
               Column(
                 children: <Widget>[
                   RaisedButton(
-                    child: Text('Submit'),
+                    child: Text('Kirim'),
                     textColor: Colors.black,
                     color: Colors.lightBlue,
                     onPressed: () {

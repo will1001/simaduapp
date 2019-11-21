@@ -3,7 +3,7 @@ import 'package:simadu/model/RekuesKelasAPI.dart';
 import 'package:simadu/view/Members/AddRequestKelas.dart';
 
 class RequestKelas extends StatefulWidget {
-   RequestKelas({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+  RequestKelas({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
       : super(key: key);
 
   final String namaPemilik;
@@ -29,23 +29,33 @@ class _RequestKelasState extends State<RequestKelas> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                  children: snapshot.data.where((a)=>a.id_register==widget.idRegister)
-                  .map((f) {
-                return ExpansionTile(
-                  title: Text(f.kelas),
+                  children: snapshot.data
+                      .where((a) => a.id_register == widget.idRegister)
+                      .map((f) {
+                return Column(
                   children: <Widget>[
-                    ListTile(
-                      leading: Text('Tanggal'),
-                      title: Text(f.tanggal),
+                    ExpansionTile(
+                      title: Text(f.kelas),
+                      children: <Widget>[
+                        ListTile(
+                          leading: Text('Tanggal'),
+                          title: Text(f.tanggal),
+                        ),
+                        ListTile(
+                          leading: Text('Lainnya'),
+                          title: Text(f.lainya),
+                        ),
+                        ListTile(
+                          leading: Text('Status'),
+                          title: Text(f.status),
+                        ),
+                      ],
                     ),
-                    ListTile(
-                      leading: Text('Lainnya'),
-                      title: Text(f.lainya),
-                    ),
-                    ListTile(
-                      leading: Text('Status'),
-                      title: Text(f.status),
-                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 1,
+                      color: Colors.black38,
+                    )
                   ],
                 );
               }).toList());
@@ -55,9 +65,9 @@ class _RequestKelasState extends State<RequestKelas> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => AddRequestKelas(
-                            idRegister: widget.idRegister,
-                            )));
+              builder: (c) => AddRequestKelas(
+                    idRegister: widget.idRegister,
+                  )));
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.lightBlue,

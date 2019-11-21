@@ -31,33 +31,42 @@ class _PerkembanganUserState extends State<PerkembanganUser> {
               return ListView(
                   children: snapshot.data.where((a)=>a.id_register==widget.idRegister).toList().
                   map((f) {
-                return ExpansionTile(
-                  title: Text('Soal nomor ${f.id_soal==null?'':f.id_soal}'),
+                return Column(
                   children: <Widget>[
-                    ListTile(
-                      leading: Text('Benar'),
-                      title: Text(f.benar==null?'':f.benar),
+                    ExpansionTile(
+                      title: Text('Soal nomor ${f.id_soal==null?'':f.id_soal}'),
+                      children: <Widget>[
+                        ListTile(
+                          leading: Text('Benar'),
+                          title: Text(f.benar==null?'':f.benar),
+                        ),
+                        ListTile(
+                          leading: Text('Salah'),
+                          title: Text(f.salah==null?'':f.salah),
+                        ),
+                        ListTile(
+                          leading: Text('Skor'),
+                          title: Text(f.skor==null?'':f.skor),
+                        ),
+                        // ListTile(
+                        //   leading: Text('Satuan'),
+                        //   title: Text(f.satuan==null?'':f.satuan),
+                        // ),
+                        // ListTile(
+                        //   leading: Text('Harga'),
+                        //   title: Text(f.harga==null?'':f.harga),
+                        // ),
+                        // ListTile(
+                        //   leading: Text('Total'),
+                        //   title: Text(f.total==null?'':f.total),
+                        // ),
+                      ],
                     ),
-                    ListTile(
-                      leading: Text('Salah'),
-                      title: Text(f.salah==null?'':f.salah),
-                    ),
-                    ListTile(
-                      leading: Text('Skor'),
-                      title: Text(f.skor==null?'':f.skor),
-                    ),
-                    // ListTile(
-                    //   leading: Text('Satuan'),
-                    //   title: Text(f.satuan==null?'':f.satuan),
-                    // ),
-                    // ListTile(
-                    //   leading: Text('Harga'),
-                    //   title: Text(f.harga==null?'':f.harga),
-                    // ),
-                    // ListTile(
-                    //   leading: Text('Total'),
-                    //   title: Text(f.total==null?'':f.total),
-                    // ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 1,
+                      color: Colors.black38,
+                    )
                   ],
                 );
               }).toList());

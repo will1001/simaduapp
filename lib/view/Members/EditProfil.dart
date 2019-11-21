@@ -396,7 +396,7 @@ class _EditProfilState extends State<EditProfil> {
                           return null;
                         }
                       },
-                      child: Text('Submit'),
+                      child: Text('Update'),
                       textColor: Colors.black,
                       color: Colors.lightBlue,
                     ),

@@ -41,7 +41,7 @@ class _ProfilState extends State<Profil> {
 
   @override
   Widget build(BuildContext context) {
-    int no=1;
+    int no = 1;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -102,21 +102,24 @@ class _ProfilState extends State<Profil> {
                                               )
                                             ],
                                           ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/logo.jpg',
-                                                  width: 170,
+                                          Card(
+                                            elevation: 9,
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Image.asset(
+                                                    'assets/images/logo.jpg',
+                                                    width: 170,
 
-                                                  // fit: BoxFit.fill,
-                                                ),
-                                              )
-                                            ],
+                                                    // fit: BoxFit.fill,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -167,114 +170,120 @@ class _ProfilState extends State<Profil> {
                                     Column(
                                       children: snapshot.data
                                           .map((f) {
-                                            return Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                  Row(
-                                                    children: <Widget>[
-                                                      Container(
-                                                          margin:
-                                                              EdgeInsets.all(5),
-                                                          width: 150.0,
-                                                          height: 150.0,
-                                                          decoration: BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              image: DecorationImage(
-                                                                  fit: BoxFit
-                                                                      .fill,
-                                                                  image: NetworkImage(
-                                                                      'http://simadu.id/images/tim/' +
-                                                                          f.img)))),
-                                                      Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: <Widget>[
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 21.0,
-                                                                    bottom: 7),
-                                                            child: Text(
-                                                              f.nama,
-                                                              style: TextStyle(
-                                                                  fontSize: 21,
-                                                                  color: Colors
-                                                                      .lightBlue),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 21.0,
-                                                                    bottom: 7),
-                                                            child: Text(
-                                                              f.jabatan,
-                                                              style: TextStyle(
-                                                                  // fontSize: 21,
-                                                                  // color: Colors.lightBlue
-                                                                  ),
-                                                            ),
-                                                          ),
-                                                          Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 21.0),
-                                                            child: Row(
-                                                              children: <
-                                                                  Widget>[
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Icon(
-                                                                    FontAwesomeIcons
-                                                                        .facebook,
+                                            return Card(
+                                              elevation: 9,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                            margin:
+                                                                EdgeInsets.all(5),
+                                                            width: 100.0,
+                                                            height: 100.0,
+                                                            decoration: BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                image: DecorationImage(
+                                                                    fit: BoxFit
+                                                                        .fill,
+                                                                    image: NetworkImage(
+                                                                        'http://simadu.id/images/tim/' +
+                                                                            f.img)))),
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: <Widget>[
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left: 21.0,
+                                                                      bottom: 7),
+                                                              child: Text(
+                                                                f.nama,
+                                                                style: TextStyle(
+                                                                    fontSize: 17,
                                                                     color: Colors
-                                                                        .blue,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Icon(
-                                                                    FontAwesomeIcons
-                                                                        .twitter,
-                                                                    color: Colors
-                                                                        .lightBlue,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding:
-                                                                      const EdgeInsets
-                                                                              .all(
-                                                                          8.0),
-                                                                  child: Icon(
-                                                                    FontAwesomeIcons
-                                                                        .linkedin,
-                                                                    color: Colors
-                                                                        .blue,
-                                                                  ),
-                                                                ),
-                                                              ],
+                                                                        .lightBlue),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left: 21.0,
+                                                                      bottom: 7),
+                                                              child: Text(
+                                                                f.jabatan,
+                                                                style: TextStyle(
+                                                                    // fontSize: 21,
+                                                                    // color: Colors.lightBlue
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                          .only(
+                                                                      left: 21.0),
+                                                              child: Row(
+                                                                children: <
+                                                                    Widget>[
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                                .all(
+                                                                            3.0),
+                                                                    child: Icon(
+                                                                      FontAwesomeIcons
+                                                                          .facebook,
+                                                                          size: 21,
+                                                                      color: Colors
+                                                                          .blue,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                                .all(
+                                                                            3.0),
+                                                                    child: Icon(
+                                                                      FontAwesomeIcons
+                                                                          .twitter,
+                                                                          size: 21,
+                                                                      color: Colors
+                                                                          .lightBlue,
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding:
+                                                                        const EdgeInsets
+                                                                                .all(
+                                                                            3.0),
+                                                                    child: Icon(
+                                                                      FontAwesomeIcons
+                                                                          .linkedin,
+                                                                          size: 21,
+                                                                      color: Colors
+                                                                          .blue,
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             );
                                           })
@@ -293,40 +302,40 @@ class _ProfilState extends State<Profil> {
               ],
             ),
             FutureBuilder<List<VideoEdukasiAPI>>(
-          future: fetchVideoEdukasiAPI(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return ListView(
-                children: snapshot.data.map((f){
-                  return Column(
-                    children: <Widget>[
-                      ListTile(
-                    leading: Text((no++).toString()+'.'),
-                        title: Text(f.judul),
-                        trailing: Icon(Icons.videocam),
-                        onTap: () async {
-                           String url = 'https://www.youtube.com/embed/${f.link}';
-                                if (await canLaunch(url)) {
-                                  await launch(url);
-                                } else {
-                                  throw 'Could not launch $url';
-                                }
-                        },
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.black,
-                          height: 1,
-                        ),
-                      )
-                    ],
-                  );
-                }).toList()
-              );
-            }
-            return CircularProgressIndicator();
-          }),
+                future: fetchVideoEdukasiAPI(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView(
+                        children: snapshot.data.map((f) {
+                      return Column(
+                        children: <Widget>[
+                          ListTile(
+                            leading: Text((no++).toString() + '.'),
+                            title: Text(f.judul),
+                            trailing: Icon(Icons.videocam),
+                            onTap: () async {
+                              String url =
+                                  'https://www.youtube.com/embed/${f.link}';
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              color: Colors.black,
+                              height: 1,
+                            ),
+                          )
+                        ],
+                      );
+                    }).toList());
+                  }
+                  return CircularProgressIndicator();
+                }),
           ],
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:simadu/model/BeritaAPI.dart';
 import 'package:simadu/model/ProviderAgenda.dart';
@@ -27,6 +28,33 @@ class _BeritaState extends State<Berita> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(11),
+                child: GestureDetector(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Icon(
+                        FontAwesomeIcons.list,
+                        color: Colors.black,
+                        size: 12,
+                      ),
+                      Text(
+                        ' Lihat Lainnya',
+                        style: TextStyle(fontSize: 17),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => BeritaLainnya()));
+                  },
+                ),
+              ),
+            ],
+          ),
           Card(
             elevation: 9,
             child: Column(
@@ -42,20 +70,20 @@ class _BeritaState extends State<Berita> {
                             fontWeight: FontWeight.w500, fontSize: 17),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 151),
-                      child: GestureDetector(
-                        child: Text(
-                          'Lihat Lainnya',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (c) => BeritaLainnya()));
-                        },
-                      ),
-                    ),
-                    Icon(Icons.keyboard_arrow_right)
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 151),
+                    //   child: GestureDetector(
+                    //     child: Text(
+                    //       'Lihat Lainnya',
+                    //       style: TextStyle(fontSize: 17),
+                    //     ),
+                    //     onTap: () {
+                    //       Navigator.of(context).push(MaterialPageRoute(
+                    //           builder: (c) => BeritaLainnya()));
+                    //     },
+                    //   ),
+                    // ),
+                    // Icon(Icons.keyboard_arrow_right)
                   ],
                 ),
                 Padding(
@@ -71,6 +99,33 @@ class _BeritaState extends State<Berita> {
                 ),
               ],
             ),
+          ),
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(11),
+                child: GestureDetector(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Icon(
+                        FontAwesomeIcons.list,
+                        color: Colors.black,
+                        size: 12,
+                      ),
+                      Text(
+                        ' Lihat Lainnya',
+                        style: TextStyle(fontSize: 17),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (c) => ArtikelLainnya()));
+                  },
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 11),
@@ -89,20 +144,20 @@ class _BeritaState extends State<Berita> {
                               fontWeight: FontWeight.w500, fontSize: 17),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 131),
-                        child: GestureDetector(
-                          child: Text(
-                            'Lihat Lainnya',
-                            style: TextStyle(fontSize: 17),
-                          ),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (c) => ArtikelLainnya()));
-                          },
-                        ),
-                      ),
-                      Icon(Icons.keyboard_arrow_right)
+                      // Padding(
+                      //   padding: const EdgeInsets.only(left: 131),
+                      //   child: GestureDetector(
+                      //     child: Text(
+                      //       'Lihat Lainnya',
+                      //       style: TextStyle(fontSize: 17),
+                      //     ),
+                      //     onTap: () {
+                      //       Navigator.of(context).push(MaterialPageRoute(
+                      //           builder: (c) => ArtikelLainnya()));
+                      //     },
+                      //   ),
+                      // ),
+                      // Icon(Icons.keyboard_arrow_right)
                     ],
                   ),
                   Padding(
@@ -133,14 +188,15 @@ class WidgetGridview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height / 3,
+      // height: MediaQuery.of(context).size.height / 3,
+      height: 250,
       width: MediaQuery.of(context).size.width,
       child: FutureBuilder<List<BeritaAPI>>(
           future: data,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
-                  // scrollDirection: Axis.horizontal,
+                  scrollDirection: Axis.horizontal,
                   children: snapshot.data
                       .where((a) => a.kategori == kategori)
                       .map((f) {
@@ -199,7 +255,8 @@ class WidgetGridview extends StatelessWidget {
                                     Container(
                                       child: SizedBox(
                                         height: 140,
-                                        width: MediaQuery.of(context).size.width,
+                                        width:
+                                            MediaQuery.of(context).size.width,
                                         child: Image.network(
                                           'http://simadu.id/images/berita/' +
                                               f.img,
@@ -208,17 +265,21 @@ class WidgetGridview extends StatelessWidget {
                                       ),
                                     ),
                                     Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Container(
-                                          width: MediaQuery.of(context).size.width,
+                                          width:
+                                              MediaQuery.of(context).size.width,
                                           // color: Colors.black38,
                                           child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: <Widget>[
                                                   // Text(
                                                   //   f['title'],
@@ -238,15 +299,17 @@ class WidgetGridview extends StatelessWidget {
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding: const EdgeInsets.only(top:8.0),
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 8.0),
                                                     child: Text(
                                                       f.isi
                                                           .toString()
                                                           .substring(
                                                               0,
-                                                              f.isi.length < 83
+                                                              f.isi.length < 101
                                                                   ? f.isi.length
-                                                                  : 83),
+                                                                  : 101),
                                                       style: TextStyle(
                                                         color: Colors.black26,
                                                         // fontSize: 10,

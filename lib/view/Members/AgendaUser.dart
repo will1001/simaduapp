@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simadu/model/Agenda.dart';
 import 'package:simadu/model/Agenda.dart' as prefix0;
+import 'package:simadu/view/Members/DetailAgendaUser.dart';
 import 'package:simadu/view/Visitor/DetailGaleri.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
@@ -107,7 +108,8 @@ class _AgendaUserState extends State<AgendaUser> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (c) => DetailGaleri(
+                                      builder: (c) => DetailAgendaUser(
+                                            idRegister: widget.idRegister,
                                             id: f.id_agenda,
                                             title: f.judul,
                                             desc: f.agenda,
@@ -157,18 +159,34 @@ class _AgendaUserState extends State<AgendaUser> {
                                                       Column(
                                                         children: <Widget>[
                                                           RaisedButton(
-                                                            child: Text(
-                                                                'Daftar Sekarang'),
+                                                            child:
+                                                                Text('Detail'),
                                                             textColor:
                                                                 Colors.black,
                                                             color: Colors
                                                                 .lightBlue,
                                                             onPressed: () {
-                                                              setState(() {
-                                                                _judul =
-                                                                    f.judul;
-                                                              });
-                                                              daftaragenda();
+                                                              // setState(() {
+                                                              //   _judul =
+                                                              //       f.judul;
+                                                              // });
+                                                              // daftaragenda();
+                                                              Navigator.of(context).push(
+                                                                  MaterialPageRoute(
+                                                                      builder: (c) =>
+                                                                          DetailAgendaUser(
+                                                                            idRegister:
+                                                                                widget.idRegister,
+                                                                            id: f.id_agenda,
+                                                                            title:
+                                                                                f.judul,
+                                                                            desc:
+                                                                                f.agenda,
+                                                                            tanggal:
+                                                                                f.tanggal,
+                                                                            gambar:
+                                                                                'http://simadu.id/images/agenda/' + f.img,
+                                                                          )));
                                                             },
                                                           ),
                                                         ],

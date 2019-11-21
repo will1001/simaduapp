@@ -66,7 +66,7 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
     } else {
       setState(() {
         msg = "Sertifikat Berhasil di Upload";
-        warnapesan = Colors.green;
+        warnapesan = Colors.lightBlue;
       });
     }
   }
