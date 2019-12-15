@@ -81,7 +81,7 @@ class _PinjamanDanaState extends State<PinjamanDana> {
                                               children: <Widget>[
                                                 Text(f.judul),
                                                 Text(
-                                                  f.pesan.substring(0, 50) +
+                                                  f.pesan.substring(0, 50).replaceAll('<p>', '') +
                                                       '. . .',
                                                   style: TextStyle(
                                                       color: Colors.grey,
@@ -105,7 +105,7 @@ class _PinjamanDanaState extends State<PinjamanDana> {
                                                                       title: f
                                                                           .judul,
                                                                       desc: f
-                                                                          .pesan,
+                                                                          .pesan.replaceAll('<p>', ''),
                                                                       // tanggal: f.tanggal,
                                                                       gambar: 'http://simadu.id/images/pinjaman/' +
                                                                           f.img,

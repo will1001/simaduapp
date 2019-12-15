@@ -29,7 +29,7 @@ class _GalleryState extends State<Gallery> {
             ),
             ListTile(
               leading: Icon(FontAwesomeIcons.question,color: Colors.blue,),
-              title: Text('Quiz'),
+              title: Text('Kuis'),
             ),
             ListTile(
               leading: Icon(FontAwesomeIcons.graduationCap,color: Colors.red,),

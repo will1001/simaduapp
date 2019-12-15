@@ -23,7 +23,7 @@ class _MyclassState extends State<Myclass> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'My Class',
+            'Kelas',
             style: TextStyle(fontSize: 16.0),
           ),
         ),
@@ -45,7 +45,7 @@ class _MyclassState extends State<Myclass> {
             ),
             ListTile(
               leading: Icon(FontAwesomeIcons.youtube,color: Colors.red,),
-              title: Text('Video Edukasi'),
+              title: Text('Video'),
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => VideoEdukasi(
@@ -58,7 +58,7 @@ class _MyclassState extends State<Myclass> {
             ),
             ListTile(
               leading: Icon(FontAwesomeIcons.question,color: Colors.blue,),
-              title: Text('Quiz'),
+              title: Text('Kuis'),
               onTap: (){
                 Navigator.of(context).push(MaterialPageRoute(
                         builder: (c) => Quiz(

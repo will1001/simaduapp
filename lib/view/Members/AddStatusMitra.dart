@@ -21,6 +21,7 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
   var _tanggal;
   String _mitra;
   TextEditingController lainnyaController = new TextEditingController();
+  TextEditingController mitra_lainController = new TextEditingController();
   Future rekueskelas() async {
     var responseJson;
     String url = "http://simadu.id/api/status_mitra_api.php";
@@ -28,6 +29,7 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
       "id_register": widget.idRegister,
       "mitra": _mitra,
       "lainya": lainnyaController.text == '' ? '' : lainnyaController.text,
+      "mitra_lain": mitra_lainController.text == '' ? '' : mitra_lainController.text,
       "status": 'Data Anda Sudah Di Update',
     });
     responseJson = json.decode(response.body);
@@ -46,6 +48,25 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
         msg = responseJson['msg'];
         warnapesan = Colors.green;
       });
+       showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Berhasil'),
+              content: Text(
+                msg,
+                style: TextStyle(color: Colors.green),
+              ),
+            );
+          });
+
+      Future.delayed(
+        Duration(seconds: 3),
+        () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      );
     }
   }
 
@@ -258,6 +279,21 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
                 ),
               ),
               Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 45.0),
+                child: Text('Apakah anda tergabung dalam komunitas wirausaha selain RKB Lombok Barat? :'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: TextField(
+                  controller: mitra_lainController,
+                  decoration: InputDecoration(
+                    // icon: Text('Lainnya :'),
+                    hintText: 'Apakah anda tergabung dalam komunitas wirausaha selain RKB Lombok Barat?',
+                    labelText: 'Apakah anda tergabung dalam komunitas wirausaha selain RKB Lombok Barat?',
+                  ),
+                ),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(left: 16, bottom: 8, top: 16),
                 child: Text('Status :        Data Anda Sudah Di Update'),
               ),
@@ -271,14 +307,14 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
                       rekueskelas();
                     },
                   ),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      msg,
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  )),
+                  // Center(
+                  //     child: Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Text(
+                  //     msg,
+                  //     style: TextStyle(color: Colors.green),
+                  //   ),
+                  // )),
                 ],
               )
             ],

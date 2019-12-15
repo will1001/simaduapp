@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:simadu/view/Members/DaftarPinjaman.dart';
 
 import '../LandingPage.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -135,10 +136,17 @@ class _DetailPinjamanDanaState extends State<DetailPinjamanDana> {
                         textColor: Colors.white,
                         color: Colors.lightBlue,
                         onPressed: () {
-                          setState(() {
-                            _judul = widget.title;
-                          });
-                          daftarpinjamandana();
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (c) => DaftarPinjaman(
+                                    idRegister: widget.idRegister,
+                                    // id: f.id_pinjaman,
+                                    title: widget.title,
+                                    // desc: f.pesan,
+                                    // // tanggal: f.tanggal,
+                                    // gambar:
+                                    //     'http://simadu.id/images/pinjaman/' +
+                                    //         f.img,
+                                  )));
                         },
                       ),
                     )

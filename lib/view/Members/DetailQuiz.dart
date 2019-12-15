@@ -5,12 +5,14 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:simadu/view/Members/HasilQuiz.dart';
+
 class DetailQuiz extends StatefulWidget {
-  DetailQuiz({Key key, this.nomor,this.idRegister}) : super(key: key);
+  DetailQuiz({Key key, this.nomor, this.idRegister}) : super(key: key);
 
   final String nomor;
   final String idRegister;
-  
+
   @override
   _DetailQuizState createState() => _DetailQuizState();
 }
@@ -26,7 +28,7 @@ class _DetailQuizState extends State<DetailQuiz> {
   String msg = '';
   Color warnapesan;
 
-  Future isikuis(int b,int s,double sc) async {
+  Future isikuis(int b, int s, double sc) async {
     var responseJson;
     String url = "http://simadu.id/api/insert_quiz.php";
     final response = await http.post(url, body: {
@@ -49,31 +51,29 @@ class _DetailQuizState extends State<DetailQuiz> {
       //           selectedIndex: 5,
       //         )));
       print(responseJson['msg']);
-       setState(() {
+      setState(() {
         msg = responseJson['msg'];
         warnapesan = Colors.green;
       });
-      
     }
   }
-
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-      // for (var i = 0; i < 99; i++) {
-      //                totaljawaban.add('');
-      //                }
-                      
+    // for (var i = 0; i < 99; i++) {
+    //                totaljawaban.add('');
+    //                }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'Quiz',
+            'Kuis',
             style: TextStyle(fontSize: 16.0),
           ),
         ),
@@ -84,7 +84,6 @@ class _DetailQuizState extends State<DetailQuiz> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     //
-
 
                     return Container();
                   }
@@ -102,7 +101,7 @@ class _DetailQuizState extends State<DetailQuiz> {
                     var jwbd;
                     var jwbe;
                     var kuncijwb;
-                    var datab=[];
+                    var datab = [];
 
                     for (var i = 0;
                         i <
@@ -150,116 +149,119 @@ class _DetailQuizState extends State<DetailQuiz> {
                           .map((f) {
                         return f.knc_jawaban;
                       }).toList();
-                      
-                      if(totaljawaban.length<=datab.length){
+
+                      if (totaljawaban.length <= datab.length) {
                         totaljawaban.add('value');
                       }
-                       datab.add({
-                          'id_soal': '',
-                          'soal': '',
-                          'index': 0,
-                          'a': '',
-                          'b': '',
-                          'c': '',
-                          'd': '',
-                          'e': '',
-                          'knc_jawaban': '',
-                        });
-                        datab[i]['id_soal'] = idsoal[i];
-                        datab[i]['soal'] = soal[i];
-                        datab[i]['index'] = i;
-                        datab[i]['a'] = jwba[i];
-                        datab[i]['b'] = jwbb[i];
-                        datab[i]['c'] = jwbc[i];
-                        datab[i]['d'] = jwbd[i];
-                        datab[i]['e'] = jwbe[i];
-                        datab[i]['knc_jawaban'] = kuncijwb[i];
+                      datab.add({
+                        'id_soal': '',
+                        'soal': '',
+                        'index': 0,
+                        'a': '',
+                        'b': '',
+                        'c': '',
+                        'd': '',
+                        'e': '',
+                        'knc_jawaban': '',
+                      });
+                      datab[i]['id_soal'] = idsoal[i];
+                      datab[i]['soal'] = soal[i];
+                      datab[i]['index'] = i;
+                      datab[i]['a'] = jwba[i];
+                      datab[i]['b'] = jwbb[i];
+                      datab[i]['c'] = jwbc[i];
+                      datab[i]['d'] = jwbd[i];
+                      datab[i]['e'] = jwbe[i];
+                      datab[i]['knc_jawaban'] = kuncijwb[i];
                     }
                     return Column(
                       children: <Widget>[
                         Column(
-                          children: datab
-                              .map((f) {
-                         
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text('${f['index']+1}. ${f['soal']}'),
-                                        Row(
-                                          children: <Widget>[
-                                            Radio(
-                                              value: f['a'].toString(),
-                                              groupValue: totaljawaban[f['index']],
-                                              onChanged: (String value) {
-                                                setState(() {
-                                                  // totaljawaban.add(value);
-                                                  totaljawaban[f['index']] = value;
-                                                });
-                                              },
-                                            ),
-                                            Text(f['a'])
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Radio(
-                                              value: f['b'].toString(),
-                                              groupValue: totaljawaban[f['index']]
-                                                  .toString(),
-                                              onChanged: (String value) {
-                                                setState(() {
-                                                  // totaljawaban.add(value);
-                                                  totaljawaban[f['index']] = value;
-                                                });
-                                              },
-                                            ),
-                                            Text(f['b'])
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Radio(
-                                              value: f['c'].toString(),
-                                              groupValue: totaljawaban[f['index']]
-                                                  .toString(),
-                                              onChanged: (String value) {
-                                                setState(() {
-                                                  // totaljawaban.add(value);
-                                                  totaljawaban[f['index']] = value;
-                                                });
-                                              },
-                                            ),
-                                            Text(f['c'])
-                                          ],
-                                        ),
-                                        Row(
-                                          children: <Widget>[
-                                            Radio(
-                                              value: f['d'].toString(),
-                                              groupValue: totaljawaban[f['index']]
-                                                  .toString(),
-                                              onChanged: (String value) {
-                                                setState(() {
-                                                  // totaljawaban.add(value);
-                                                  totaljawaban[f['index']] = value;
-                                                });
-                                              },
-                                            ),
-                                            Text(f['d']),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                          children: datab.map((f) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text('${f['index'] + 1}. ${f['soal']}'),
+                                      Row(
+                                        children: <Widget>[
+                                          Radio(
+                                            value: f['a'].toString(),
+                                            groupValue:
+                                                totaljawaban[f['index']],
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                // totaljawaban.add(value);
+                                                totaljawaban[f['index']] =
+                                                    value;
+                                              });
+                                            },
+                                          ),
+                                          Text(f['a'])
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Radio(
+                                            value: f['b'].toString(),
+                                            groupValue: totaljawaban[f['index']]
+                                                .toString(),
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                // totaljawaban.add(value);
+                                                totaljawaban[f['index']] =
+                                                    value;
+                                              });
+                                            },
+                                          ),
+                                          Text(f['b'])
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Radio(
+                                            value: f['c'].toString(),
+                                            groupValue: totaljawaban[f['index']]
+                                                .toString(),
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                // totaljawaban.add(value);
+                                                totaljawaban[f['index']] =
+                                                    value;
+                                              });
+                                            },
+                                          ),
+                                          Text(f['c'])
+                                        ],
+                                      ),
+                                      Row(
+                                        children: <Widget>[
+                                          Radio(
+                                            value: f['d'].toString(),
+                                            groupValue: totaljawaban[f['index']]
+                                                .toString(),
+                                            onChanged: (String value) {
+                                              setState(() {
+                                                // totaljawaban.add(value);
+                                                totaljawaban[f['index']] =
+                                                    value;
+                                              });
+                                            },
+                                          ),
+                                          Text(f['d']),
+                                        ],
+                                      ),
+                                    ],
                                   ),
-                                  // Text(totaljawaban.toString()),
-                                ],
-                              );
+                                ),
+                                // Text(totaljawaban.toString()),
+                              ],
+                            );
                           }).toList(),
                         ),
                         // Text(kuncijwb.toString()),
@@ -267,34 +269,35 @@ class _DetailQuizState extends State<DetailQuiz> {
                           onPressed: () {
                             for (var i = 0; i < totaljawaban.length; i++) {
                               if (totaljawaban[i] == kuncijwb[i]) {
-                              setState(() {
-                                benar++;
-                              });
-                            } else {
-                              setState(() {
-                                salah++;
-                              });
+                                setState(() {
+                                  benar++;
+                                });
+                              } else {
+                                setState(() {
+                                  salah++;
+                                });
+                              }
+                              score = (benar / totaljawaban.length) * 100;
                             }
-                            score=(benar/totaljawaban.length)*100;
-                            }
-                            isikuis(benar,salah,score);
-                             Future.delayed(Duration(seconds: 1),
-                                (){
-                            Navigator.of(context).pop();
-                                  
-                                },
-                                
-                                );
-
+                            isikuis(benar, salah, score);
+                            Future.delayed(
+                              Duration(seconds: 1),
+                              () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (c) => HasilQuiz(
+                                      idRegister: widget.idRegister,
+                                    )));
+                              },
+                            );
                           },
                           child: Text('submit'),
                           textColor: Colors.black,
                           color: Colors.lightBlue,
                         ),
-                        Text(
-              msg,
-              style: TextStyle(color: warnapesan),
-            ),
+                        // Text(
+                        //   msg,
+                        //   style: TextStyle(color: warnapesan),
+                        // ),
                       ],
                     );
                   }

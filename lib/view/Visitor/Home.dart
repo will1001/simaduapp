@@ -9,6 +9,7 @@ import 'package:simadu/model/ProviderHome.dart';
 import 'package:simadu/model/SliderAPI.dart';
 import 'package:simadu/model/TimAPI.dart';
 import 'package:simadu/view/Visitor/DetailBerita.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'ArtikelLainnya.dart';
 import 'BeritaLainnya.dart';
@@ -745,26 +746,32 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 290,
+                              height: 330,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
                                     .where((a) => a.kategori == 'Berita')
                                     .map((f) {
                                       return GestureDetector(
-                                        onTap: () {
-                                          Navigator.of(context)
-                                              .push(MaterialPageRoute(
-                                                  builder: (c) => DetailBerita(
-                                                        id: f.id_berita,
-                                                        title: f.judul,
-                                                        desc: f.isi,
-                                                        gambar:
-                                                            'http://simadu.id/images/berita/' +
-                                                                f.img,
-                                                        tanggal: f.tanggal,
-                                                        penulis: f.penulis,
-                                                      )));
+                                        onTap: () async {
+                                          // Navigator.of(context)
+                                          //     .push(MaterialPageRoute(
+                                          //         builder: (c) => DetailBerita(
+                                          //               id: f.id_berita,
+                                          //               title: f.judul,
+                                          //               // desc: f.isi,
+                                          //               gambar:
+                                          //                   'http://simadu.id/images/berita/' +
+                                          //                       f.img,
+                                          //               tanggal: f.tanggal,
+                                          //               penulis: f.penulis,
+                                          //             )));
+                                          String url = f.link;
+                                          if (await canLaunch(url)) {
+                                            await launch(url);
+                                          } else {
+                                            throw 'Could not launch $url';
+                                          }
                                         },
                                         child: Padding(
                                           padding: const EdgeInsets.all(7.0),
@@ -800,6 +807,34 @@ class _HomeState extends State<Home> {
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(8.0),
+                                                            child: Row(
+                                                              children: <
+                                                                  Widget>[
+                                                                Text(
+                                                                    'Tanggal : '),
+                                                                Text(
+                                                                  f.tanggal,
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                ),
+                                                                Text(
+                                                                    ' | Dipost : '),
+                                                                Text(
+                                                                  f.penulis,
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
                                                             child: Text(
                                                               f.judul.substring(
                                                                   0,
@@ -811,6 +846,52 @@ class _HomeState extends State<Home> {
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .black),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
+                                                            child: Container(
+                                                              height: 35,
+                                                              child:
+                                                                  RaisedButton(
+                                                                textColor:
+                                                                    Colors
+                                                                        .black,
+                                                                color: Colors
+                                                                    .lightBlue,
+                                                                onPressed:
+                                                                    () async {
+                                                                  String url =
+                                                                      f.link;
+                                                                  if (await canLaunch(
+                                                                      url)) {
+                                                                    await launch(
+                                                                        url);
+                                                                  } else {
+                                                                    showDialog(
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) =>
+                                                                              new AlertDialog(
+                                                                        title: new Text(
+                                                                            'Maaf'),
+                                                                        content:
+                                                                            new Text('Link Kosong'),
+                                                                        // actions: 
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                },
+                                                                child: Text(
+                                                                  'Baca Selengkapnya',
+                                                                  style: TextStyle(
+                                                                      color: Colors
+                                                                          .white),
+                                                                ),
+                                                              ),
                                                             ),
                                                           ),
                                                           Padding(
@@ -961,7 +1042,8 @@ class _HomeState extends State<Home> {
                                     onTap: () {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
-                                              builder: (c) => BeritaLainnya()));
+                                              builder: (c) =>
+                                                  ArtikelLainnya()));
                                     },
                                   ),
                                 ),
@@ -969,7 +1051,7 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              height: 290,
+                              height: 330,
                               child: ListView(
                                 scrollDirection: Axis.horizontal,
                                 children: snapshot.data
@@ -1022,6 +1104,34 @@ class _HomeState extends State<Home> {
                                                             padding:
                                                                 const EdgeInsets
                                                                     .all(8.0),
+                                                            child: Row(
+                                                              children: <
+                                                                  Widget>[
+                                                                Text(
+                                                                    'Tanggal : '),
+                                                                Text(
+                                                                  f.tanggal,
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                ),
+                                                                Text(
+                                                                    ' | Dipost : '),
+                                                                Text(
+                                                                  f.penulis,
+                                                                  style: TextStyle(
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                    .all(8.0),
                                                             child: Text(
                                                               f.judul.substring(
                                                                   0,
@@ -1035,55 +1145,58 @@ class _HomeState extends State<Home> {
                                                                       .black),
                                                             ),
                                                           ),
+                                                          // Padding(
+                                                          //   padding:
+                                                          //       const EdgeInsets
+                                                          //               .only(
+                                                          //           left: 8.0),
+                                                          //   child: Text(
+                                                          //     f.isi.toString().substring(
+                                                          //         0,
+                                                          //         f.isi.length <
+                                                          //                 100
+                                                          //             ? f.isi
+                                                          //                 .length
+                                                          //             : 100),
+                                                          //     style: TextStyle(
+                                                          //       color: Colors
+                                                          //           .black26,
+                                                          //       // fontSize: 10,
+                                                          //     ),
+                                                          //   ),
+                                                          // ),
                                                           Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 8.0),
-                                                            child: Text(
-                                                              f.isi.toString().substring(
-                                                                  0,
-                                                                  f.isi.length <
-                                                                          83
-                                                                      ? f.isi
-                                                                          .length
-                                                                      : 83),
-                                                              style: TextStyle(
+                                                            padding: const EdgeInsets.all(8.0),
+                                                            child: SizedBox(
+                                                              height: 35,
+                                                              child: RaisedButton(
+                                                                child: Text(
+                                                                    'Baca Selengkapnya'),
+                                                                textColor:
+                                                                    Colors.white,
                                                                 color: Colors
-                                                                    .black26,
-                                                                // fontSize: 10,
+                                                                    .lightBlue,
+                                                                onPressed: () {
+                                                                  Navigator.of(context).push(
+                                                                      MaterialPageRoute(
+                                                                          builder: (c) =>
+                                                                              DetailArtikel(
+                                                                                id: f.id_berita,
+                                                                                title:
+                                                                                    f.judul,
+                                                                                desc:
+                                                                                    f.isi,
+                                                                                gambar:
+                                                                                    'http://simadu.id/images/berita/' + f.img,
+                                                                                tanggal:
+                                                                                    f.tanggal,
+                                                                                penulis:
+                                                                                    f.penulis,
+                                                                              )));
+                                                                },
                                                               ),
                                                             ),
                                                           ),
-                                                          // SizedBox(
-                                                          //   height: 35,
-                                                          //   child: RaisedButton(
-                                                          //     child: Text(
-                                                          //         'Baca Selengkapnya'),
-                                                          //     textColor:
-                                                          //         Colors.white,
-                                                          //     color: Colors
-                                                          //         .lightBlue,
-                                                          //     onPressed: () {
-                                                          //       Navigator.of(context).push(
-                                                          //           MaterialPageRoute(
-                                                          //               builder: (c) =>
-                                                          //                   DetailArtikel(
-                                                          //                     id: f.id_berita,
-                                                          //                     title:
-                                                          //                         f.judul,
-                                                          //                     desc:
-                                                          //                         f.isi,
-                                                          //                     gambar:
-                                                          //                         'http://simadu.id/images/berita/' + f.img,
-                                                          //                     tanggal:
-                                                          //                         f.tanggal,
-                                                          //                     penulis:
-                                                          //                         f.penulis,
-                                                          //                   )));
-                                                          //     },
-                                                          //   ),
-                                                          // ),
                                                         ],
                                                       )),
                                                 ],

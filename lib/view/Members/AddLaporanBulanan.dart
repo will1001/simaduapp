@@ -46,6 +46,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
     final response = await http.post(url, body: {
       "id_register": widget.idRegister,
       "tanggal": DateTime.now().toString().substring(0, 10),
+      "tahun": DateTime.now().toString().substring(0, 4),
       "jenis_produk": jenis_produkController,
       "nama_produk": nama_produkController.text,
       "jumlah": jumlahController.text,
@@ -73,6 +74,25 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
         msg = responseJson['msg'];
         warnapesan = Colors.green;
       });
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Berhasil'),
+              content: Text(
+                msg,
+                style: TextStyle(color: Colors.green),
+              ),
+            );
+          });
+
+      Future.delayed(
+        Duration(seconds: 3),
+        () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      );
     }
   }
 
@@ -118,7 +138,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
               //           DropdownButton<String>(
               //             hint: Text('Nama Akun'),
               //             value: providerrekueskelas.namaakun,
-              //             icon: Icon(Icons.arrow_downward),
+              //             icon: Icon(Icons.keyboard_arrow_down),
               //             iconSize: 24,
               //             elevation: 16,
               //             style: TextStyle(color: Colors.black),
@@ -200,7 +220,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
                         DropdownButton<String>(
                           hint: Text('Jenis Produk'),
                           value: providerrekueskelas.kelas,
-                          icon: Icon(Icons.arrow_downward),
+                          icon: Icon(Icons.keyboard_arrow_down),
                           iconSize: 24,
                           elevation: 16,
                           style: TextStyle(color: Colors.black),
@@ -272,7 +292,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
                   DropdownButton<String>(
                     hint: Text('Jenis Pembayaran'),
                     value: _jenispembayaran,
-                    icon: Icon(Icons.arrow_downward),
+                    icon: Icon(Icons.keyboard_arrow_down),
                     iconSize: 24,
                     elevation: 16,
                     style: TextStyle(color: Colors.black),
@@ -298,13 +318,13 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
               Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 3.0),
-                    child: Text('Bulan Pembayaran :'),
+                    padding: const EdgeInsets.only(left: 16.0, right: 15.0),
+                    child: Text('Bulan Pembelian :'),
                   ),
                   DropdownButton<String>(
-                    hint: Text('Bulan Pembayaran'),
+                    hint: Text('Bulan Pembelian'),
                     value: _bulanpembayaran,
-                    icon: Icon(Icons.arrow_downward),
+                    icon: Icon(Icons.keyboard_arrow_down),
                     iconSize: 24,
                     elevation: 16,
                     style: TextStyle(color: Colors.black),
@@ -336,7 +356,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
                   DropdownButton<String>(
                     hint: Text('Satuan'),
                     value: _satuanpembayaran,
-                    icon: Icon(Icons.arrow_downward),
+                    icon: Icon(Icons.keyboard_arrow_down),
                     iconSize: 24,
                     elevation: 16,
                     style: TextStyle(color: Colors.black),
@@ -368,7 +388,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
                   DropdownButton<String>(
                     hint: Text('Jenis Pembelian'),
                     value: _jenispembelian,
-                    icon: Icon(Icons.arrow_downward),
+                    icon: Icon(Icons.keyboard_arrow_down),
                     iconSize: 24,
                     elevation: 16,
                     style: TextStyle(color: Colors.black),
@@ -400,7 +420,7 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
                   DropdownButton<String>(
                     hint: Text('Jenis Pengiriman'),
                     value: _jenispengiriman,
-                    icon: Icon(Icons.arrow_downward),
+                    icon: Icon(Icons.keyboard_arrow_down),
                     iconSize: 24,
                     elevation: 16,
                     style: TextStyle(color: Colors.black),
@@ -426,8 +446,8 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
               Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0, right: 93.0),
-                    child: Text('Total :'),
+                    padding: const EdgeInsets.only(left: 16.0, right: 33.0),
+                    child: Text('Total Penjualan:'),
                   ),
                   Text((int.parse((jumlahController.text==''?'0':jumlahController.text))*int.parse((hargaController.text==''?'0':hargaController.text))).toString()
                   ,style: TextStyle(fontWeight: FontWeight.bold),)
@@ -492,14 +512,14 @@ class _AddLaporanBulananState extends State<AddLaporanBulanan> {
                       tambahDataLaporanBulanan();
                     },
                   ),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      msg,
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  )),
+                  // Center(
+                  //     child: Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Text(
+                  //     msg,
+                  //     style: TextStyle(color: Colors.green),
+                  //   ),
+                  // )),
                 ],
               )
             ],

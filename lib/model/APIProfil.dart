@@ -13,7 +13,10 @@ class APIProfil {
   final String alamat;
   final String desa;
   final String kecamatan;
+  final String kabupaten;
   final String provinsi;
+  final String username;
+  final String password;
 
   
 
@@ -27,7 +30,10 @@ class APIProfil {
     this.alamat,
     this.desa,
     this.kecamatan,
+    this.kabupaten,
     this.provinsi,
+    this.username,
+    this.password,
 
   });
 
@@ -42,7 +48,10 @@ class APIProfil {
       alamat: json['alamat'],
       desa: json['desa'],
       kecamatan: json['kecamatan'],
+      kabupaten: json['kabupaten'],
       provinsi: json['provinsi'],
+      username: json['username'],
+      password: json['password'],
 
     );
   }

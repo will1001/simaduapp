@@ -9,7 +9,14 @@ class VideoEdukasi extends StatefulWidget {
 }
 
 class _VideoEdukasiState extends State<VideoEdukasi> {
-  int no=1;
+  int no;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    no=1;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -20,7 +20,7 @@ class _MyLegalState extends State<MyLegal> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'My Legal',
+            'Legalitas',
             style: TextStyle(fontSize: 16.0),
           ),
         ),

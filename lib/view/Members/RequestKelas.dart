@@ -20,7 +20,7 @@ class _RequestKelasState extends State<RequestKelas> {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Rekues Kelas',
+          'Meminta Kelas',
           style: TextStyle(fontSize: 16.0),
         ),
       ),

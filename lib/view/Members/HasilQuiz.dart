@@ -1,31 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:simadu/model/PartisipasiAPI.dart';
-import 'package:simadu/model/PerkembanganAPI.dart';
+import 'package:simadu/model/HasilQuizAPI.dart';
 
-class PerkembanganUser extends StatefulWidget {
-  PerkembanganUser({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
+class HasilQuiz extends StatefulWidget {
+  HasilQuiz({Key key, this.namaPemilik, this.namaUsaha, this.idRegister})
       : super(key: key);
 
   final String namaPemilik;
   final String namaUsaha;
   final String idRegister;
   @override
-  _PerkembanganUserState createState() => _PerkembanganUserState();
+  _HasilQuizState createState() => _HasilQuizState();
 }
 
-class _PerkembanganUserState extends State<PerkembanganUser> {
+class _HasilQuizState extends State<HasilQuiz> {
+  int no;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    no=1;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Skor Kuis  ',
+          'Skor Kuis',
           style: TextStyle(fontSize: 16.0),
         ),
       ),
-      body: FutureBuilder<List<PerkembanganAPI>>(
-          future: fetchPerkembanganAPI(),
+      body: FutureBuilder<List<HasilQuizAPI>>(
+          future: fetchHasilQuizAPI(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView(
@@ -34,7 +41,8 @@ class _PerkembanganUserState extends State<PerkembanganUser> {
                 return Column(
                   children: <Widget>[
                     ExpansionTile(
-                      title: Text('Soal nomor ${f.id_soal==null?'':f.id_soal}'),
+                      leading: Text((no++).toString()+'.'),
+                      title: Text('Nomor Soal  ${f.id_soal==null?'':f.id_soal}'),
                       children: <Widget>[
                         ListTile(
                           leading: Text('Benar'),
@@ -45,8 +53,8 @@ class _PerkembanganUserState extends State<PerkembanganUser> {
                           title: Text(f.salah==null?'':f.salah),
                         ),
                         ListTile(
-                          leading: Text('Skor'),
-                          title: Text(f.skor==null?'':f.skor),
+                          leading: Text('Score'),
+                          title: Text(f.score==null?'':f.score),
                         ),
                         // ListTile(
                         //   leading: Text('Satuan'),
@@ -62,7 +70,7 @@ class _PerkembanganUserState extends State<PerkembanganUser> {
                         // ),
                       ],
                     ),
-                    Container(
+                     Container(
                       width: MediaQuery.of(context).size.width,
                       height: 1,
                       color: Colors.black38,
@@ -75,10 +83,11 @@ class _PerkembanganUserState extends State<PerkembanganUser> {
           }),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {
-      //     Navigator.of(context).push(MaterialPageRoute(
-      //                   builder: (c) => AddPerkembanganUser(
+      //     // Navigator.of(context).push(MaterialPageRoute(
+      //     //               builder: (c) => AddHasilQuiz(
+      //     //                 idRegister: widget.idRegister,
                             
-      //                       )));
+      //     //                   )));
       //   },
       //   child: Icon(Icons.add),
       //   backgroundColor: Colors.lightBlue,

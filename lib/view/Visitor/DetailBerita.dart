@@ -6,7 +6,7 @@ class DetailBerita extends StatefulWidget {
       {Key key,
       this.id,
       this.title,
-      this.desc,
+      // this.desc,
       this.gambar,
       this.tanggal,
       this.penulis})
@@ -14,7 +14,7 @@ class DetailBerita extends StatefulWidget {
 
   final String id;
   final String title;
-  final String desc;
+  // final String desc;
   final String gambar;
   final String tanggal;
   final String penulis;
@@ -77,10 +77,7 @@ class _DetailBeritaState extends State<DetailBerita> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    widget.desc,
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                  child: Text(''),
                 ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.end,

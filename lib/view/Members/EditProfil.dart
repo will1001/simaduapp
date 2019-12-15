@@ -16,16 +16,20 @@ class EditProfil extends StatefulWidget {
 class _EditProfilState extends State<EditProfil> {
   String msg = '';
   Color warnapesan;
+    String kategori_usahaController;
+  String kabupaten_Controller;
   TextEditingController nama_usahaController = new TextEditingController();
   TextEditingController nama_pemilikController = new TextEditingController();
   TextEditingController no_ktpController = new TextEditingController();
-  TextEditingController kategori_usahaController = new TextEditingController();
+  // TextEditingController kategori_usahaController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
   TextEditingController no_hpController = new TextEditingController();
   TextEditingController alamatController = new TextEditingController();
   TextEditingController desaController = new TextEditingController();
   TextEditingController kecamatanController = new TextEditingController();
   TextEditingController provinsiController = new TextEditingController();
+  TextEditingController usernameController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
   bool validationnama_usaha = false;
   bool validationnama_pemilik = false;
   bool validationno_ktp = false;
@@ -36,6 +40,8 @@ class _EditProfilState extends State<EditProfil> {
   bool validationdesa = false;
   bool validationkecamatan = false;
   bool validationprovinsi = false;
+  bool validationUsername = false;
+  bool validationPassword = false;
 
   Future updateProfil() async {
     var responseJson;
@@ -45,13 +51,16 @@ class _EditProfilState extends State<EditProfil> {
       "nama_usaha": nama_usahaController.text,
       "nama_pemilik": nama_pemilikController.text,
       "no_ktp": no_ktpController.text,
-      "kategori_usaha": kategori_usahaController.text,
+      "kategori_usaha": kategori_usahaController,
       "email": emailController.text,
       "no_hp": no_hpController.text,
       "alamat": alamatController.text,
       "desa": desaController.text,
       "kecamatan": kecamatanController.text,
+      "kabupaten": kabupaten_Controller,
       "provinsi": provinsiController.text,
+      "username": usernameController.text,
+      "password": passwordController.text,
     });
     responseJson = json.decode(response.body);
     if (responseJson.length == 0) {
@@ -99,8 +108,7 @@ class _EditProfilState extends State<EditProfil> {
                 .copyWith(text: snapshot.data[0].nama_pemilik);
             no_ktpController.value =
                 no_ktpController.value.copyWith(text: snapshot.data[0].no_ktp);
-            kategori_usahaController.value = kategori_usahaController.value
-                .copyWith(text: snapshot.data[0].kategori_usaha);
+            kategori_usahaController = snapshot.data[0].kategori_usaha;
             emailController.value =
                 emailController.value.copyWith(text: snapshot.data[0].email);
             no_hpController.value =
@@ -111,8 +119,13 @@ class _EditProfilState extends State<EditProfil> {
                 desaController.value.copyWith(text: snapshot.data[0].desa);
             kecamatanController.value = kecamatanController.value
                 .copyWith(text: snapshot.data[0].kecamatan);
+                kabupaten_Controller = snapshot.data[0].kabupaten;
             provinsiController.value = provinsiController.value
                 .copyWith(text: snapshot.data[0].provinsi);
+            usernameController.value = provinsiController.value
+                .copyWith(text: snapshot.data[0].username);
+            passwordController.value = provinsiController.value
+                .copyWith(text: snapshot.data[0].password);
             return ListView(
               children: <Widget>[
                 Padding(
@@ -171,22 +184,71 @@ class _EditProfilState extends State<EditProfil> {
                     ),
                   ),
                 ),
+                // Padding(
+                //   padding: const EdgeInsets.all(17.0),
+                //   child: Center(
+                //     child: TextField(
+                //       controller: kategori_usahaController,
+                //       decoration: InputDecoration(
+                //         icon: Icon(Icons.category),
+                //         hintText: 'Kategori Usaha',
+                //         labelText: 'Kategori Usaha',
+                //         errorText: validationkategori_usaha
+                //             ? 'Kategori Usaha tidak boleh kosong'
+                //             : null,
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Padding(
-                  padding: const EdgeInsets.all(17.0),
-                  child: Center(
-                    child: TextField(
-                      controller: kategori_usahaController,
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.category),
-                        hintText: 'Kategori Usaha',
-                        labelText: 'Kategori Usaha',
-                        errorText: validationkategori_usaha
-                            ? 'Kategori Usaha tidak boleh kosong'
-                            : null,
-                      ),
+            padding: const EdgeInsets.all(17.0),
+            child: Row(
+              children: <Widget>[
+                 Padding(
+                   padding: const EdgeInsets.only(right:11.0),
+                   child: Icon(Icons.category,color: Colors.black38,),
+                 ),
+                Container(
+                  width: 290,
+                  child: DropdownButton<String>(
+                    hint: Text('Kategori Usaha'),
+                    value: kategori_usahaController,
+                    icon: Padding(
+                      padding: const EdgeInsets.only(left:98.0),
+                      child: Icon(Icons.keyboard_arrow_down),
                     ),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: TextStyle(color: Colors.black),
+                    underline: Container(
+                      height: 1,
+                      width: 290,
+                      color: Colors.black38,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        kategori_usahaController = newValue.toString();
+                      });
+                    },
+                    items: [
+                      'Makanan dan Minuman',
+                      'Fashion dan Gaya Hidup',
+                      'Kerajinan Tangan',
+                      'Seni dan Musik',
+                      'Kesehatan dan Kecantikan',
+                      'Jasa Pelayanan',
+                      'Start Up Digital'
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
                   ),
                 ),
+              ],
+            ),
+          ),
                 Padding(
                   padding: const EdgeInsets.all(17.0),
                   child: Center(
@@ -266,6 +328,58 @@ class _EditProfilState extends State<EditProfil> {
                   ),
                 ),
                 Padding(
+            padding: const EdgeInsets.all(17.0),
+            child: Row(
+              children: <Widget>[
+                 Padding(
+                   padding: const EdgeInsets.only(right:11.0),
+                   child: Icon(Icons.category,color: Colors.black38,),
+                 ),
+                Container(
+                  width: 290,
+                  child: DropdownButton<String>(
+                    hint: Text('Kabupaten'),
+                    value: kabupaten_Controller,
+                    icon: Padding(
+                      padding: const EdgeInsets.only(left:161.0),
+                      child: Icon(Icons.keyboard_arrow_down),
+                    ),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: TextStyle(color: Colors.black),
+                    underline: Container(
+                      height: 1,
+                      width: 290,
+                      color: Colors.black38,
+                    ),
+                    onChanged: (String newValue) {
+                      setState(() {
+                        kabupaten_Controller = newValue.toString();
+                      });
+                    },
+                    items: [
+                      'Bima',
+                      'Dompu',
+                      'Lombok Barat',
+                      'Lombok Tengah',
+                      'Lombok Timur',
+                      'Lombok Utara',
+                      'Sumbawa',
+                      'Sumbawa Barat',
+                      'Kota Bima',
+                      'Kota Mataram',
+                    ].map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+                Padding(
                   padding: const EdgeInsets.all(17.0),
                   child: Center(
                     child: TextField(
@@ -281,6 +395,37 @@ class _EditProfilState extends State<EditProfil> {
                     ),
                   ),
                 ),
+                Padding(
+            padding: const EdgeInsets.all(17.0),
+            child: Center(
+              child: TextField(
+                controller: usernameController,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.person),
+                  hintText: 'Username',
+                  labelText: 'Username',
+                  errorText:
+                      validationUsername ? 'Username tidak boleh kosong' : null,
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(17.0),
+            child: Center(
+              child: TextField(
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  icon: Icon(Icons.lock),
+                  hintText: 'Password',
+                  labelText: 'Password',
+                  errorText:
+                      validationPassword ? 'Password tidak boleh kosong' : null,
+                ),
+              ),
+            ),
+          ),
                 Column(
                   children: <Widget>[
                     RaisedButton(
@@ -314,7 +459,7 @@ class _EditProfilState extends State<EditProfil> {
                           });
                         }
 
-                        if (kategori_usahaController.text.isEmpty) {
+                        if (kategori_usahaController.isEmpty) {
                           setState(() {
                             validationkategori_usaha = true;
                           });
@@ -370,6 +515,15 @@ class _EditProfilState extends State<EditProfil> {
                             validationkecamatan = false;
                           });
                         }
+                        // if (kabupaten_Controller.isEmpty) {
+                        //   setState(() {
+                        //     validationkabupaten = true;
+                        //   });
+                        // } else {
+                        //   setState(() {
+                        //     validationkabupaten = false;
+                        //   });
+                        // }
 
                         if (provinsiController.text.isEmpty) {
                           setState(() {
@@ -384,12 +538,13 @@ class _EditProfilState extends State<EditProfil> {
                         if (nama_usahaController.text.isNotEmpty &&
                             nama_pemilikController.text.isNotEmpty &&
                             no_ktpController.text.isNotEmpty &&
-                            kategori_usahaController.text.isNotEmpty &&
+                            kategori_usahaController.isNotEmpty &&
                             emailController.text.isNotEmpty &&
                             no_hpController.text.isNotEmpty &&
                             alamatController.text.isNotEmpty &&
                             desaController.text.isNotEmpty &&
                             kecamatanController.text.isNotEmpty &&
+                            kabupaten_Controller.isNotEmpty &&
                             provinsiController.text.isNotEmpty) {
                           updateProfil();
                         } else {

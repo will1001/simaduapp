@@ -22,7 +22,7 @@ class _QuizState extends State<Quiz> {
       appBar: AppBar(
         centerTitle: true,
           title: Text(
-            'Quiz',
+            'Kuis',
             style: TextStyle(fontSize: 16.0),
           ),
       ),
@@ -50,7 +50,7 @@ class _QuizState extends State<Quiz> {
             //                 // gambar: f['gambar'],
                             )));
                           },
-                          child: Text('Quiz Nomor ${f.no}'),
+                          child: Text('Kuis Nomor ${f.no}'),
                           textColor: Colors.black,
                           color: Colors.lightBlue,
                         ),

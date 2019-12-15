@@ -24,8 +24,9 @@ class BeritaAPI {
   final String penulis;
   final String tanggal;
   final String img;
-  final String isi;
   final String kategori;
+  final String link;
+  final String isi;
   
 
   BeritaAPI({
@@ -34,8 +35,9 @@ class BeritaAPI {
     this.penulis,
     this.tanggal,
     this.img,
-    this.isi,
     this.kategori,
+    this.link,
+    this.isi,
   });
 
   factory BeritaAPI.fromJson(Map<String, dynamic> json) {
@@ -45,8 +47,9 @@ class BeritaAPI {
       penulis: json['penulis'],
       tanggal: json['tanggal'],
       img: json['img'],
-      isi: json['isi'],
       kategori: json['kategori'],
+      link: json['link'],
+      isi: json['isi'],
     );
   }
 }

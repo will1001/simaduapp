@@ -104,7 +104,7 @@ class _LandingPageState extends State<LandingPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
-              title: Text('Daftar'),
+              title: Text('Akun'),
             ),
           ],
           currentIndex: _selectedIndex,

@@ -28,8 +28,10 @@ class _LaporanBulananState extends State<LaporanBulanan> {
           future: fetchLaporanBulananAPI(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              var data=snapshot.data.where((a)=>a.id_register==widget.idRegister).toList();
+              print(data);
               return ListView(
-                  children: snapshot.data.where((a)=>a.id_register==widget.idRegister).toList().
+                  children: data.
                   map((f) {
                 return Column(
                   children: <Widget>[

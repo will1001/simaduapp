@@ -17,7 +17,7 @@ class _UsersState extends State<Users> with SingleTickerProviderStateMixin {
       text: 'DAFTAR',
     ),
     Tab(
-      text: 'LOGIN',
+      text: 'MASUK',
     ),
   ];
   @override

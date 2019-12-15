@@ -33,6 +33,8 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
   bool _hasValidMime = false;
   FileType _pickingType = FileType.ANY;
   TextEditingController _controller = TextEditingController();
+    TextEditingController keteranganController = new TextEditingController();
+
 
   @override
   void initState() {
@@ -52,7 +54,7 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
     var multifile = http.MultipartFile('file', stream, len,
         filename: basename(filesertifikat.path));
     req.fields['id_register'] = widget.idRegister;
-    req.fields['keterangan'] = 'cvvvvv';
+    req.fields['keterangan'] = keteranganController.text == '' ? '' : keteranganController.text;
     req.fields['status'] = 'Sertifikat Anda Sudah Di Upload';
     req.files.add(multifile);
 
@@ -114,12 +116,12 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
             style: TextStyle(fontSize: 16.0),
           ),
         ),
-        body: Center(
-          child: Padding(
+        body: Padding(
         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               // Padding(
               //   padding: const EdgeInsets.only(top: 20.0),
@@ -187,8 +189,28 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
               //     value: _multiPick,
               //   ),
               // ),
+              
               Padding(
-                padding: const EdgeInsets.only(top: 0.0, bottom: 20.0),
+                padding: const EdgeInsets.only(left: 15.0, top: 25.0),
+                child: Text('Keterangan :'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 16),
+                child: TextField(
+                  controller: keteranganController,
+                  decoration: InputDecoration(
+                    // icon: Text('Lainnya :'),
+                    hintText: 'Keterangan Sertifikat',
+                    labelText: 'Keterangan',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 15.0,bottom: 5),
+                child: Text('File Sertifikat (.PDF, .PNG, .JPG, .JPEG)'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 0.0, left: 15.0),
                 child: RaisedButton(
                   onPressed: () => _openFileExplorer(),
                   child: Text("Upload Sertifikat"),
@@ -196,7 +218,24 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
                   color: Colors.lightBlue,
                 ),
               ),
-              Text(msg,style: TextStyle(color: warnapesan)),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 25.0),
+                child: Text('Status :'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0, top: 25.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black12, width: 1)),
+                  child: Container(
+                    width: 250,
+                    color: Colors.black12,
+                   child: Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Text('Sertifikat Anda Sudah Di Upload'),
+                   ))),
+              ),
+              // Text(msg,style: TextStyle(color: warnapesan)),
               Builder(
                 builder: (BuildContext context) => _loadingPath
                     ? Padding(
@@ -239,6 +278,6 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
             ],
           ),
         ),
-      )),);
+      ),);
   }
 }

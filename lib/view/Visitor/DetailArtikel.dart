@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 class DetailArtikel extends StatefulWidget {
-   DetailArtikel({Key key, this.id,this.title,this.desc,this.gambar, this.tanggal, this.penulis}) : super(key: key);
+   DetailArtikel({Key key, this.id,this.title,this.gambar,this.desc, this.tanggal, this.penulis}) : super(key: key);
 
   final String id;
   final String title;
@@ -69,10 +69,8 @@ class _DetailArtikelState extends State<DetailArtikel> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    widget.desc,
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                  child: Text(widget.desc,
+                    style: TextStyle(color: Colors.grey),),
                 ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.end,

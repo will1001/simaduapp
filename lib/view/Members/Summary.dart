@@ -621,13 +621,13 @@ class _SummaryState extends State<Summary> {
         builder: (context) => APIProvider(),
         child: Consumer<APIProvider>(
           builder: (context, apiprovider, _) => Scaffold(
-        appBar: AppBar(
-          leading: Opacity(
-            opacity: 0,
-          ),
-          backgroundColor: Color(0xff1976d2),
-          title: Text('Laporan Bulanan'),
-        ),
+        // appBar: AppBar(
+        //   leading: Opacity(
+        //     opacity: 0,
+        //   ),
+        //   backgroundColor: Color(0xff1976d2),
+        //   title: Text('Laporan Bulanan'),
+        // ),
         body: Padding(
           padding: EdgeInsets.all(8.0),
           child: Container(
@@ -805,6 +805,37 @@ class _SummaryState extends State<Summary> {
                               : int.parse(dataDesember[i]);
                         }
                       }
+                      var totalPenjualan=totalbln1+totalbln2+totalbln3+totalbln4+totalbln5+totalbln6+totalbln7+totalbln8+totalbln9+totalbln10+totalbln11+totalbln12;
+                      var status;
+                      var bintang;
+                      if(totalPenjualan<=25000000){
+                        status='Usaha Mikro';
+                        bintang=Row(
+                          children: <Widget>[
+                            Icon(Icons.star,size: 15,),
+                          ],
+                        );
+
+                      }if(totalPenjualan<=210000000 && totalPenjualan>=25000000){
+                          status='Usaha Kecil';
+                            bintang=Row(
+                          children: <Widget>[
+                            Icon(Icons.star,size: 15,),
+                            Icon(Icons.star,size: 15,),
+                          ],
+                        );
+
+                      }if(totalPenjualan<=4170000000 && totalPenjualan>=210000000){
+                          status='Usaha Menengah';
+                          bintang=Row(
+                          children: <Widget>[
+                            Icon(Icons.star,size: 15,),
+                            Icon(Icons.star,size: 15,),
+                            Icon(Icons.star,size: 15,),
+                          ],
+                        );
+
+                      }
                       _generateData(
                           totalbln1,
                           totalbln2,
@@ -861,6 +892,37 @@ class _SummaryState extends State<Summary> {
                               animationDuration: Duration(seconds: 1),
                             ),
                           ),
+                         
+                          ListTile(
+                            title: Text('Total Penjualan : '),
+                            trailing: Text('${totalPenjualan}'),
+                          ),
+                          // ListTile(
+                          //   title:  Row(
+                          //   children: <Widget>[
+                          //     Text('${status}'),
+                          //     Text(' ('),
+                          //     bintang,
+                          //     Text(' )'),
+
+                          //   ],
+                          // )
+                          // ),
+                          Padding(
+                            padding: const EdgeInsets.only(left:17.0),
+                            child: Row(
+                              children: <Widget>[
+                                Text('${status}'),
+                                Text(' ('),
+                                bintang,
+                                Text(' )'),
+
+                              ],
+                            ),
+                          )
+                         
+                          
+                           
                         ],
                       );
                     }

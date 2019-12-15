@@ -7,6 +7,7 @@ import 'package:simadu/view/LandingPage.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class Formlogin extends StatefulWidget {
   @override
@@ -33,9 +34,57 @@ class _FormloginState extends State<Formlogin> {
       setState(() {
         msg = "Maaf Cek Kembali Usernama atau Password Anda";
       });
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text(''),
+              content: Text(
+                msg,
+                style: TextStyle(color: Colors.red),
+              ),
+            );
+          });
+
+      Future.delayed(
+        Duration(seconds: 3),
+        () {
+          Navigator.pop(context);
+        },
+      );
     } else {
       //  if(responseJson[0]['username'])
-      Navigator.of(context).push(MaterialPageRoute(
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Selamat Datang',style: TextStyle(color: Colors.lightBlue),),
+                  ],
+                ),
+              ),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    '${responseJson[0]['nama_pemilik']}',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                ],
+              ),
+            );
+          });
+
+      Future.delayed(
+        Duration(seconds: 3),
+        () {
+         Navigator.of(context).push(MaterialPageRoute(
           builder: (c) => LandingPage(
                 selectedIndex: 5,
                 namaPemilik:responseJson[0]['nama_pemilik'],
@@ -43,6 +92,9 @@ class _FormloginState extends State<Formlogin> {
                 idRegister:responseJson[0]['id_register'],
               )));
       _savelogin();
+        },
+      );
+      
     }
   }
 
@@ -58,7 +110,23 @@ class _FormloginState extends State<Formlogin> {
       body: ListView(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 51, bottom: 21),
+            padding: const EdgeInsets.only(top: 31, bottom: 21),
+            child: SizedBox(
+              height: 70,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Card(
+                                elevation: 9,child: Image.asset('assets/images/logo.png')),
+                  Card(
+                                elevation: 9,child: Image.asset('assets/images/BUMN.jpeg')),
+                  Card(
+                                elevation: 9,child: Image.asset('assets/images/PLN.jpg')),
+                ],
+              )),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 0, bottom: 0),
             child: Center(
                 child: Text(
               'SIMADU | Rumah Kreatif BUMN',
@@ -147,16 +215,37 @@ class _FormloginState extends State<Formlogin> {
                 textColor: Colors.black,
                 color: Colors.lightBlue,
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  onTap: () async{
+                    String url = 'http://simadu.id/user/reset.php';
+                                if (await canLaunch(url)) {
+                                  await launch(url);
+                                } else {
+                                  throw 'Could not launch $url';
+                                }
+                  },
+                  child: Text('Lupa Password ?',style: TextStyle(color: Colors.black),)),
+              ),
+              Padding(
+            padding: const EdgeInsets.only(top: 0, bottom: 21),
+            child: SizedBox(
+              height: 70,
+              child: Card(
+                                elevation: 9,child: Image.asset('assets/images/YBP.jpg')),
+              ),
+          ),
             ],
           ),
-          Center(
-              child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              msg,
-              style: TextStyle(color: Colors.red),
-            ),
-          )),
+          // Center(
+          //     child: Padding(
+          //   padding: const EdgeInsets.all(8.0),
+          //   child: Text(
+          //     msg,
+          //     style: TextStyle(color: Colors.red),
+          //   ),
+          // )),
         ],
       ),
     );

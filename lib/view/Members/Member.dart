@@ -286,26 +286,26 @@ class _MemberState extends State<Member> {
       ),
       appBar: AppBar(
         leading: Padding(
-          padding: const EdgeInsets.only(left:20.0,top:19.0,bottom: 4.0),
-          child: Text('RKB',style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 17,
-            color: Colors.white
-          ),),
+          padding: const EdgeInsets.only(left: 20.0, top: 19.0, bottom: 4.0),
+          child: Text(
+            'RKB',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 17, color: Colors.white),
+          ),
         ),
         title: Padding(
           padding: const EdgeInsets.only(right: 12),
-          child: Text('-    LOMBOK BARAT',style: TextStyle(
-            fontSize: 17,
-            color: Colors.white
-          ),),
+          child: Text(
+            '-    LOMBOK BARAT',
+            style: TextStyle(fontSize: 17, color: Colors.white),
+          ),
         ),
       ),
       body: ListView(
         children: <Widget>[
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
+            height: 250,
             child: GridView.count(
               crossAxisCount: 3,
               children: <Widget>[
@@ -313,28 +313,31 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => LaporanBulanan(
-                          idRegister: widget.idRegister,
-                              // namaPemilik: widget.namaPemilik,
-                              // id: f['id'],
-                              // title: f['title'],
-                              // desc: f['desc'],
-                              // gambar: f['gambar'],
-                            )));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (c) => LaporanBulanan(
+                                idRegister: widget.idRegister,
+                                // namaPemilik: widget.namaPemilik,
+                                // id: f['id'],
+                                // title: f['title'],
+                                // desc: f['desc'],
+                                // gambar: f['gambar'],
+                              )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                          side: new BorderSide(
+                              color: Colors.lightBlue, width: 1.0)),
                       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/images/037-document.png',width: 55,)
-                          ),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'assets/images/037-document.png',
+                                width: 55,
+                              )),
                           SizedBox(
                             height: 0,
                           ),
@@ -367,27 +370,29 @@ class _MemberState extends State<Member> {
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                    builder: (c) => Myclass(
-                        idRegister:widget.idRegister
-                        // id: f['id'],
-                        // title: f['title'],
-                        // desc: f['desc'],
-                        // gambar: f['gambar'],
-                        )));
+                          builder: (c) => Myclass(idRegister: widget.idRegister
+                              // id: f['id'],
+                              // title: f['title'],
+                              // desc: f['desc'],
+                              // gambar: f['gambar'],
+                              )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                          side: new BorderSide(
+                              color: Colors.lightBlue, width: 1.0)),
                       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
                       borderOnForeground: true,
                       child: Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/images/iconfinder_Education_3069198.png',width: 55,)
-                          ),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'assets/images/iconfinder_Education_3069198.png',
+                                width: 55,
+                              )),
                           SizedBox(
                             height: 0,
                           ),
@@ -405,59 +410,7 @@ class _MemberState extends State<Member> {
                             ),
                             child: Center(
                                 child: Text(
-                              'My Class',
-                              style:
-                                  TextStyle(fontSize: 10, color: Colors.white),
-                            )),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: GestureDetector(
-                    onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => MyPerformance(
-                          idRegister: widget.idRegister,
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
-                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
-                      elevation: 9,
-                      child: Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/images/049-presentation.png',width: 55,)
-                          ),
-                          SizedBox(
-                            height: 0,
-                          ),
-                          Container(
-                            // color: Colors.lightBlue,
-                            width: MediaQuery.of(context).size.width,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              color: Colors.lightBlue,
-                              shape: BoxShape.rectangle,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(8.0),
-                                bottomRight: Radius.circular(8.0),
-                              ),
-                            ),
-                            child: Center(
-                                child: Text(
-                              'My Performance',
+                              'Kelas',
                               style:
                                   TextStyle(fontSize: 10, color: Colors.white),
                             )),
@@ -472,26 +425,29 @@ class _MemberState extends State<Member> {
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => MyLegal(
-                          idRegister: widget.idRegister,
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
+                          builder: (c) => MyPerformance(
+                                idRegister: widget.idRegister,
+                                // id: f['id'],
+                                // title: f['title'],
+                                // desc: f['desc'],
+                                // gambar: f['gambar'],
+                              )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                          side: new BorderSide(
+                              color: Colors.lightBlue, width: 1.0)),
                       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/images/031-certificate.png',width: 55,)
-                          ),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'assets/images/049-presentation.png',
+                                width: 55,
+                              )),
                           SizedBox(
                             height: 0,
                           ),
@@ -509,7 +465,62 @@ class _MemberState extends State<Member> {
                             ),
                             child: Center(
                                 child: Text(
-                              'My Legal',
+                              'Performa',
+                              style:
+                                  TextStyle(fontSize: 10, color: Colors.white),
+                            )),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (c) => MyLegal(
+                                idRegister: widget.idRegister,
+                                // id: f['id'],
+                                // title: f['title'],
+                                // desc: f['desc'],
+                                // gambar: f['gambar'],
+                              )));
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                          side: new BorderSide(
+                              color: Colors.lightBlue, width: 1.0)),
+                      margin: EdgeInsets.only(top: 15, left: 10, right: 10),
+                      elevation: 9,
+                      child: Column(
+                        children: <Widget>[
+                          Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'assets/images/031-certificate.png',
+                                width: 55,
+                              )),
+                          SizedBox(
+                            height: 0,
+                          ),
+                          Container(
+                            // color: Colors.lightBlue,
+                            width: MediaQuery.of(context).size.width,
+                            height: 18,
+                            decoration: BoxDecoration(
+                              color: Colors.lightBlue,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                            ),
+                            child: Center(
+                                child: Text(
+                              'Legalitas',
                               style:
                                   TextStyle(fontSize: 11, color: Colors.white),
                             )),
@@ -523,27 +534,30 @@ class _MemberState extends State<Member> {
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (c) => InformasiMenu(
-                          idRegister: widget.idRegister,
-                            // id: f['id'],
-                            // title: f['title'],
-                            // desc: f['desc'],
-                            // gambar: f['gambar'],
-                            )));
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (c) => InformasiMenu(
+                                idRegister: widget.idRegister,
+                                // id: f['id'],
+                                // title: f['title'],
+                                // desc: f['desc'],
+                                // gambar: f['gambar'],
+                              )));
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: new BorderSide(color: Colors.lightBlue, width: 1.0)),
+                          side: new BorderSide(
+                              color: Colors.lightBlue, width: 1.0)),
                       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
                       elevation: 9,
                       child: Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image.asset('assets/images/026-analysis.png',width: 55,)
-                          ),
+                              padding: const EdgeInsets.all(8.0),
+                              child: Image.asset(
+                                'assets/images/026-analysis.png',
+                                width: 55,
+                              )),
                           SizedBox(
                             height: 0,
                           ),
@@ -623,7 +637,46 @@ class _MemberState extends State<Member> {
                 //     ),
                 //   ),
                 // ),
-                
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:91.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Card(
+                                elevation: 9,
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+               Card(
+                                elevation: 9,
+                  child: Image.asset(
+                    'assets/images/BUMN.jpeg',
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+                Card(
+                                elevation: 9,
+                  child: Image.asset(
+                    'assets/images/PLN.jpg',
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+                Card(
+                                elevation: 9,
+                  child: Image.asset(
+                    'assets/images/YBP.jpg',
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
               ],
             ),
           ),
