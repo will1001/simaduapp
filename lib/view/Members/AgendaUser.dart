@@ -147,10 +147,10 @@ class _AgendaUserState extends State<AgendaUser> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: <Widget>[
-                                                      Text(f.judul),
+                                                     f.judul.length<35?Text(f.judul.substring(0,f.judul.length)):Text(f.judul.substring(0,35)+'. . .'),
                                                       Text(
                                                         f.agenda.substring(
-                                                                0, 70) +
+                                                                0, 50) +
                                                             '. . .',
                                                         style: TextStyle(
                                                             color: Colors.grey,

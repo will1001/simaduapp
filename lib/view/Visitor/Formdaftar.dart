@@ -185,12 +185,12 @@ class _FormDaftarState extends State<FormDaftar> {
                    child: Icon(Icons.category,color: Colors.black38,),
                  ),
                 Container(
-                  width: 290,
+                  width: MediaQuery.of(context).size.width - 70,
                   child: DropdownButton<String>(
                     hint: Text('Kategori Usaha'),
                     value: kategori_usahaController,
                     icon: Padding(
-                      padding: const EdgeInsets.only(left:98.0),
+                      padding: const EdgeInsets.only(left:148.0),
                       child: Icon(Icons.keyboard_arrow_down),
                     ),
                     iconSize: 24,
@@ -198,7 +198,7 @@ class _FormDaftarState extends State<FormDaftar> {
                     style: TextStyle(color: Colors.black),
                     underline: Container(
                       height: 1,
-                      width: 290,
+                      width: MediaQuery.of(context).size.width - 70,
                       color: Colors.black38,
                     ),
                     onChanged: (String newValue) {

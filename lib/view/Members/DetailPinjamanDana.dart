@@ -77,6 +77,9 @@ class _DetailPinjamanDanaState extends State<DetailPinjamanDana> {
   Widget build(BuildContext context) {
     timeDilation = 3.0;
     return Scaffold(
+        appBar: AppBar(
+        
+      ),
       body: ListView(
         children: <Widget>[
           Card(

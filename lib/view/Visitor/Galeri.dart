@@ -91,15 +91,15 @@ class _GaleriState extends State<Galeri> {
                                                     child: Padding(
                                                       padding: const EdgeInsets.all(8.0),
                                                       child: Container(
-                                                        height: 100,
+                                                        height: MediaQuery.of(context).size.height-550,
                                                         child: Column(
                                                           crossAxisAlignment:
                                                               CrossAxisAlignment
                                                                   .start,
                                                           children: <Widget>[
-                                                            Text(f.judul),
+                                                            f.judul.length<35?Text(f.judul.substring(0,f.judul.length)):Text(f.judul.substring(0,35)+'. . .'),
                                                             Text(
-                                                              f.agenda.substring(0,100)+'. . .',
+                                                              f.agenda.substring(0,89)+'. . .',
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .grey),

@@ -34,6 +34,9 @@ class _DetailShopState extends State<DetailShop> {
   Widget build(BuildContext context) {
     timeDilation = 3.0;
     return Scaffold(
+      appBar: AppBar(
+        
+      ),
       body: ListView(
         children: <Widget>[
           Card(
@@ -61,7 +64,7 @@ class _DetailShopState extends State<DetailShop> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Text(widget.title),
+                      Text(widget.title.replaceAll('<p>', '').replaceAll('<br />', '').replaceAll('</p>', '')),
                     ],
                   ),
                 ),

@@ -37,6 +37,9 @@ class _BeritaLainnyaState extends State<BeritaLainnya> {
       builder: (context) => ProviderBerita(),
       child: Consumer<ProviderBerita>(
         builder: (context, providerberita, _) => Scaffold(
+           appBar: AppBar(
+        
+      ),
           body: NotificationListener<ScrollNotification>(
             onNotification: (ScrollNotification scrollInfo) {
               if (scrollInfo.metrics.pixels ==

@@ -80,7 +80,7 @@ class _ShopState extends State<Shop> {
                                       children: <Widget>[
                                         Container(
                                           child: SizedBox(
-                                            height: 120,
+                                            height: 100,
                                             width: 200,
                                             child: Image.network(
                                               'http://simadu.id/images/shop/' +
@@ -108,11 +108,11 @@ class _ShopState extends State<Shop> {
                                                       //   style: TextStyle(color: Colors.white),
                                                       // ),
                                                       Text(
-                                                        f.keterangan.toString().substring(
+                                                        f.keterangan.toString().replaceAll('<p>', '').replaceAll('</p>', '').replaceAll('<br />', '').substring(
                                                             0,
-                                                            f.keterangan.length < 23
+                                                            f.keterangan.length < 27
                                                                 ? f.keterangan.length
-                                                                : 23),
+                                                                : 27)+'. . .',
                                                         style: TextStyle(
                                                           color: Colors.black,
                                                           // fontSize: 10,
@@ -121,7 +121,8 @@ class _ShopState extends State<Shop> {
                                                       Padding(
                                                         padding: const EdgeInsets.only(top:8.0),
                                                         child: SizedBox(
-                                                          height: 30,
+                                                          height: 25,
+                                                          width: 70,
                                                           child: RaisedButton(
                                                             textColor: Colors.black,
                                                             color: Colors.lightBlue,
