@@ -190,7 +190,7 @@ class _FormDaftarState extends State<FormDaftar> {
                     hint: Text('Kategori Usaha'),
                     value: kategori_usahaController,
                     icon: Padding(
-                      padding: const EdgeInsets.only(left:148.0),
+                      padding: const EdgeInsets.only(left:100.0),
                       child: Icon(Icons.keyboard_arrow_down),
                     ),
                     iconSize: 24,
