@@ -11,7 +11,7 @@ description: A new Flutter project.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+21
+version: 1.0.0+24
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -30,15 +30,20 @@ dependencies:
   shared_preferences: ^0.5.3+4
   http: ^0.12.0+2
   flutter_datetime_picker: ^1.2.6
-  file_picker: ^1.4.2
+  file_picker: ^1.4.3+2
   dio: ^2.1.3
   charts_flutter: ^0.8.1
   font_awesome_flutter: ^8.5.0
+  flutter_launcher_icons: ^0.7.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: "launcher_icon" 
+  ios: true
+  image_path: "assets/images/iconApp.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
