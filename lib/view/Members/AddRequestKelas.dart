@@ -48,6 +48,25 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
         msg = responseJson['msg'];
         warnapesan = Colors.green;
       });
+       showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Berhasil'),
+              content: Text(
+                msg,
+                style: TextStyle(color: Colors.green),
+              ),
+            );
+          });
+
+      Future.delayed(
+        Duration(seconds: 3),
+        () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      );
       
     }
   }
@@ -261,14 +280,14 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
                      rekueskelas();
                     },
                   ),
-                  Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      msg,
-                      style: TextStyle(color: Colors.green),
-                    ),
-                  )),
+                  // Center(
+                  //     child: Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Text(
+                  //     msg,
+                  //     style: TextStyle(color: Colors.green),
+                  //   ),
+                  // )),
                 ],
               )
             ],

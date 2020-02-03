@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 Future<List<KategoriAPI>> fetchKategoriAPI() async {
   var responseJson;
   String url = "http://simadu.id/api/api_kategori.php";
-  final response = await http.get(url);
+  final response = await http.post(url);
   if (response.statusCode == 200) {
     responseJson = json.decode(response.body);
     responseJson =
