@@ -228,37 +228,38 @@ class _AddStatusMitraState extends State<AddStatusMitra> {
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 0.0, right: 29.0, top: 25),
-                    child: Text('Apakah Anda Merupakan Mitra Binaan BUMN? :'),
+                    child: Text('Apakah Anda Merupakan Mitra Binaan BUMN PLN?'),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 11.0),
-                    child: DropdownButton<String>(
-                      hint: Text('Pilih'),
-                      value: _mitra,
-                      icon: Icon(Icons.arrow_downward),
-                      iconSize: 24,
-                      elevation: 16,
-                      style: TextStyle(color: Colors.black),
-                      underline: Container(
-                        height: 2,
-                        color: Colors.black,
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 35.0,left:11.0),
+                      child: DropdownButton<String>(
+                        hint: Text('Pilih'),
+                        value: _mitra,
+                        icon: Icon(Icons.arrow_downward),
+                        iconSize: 24,
+                        elevation: 16,
+                        style: TextStyle(color: Colors.black),
+                        underline: Container(
+                          height: 2,
+                          color: Colors.black,
+                        ),
+                        onChanged: (String newValue) {
+                          setState(() {
+                            _mitra = newValue.toString();
+                          });
+                        },
+                        items: [
+                          'Ya',
+                          'Tidak'
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                       ),
-                      onChanged: (String newValue) {
-                        setState(() {
-                          _mitra = newValue.toString();
-                        });
-                      },
-                      items: [
-                        'PT BANK RAKYAT INDONESIA (PERSERO) Tbk.',
-                        'KEPALA',
-                        'DINAS',
-                        'BUMN'
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
                     ),
                   ),
                 ],

@@ -69,7 +69,7 @@ class _DetailArtikelState extends State<DetailArtikel> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(widget.desc,
+                  child: Text(widget.desc.replaceAll('<p>', '').replaceAll('<br />', '').replaceAll('</p>', '').replaceAll('<p style="text-align:justify">', ''),
                     style: TextStyle(color: Colors.grey),),
                 ),
                 // Row(

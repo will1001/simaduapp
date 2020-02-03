@@ -63,7 +63,7 @@ class _StatusMitraState extends State<StatusMitra> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Apakah Anda Merupakan Mitra Binaan BUMN?',
+                        'Apakah Anda Merupakan Mitra Binaan BUMN ?',
                         textAlign: TextAlign.start,
                         style: TextStyle(color: Colors.black),
                       ),

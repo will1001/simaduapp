@@ -47,7 +47,7 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
   Future uploadsertifikat() async {
     var responseJson;
     String url = "http://simadu.id/api/api_upload_sertifikat.php";
-    print(filesertifikat);
+    // print(filesertifikat);
     var stream =
         http.ByteStream(DelegatingStream.typed(filesertifikat.openRead()));
     var len = await filesertifikat.length();
@@ -211,6 +211,10 @@ class _DaftarSertifikatState extends State<DaftarSertifikat> {
           future: fetchSertifikatAPI(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
+              // print(a.id_register);
+              // print(widget.idRegister);
+              // print(snapshot.data
+              //         .length);
               return ListView(
                   children: snapshot.data
                       .where((a) => a.id_register == widget.idRegister)

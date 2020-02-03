@@ -621,13 +621,13 @@ class _SummaryState extends State<Summary> {
         builder: (context) => APIProvider(),
         child: Consumer<APIProvider>(
           builder: (context, apiprovider, _) => Scaffold(
-        // appBar: AppBar(
-        //   leading: Opacity(
-        //     opacity: 0,
-        //   ),
-        //   backgroundColor: Color(0xff1976d2),
-        //   title: Text('Laporan Bulanan'),
-        // ),
+        appBar: AppBar(
+          // leading: Opacity(
+          //   opacity: 0,
+          // ),
+          // backgroundColor: Color(0xff1976d2),
+          // title: Text('Laporan Bulanan'),
+        ),
         body: Padding(
           padding: EdgeInsets.all(8.0),
           child: Container(

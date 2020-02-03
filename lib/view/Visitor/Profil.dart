@@ -228,56 +228,56 @@ class _ProfilState extends State<Profil> {
                                                                     ),
                                                               ),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                          .only(
-                                                                      left: 21.0),
-                                                              child: Row(
-                                                                children: <
-                                                                    Widget>[
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                                .all(
-                                                                            3.0),
-                                                                    child: Icon(
-                                                                      FontAwesomeIcons
-                                                                          .facebook,
-                                                                          size: 21,
-                                                                      color: Colors
-                                                                          .blue,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                                .all(
-                                                                            3.0),
-                                                                    child: Icon(
-                                                                      FontAwesomeIcons
-                                                                          .twitter,
-                                                                          size: 21,
-                                                                      color: Colors
-                                                                          .lightBlue,
-                                                                    ),
-                                                                  ),
-                                                                  Padding(
-                                                                    padding:
-                                                                        const EdgeInsets
-                                                                                .all(
-                                                                            3.0),
-                                                                    child: Icon(
-                                                                      FontAwesomeIcons
-                                                                          .linkedin,
-                                                                          size: 21,
-                                                                      color: Colors
-                                                                          .blue,
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
+                                                            // Padding(
+                                                            //   padding:
+                                                            //       const EdgeInsets
+                                                            //               .only(
+                                                            //           left: 21.0),
+                                                            //   child: Row(
+                                                            //     children: <
+                                                            //         Widget>[
+                                                            //       Padding(
+                                                            //         padding:
+                                                            //             const EdgeInsets
+                                                            //                     .all(
+                                                            //                 3.0),
+                                                            //         child: Icon(
+                                                            //           FontAwesomeIcons
+                                                            //               .facebook,
+                                                            //               size: 21,
+                                                            //           color: Colors
+                                                            //               .blue,
+                                                            //         ),
+                                                            //       ),
+                                                            //       Padding(
+                                                            //         padding:
+                                                            //             const EdgeInsets
+                                                            //                     .all(
+                                                            //                 3.0),
+                                                            //         child: Icon(
+                                                            //           FontAwesomeIcons
+                                                            //               .twitter,
+                                                            //               size: 21,
+                                                            //           color: Colors
+                                                            //               .lightBlue,
+                                                            //         ),
+                                                            //       ),
+                                                            //       Padding(
+                                                            //         padding:
+                                                            //             const EdgeInsets
+                                                            //                     .all(
+                                                            //                 3.0),
+                                                            //         child: Icon(
+                                                            //           FontAwesomeIcons
+                                                            //               .linkedin,
+                                                            //               size: 21,
+                                                            //           color: Colors
+                                                            //               .blue,
+                                                            //         ),
+                                                            //       ),
+                                                            //     ],
+                                                            //   ),
+                                                            // ),
                                                           ],
                                                         ),
                                                       ],

@@ -83,6 +83,7 @@ class _DetailGaleriState extends State<DetailGaleri> {
                         textColor: Colors.white,
                         color: Colors.lightBlue,
                         onPressed: () {
+                          
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (c) => LandingPage(
                                     selectedIndex: 5,

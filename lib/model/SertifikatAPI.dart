@@ -7,6 +7,7 @@ Future<List<SertifikatAPI>> fetchSertifikatAPI() async {
   var responseJson;
   String url = "http://simadu.id/api/api_sertifikat.php";
   final response = await http.get(url);
+  // print(response.body); 
   if (response.statusCode == 200) {
     responseJson = json.decode(response.body);
     responseJson =

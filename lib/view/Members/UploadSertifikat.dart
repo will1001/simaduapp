@@ -23,6 +23,7 @@ class UploadSertifikat extends StatefulWidget {
 class _UploadSertifikatState extends State<UploadSertifikat> {
   String msg = '';
   Color warnapesan;
+  Color _warnastatus=Colors.black12;
   File filesertifikat;
   String _fileName;
   String _path;
@@ -42,10 +43,10 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
     _controller.addListener(() => _extension = _controller.text);
   }
 
-  Future uploadsertifikat() async {
+  Future uploadsertifikat(var context) async {
     var responseJson;
     String url = "http://simadu.id/api/api_upload_sertifikat.php";
-    print(filesertifikat);
+    // print(filesertifikat);
     var stream =
         http.ByteStream(DelegatingStream.typed(filesertifikat.openRead()));
     var len = await filesertifikat.length();
@@ -69,11 +70,18 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
       setState(() {
         msg = "Sertifikat Berhasil di Upload";
         warnapesan = Colors.lightBlue;
+        _warnastatus = Colors.lightBlue;
+        Future.delayed(
+        Duration(seconds: 3),
+        () {
+          Navigator.pop(context);
+        },
+      );
       });
     }
   }
 
-  void _openFileExplorer() async {
+  void _openFileExplorer(var context) async {
     var temp;
     if (_pickingType != FileType.CUSTOM || _hasValidMime) {
       setState(() => _loadingPath = true);
@@ -102,7 +110,7 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
         filesertifikat = temp;
       });
 
-      uploadsertifikat();
+      uploadsertifikat(context);
     }
   }
 
@@ -212,7 +220,7 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
               Padding(
                 padding: const EdgeInsets.only(top: 0.0, left: 15.0),
                 child: RaisedButton(
-                  onPressed: () => _openFileExplorer(),
+                  onPressed: () => _openFileExplorer(context),
                   child: Text("Upload Sertifikat"),
                   textColor: Colors.black,
                   color: Colors.lightBlue,
@@ -229,7 +237,7 @@ class _UploadSertifikatState extends State<UploadSertifikat> {
                     border: Border.all(color: Colors.black12, width: 1)),
                   child: Container(
                     width: 250,
-                    color: Colors.black12,
+                    color: _warnastatus,
                    child: Padding(
                      padding: const EdgeInsets.all(8.0),
                      child: Text('Sertifikat Anda Sudah Di Upload'),
