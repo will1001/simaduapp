@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:simadu/model/APIRegisterAll.dart';
+import 'package:simadu/model/GetAPIKelas.dart';
 import 'package:simadu/model/KategoriAPI.dart';
 import 'package:simadu/model/ProviderRekuesKelas.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -9,8 +10,7 @@ import 'dart:async';
 import 'dart:convert';
 
 class AddRequestKelas extends StatefulWidget {
-   AddRequestKelas({Key key, this.idRegister})
-      : super(key: key);
+  AddRequestKelas({Key key, this.idRegister}) : super(key: key);
 
   final String idRegister;
   @override
@@ -27,9 +27,9 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
     String url = "http://simadu.id/api/api_rekueskelas.php";
     final response = await http.post(url, body: {
       "id_register": widget.idRegister,
-      "tanggal": DateTime.now().toString().substring(0,10),
+      "tanggal": DateTime.now().toString().substring(0, 10),
       "kelas": _kelas,
-      "lainya":lainnyaController.text==''?'':lainnyaController.text,
+      "lainya": lainnyaController.text == '' ? '' : lainnyaController.text,
       "status": 'Menunggu',
     });
     responseJson = json.decode(response.body);
@@ -44,11 +44,11 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
       //     builder: (c) => LandingPage(
       //           selectedIndex: 5,
       //         )));
-       setState(() {
+      setState(() {
         msg = responseJson['msg'];
         warnapesan = Colors.green;
       });
-       showDialog(
+      showDialog(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
@@ -67,9 +67,9 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
           Navigator.pop(context);
         },
       );
-      
     }
   }
+
   Color warnapesan;
   String msg = '';
   var kategorillist;
@@ -124,7 +124,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
               //               providerrekueskelas.namaakun = newValue.toString();
               //               var idRegister = snapshot.data.where((a)=>a.nama_pemilik==newValue.toString()).map((d)=>d.id_register).toList();
               //                 setState(() {
-              //                  id_register=idRegister[0]; 
+              //                  id_register=idRegister[0];
               //                 });
               //             },
               //             items: (registerlist == null ? [''] : registerlist)
@@ -195,7 +195,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
               //       padding: const EdgeInsets.only(left: 16.0, right: 50.0),
               //       child: Text('Tanggal :'),
               //     ),
-                  
+
               //     Text(_tanggal == null
               //         ? ''
               //         : _tanggal.toString().substring(8, 10) +
@@ -229,30 +229,44 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
                     padding: const EdgeInsets.only(left: 16.0, right: 27.0),
                     child: Text('Kelas :'),
                   ),
-                  DropdownButton<String>(
-                    hint: Text('Kelas'),
-                    value: _kelas,
-                    icon: Icon(Icons.arrow_downward),
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(color: Colors.black),
-                    underline: Container(
-                      height: 2,
-                      color: Colors.black,
-                    ),
-                    onChanged: (String newValue) {
-                      setState(() {
-                        _kelas = newValue.toString();
-                      });
-                    },
-                    items: ['Manajemen Pemasaran', 'Manajemen Keuangan','Manajemen Operasional','Manajemen SDM','Desain dan Pengembangan Produk','Manajemen Konsumen']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
+                  FutureBuilder<List<GetAPIKelas>>(
+                      future: fetchGetAPIKelas(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          var data = snapshot.data.toList();
+
+                          var listkelas = data.map((f) {
+                            return f.kelas;
+                          }).toList();
+                          print(listkelas);
+
+                          return DropdownButton<String>(
+                            hint: Text('Kelas'),
+                            value: _kelas,
+                            icon: Icon(Icons.arrow_downward),
+                            iconSize: 24,
+                            elevation: 16,
+                            style: TextStyle(color: Colors.black),
+                            underline: Container(
+                              height: 2,
+                              color: Colors.black,
+                            ),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                _kelas = newValue.toString();
+                              });
+                            },
+                            items: listkelas
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          );
+                        }
+                        return CircularProgressIndicator();
+                      }),
                 ],
               ),
               Padding(
@@ -267,7 +281,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 16,bottom: 8,top: 16),
+                padding: const EdgeInsets.only(left: 16, bottom: 8, top: 16),
                 child: Text('Status :        Menunggu'),
               ),
               Column(
@@ -277,7 +291,7 @@ class _AddRequestKelasState extends State<AddRequestKelas> {
                     textColor: Colors.black,
                     color: Colors.lightBlue,
                     onPressed: () {
-                     rekueskelas();
+                      rekueskelas();
                     },
                   ),
                   // Center(

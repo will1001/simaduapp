@@ -45,9 +45,9 @@ class _DaftarPinjamanState extends State<DaftarPinjaman> {
       "lama_usaha": lamaberdiriusahaController.text == ''
           ? ''
           : lamaberdiriusahaController.text,
-      "riwayat_pinjaman": riwayatpinjamanController.text == ''
-          ? ''
-          : riwayatpinjamanController.text,
+      // "riwayat_pinjaman": riwayatpinjamanController.text == ''
+      //     ? ''
+      //     : riwayatpinjamanController.text,
       "jml_pinjaman": riwayatjumlahpinjamanController.text == ''
           ? ''
           : riwayatjumlahpinjamanController.text,
@@ -178,24 +178,24 @@ class _DaftarPinjamanState extends State<DaftarPinjaman> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: TextField(
-                  controller: riwayatpinjamanController,
-                  decoration: InputDecoration(
-                    icon:  Container(width: 100, child: Text('Riwayat Pinjaman :'),),
-                    hintText: 'Riwayat Pinjaman',
-                    labelText: 'Riwayat Pinjaman',
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(left: 16),
+              //   child: TextField(
+              //     controller: riwayatpinjamanController,
+              //     decoration: InputDecoration(
+              //       icon:  Container(width: 100, child: Text('Riwayat Pinjaman :'),),
+              //       hintText: 'Riwayat Pinjaman',
+              //       labelText: 'Riwayat Pinjaman',
+              //     ),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: TextField(
                   controller: riwayatjumlahpinjamanController,
                   decoration: InputDecoration(
-                    icon: Container(width: 100, child: Text('Riwayat Jumlah Pinjaman :')),
-                    hintText: 'Riwayat Jumlah Pinjaman',
+                    icon: Container(width: 100, child: Text('Jumlah Pinjaman :')),
+                    hintText: 'Jumlah Pinjaman',
                     labelText: '0',
                   ),
                 ),
@@ -205,8 +205,8 @@ class _DaftarPinjamanState extends State<DaftarPinjaman> {
                 child: TextField(
                   controller: riwayatsumberpinjamanController,
                   decoration: InputDecoration(
-                    icon: Container(width: 100, child: Text('Riwayat Sumber Pinjaman :')),
-                    hintText: 'Riwayat Sumber Pinjaman',
+                    icon: Container(width: 100, child: Text('Sumber Pinjaman :')),
+                    hintText: 'Sumber Pinjaman',
                     labelText: 'Sumber Pinjaman',
                   ),
                 ),
