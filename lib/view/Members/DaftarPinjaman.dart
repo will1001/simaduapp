@@ -190,6 +190,18 @@ class _DaftarPinjamanState extends State<DaftarPinjaman> {
               //   ),
               // ),
               Padding(
+                padding: const EdgeInsets.only(top:31.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 1,
+                  color: Colors.black38,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(11.0),
+                child: Text('Riwayat Pinjaman'),
+              ),
+              Padding(
                 padding: const EdgeInsets.only(left: 16),
                 child: TextField(
                   controller: riwayatjumlahpinjamanController,
