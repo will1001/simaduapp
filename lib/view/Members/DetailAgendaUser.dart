@@ -124,7 +124,7 @@ class _DetailAgendaUserState extends State<DetailAgendaUser> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        '(${widget.tanggal}) '+''+widget.desc,
+                        widget.desc,
                         style: TextStyle(color: Colors.grey),
                       ),
                     ],
