@@ -131,7 +131,6 @@ class _LandingPageState extends State<LandingPage> {
       child: FutureBuilder(
         future: _datacache(),
         builder: (context, snapshot) {
-          print(_selectedIndex);
           if (snapshot.data == 'true') {
             return Scaffold(
               body: _widgetOptions2.elementAt(_selectedIndex2),
