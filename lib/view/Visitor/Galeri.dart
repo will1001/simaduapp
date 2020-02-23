@@ -99,7 +99,7 @@ class _GaleriState extends State<Galeri> {
                                                           children: <Widget>[
                                                             f.judul.length<35?Text(f.judul.substring(0,f.judul.length)):Text(f.judul.substring(0,35)+'. . .'),
                                                             Text(
-                                                              f.agenda.substring(0,89)+'. . .',
+                                                              f.agenda.length<89?f.agenda.substring(0,f.agenda.length):f.agenda.substring(0,89)+'. . .',
                                                               style: TextStyle(
                                                                   color: Colors
                                                                       .grey),
